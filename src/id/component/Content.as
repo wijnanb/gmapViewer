@@ -98,18 +98,17 @@
 		private var lineTekst:Sprite = new Sprite();
 		private var lineVideo:Sprite = new Sprite();
 
-		[Embed(source = "../../../assets/interface/Icoon_tekstblauw.svg")]
+		[Embed(source = "../../../assets/interface/Icoon_tekstblauw.png")]
 		public var iconTekstClass:Class;
 		private var iconTekst = new iconTekstClass();
 
-		[Embed(source = "../../../assets/interface/Icoon_fotoblauw.svg")]
+		[Embed(source = "../../../assets/interface/Icoon_fotoblauw.png")]
 		public var iconFotoClass:Class;
 		private var iconFoto = new iconFotoClass();
 
-		[Embed(source = "../../../assets/interface/Icoon_videoblauw.svg")]
+		[Embed(source = "../../../assets/interface/Icoon_videoblauw.png")]
 		public var iconVideoClass:Class;
 		private var iconVideo = new iconVideoClass();
-		///layout
 
 		private var idContent;
 		private var mX;
