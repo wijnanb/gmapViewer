@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="550px" height="376.389px" viewBox="0 0 550 376.389" enable-background="new 0 0 550 376.389" xml:space="preserve">
+<g>
+	
+		<rect x="14.068" y="11.666" transform="matrix(-1 -3.835281e-04 3.835281e-04 -1 550.1832 376.4932)" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="522.12" height="353.057"/>
+	<g>
+		
+			<rect x="18.409" y="17.34" transform="matrix(-1 -3.823360e-04 3.823360e-04 -1 550.1812 377.8254)" fill="none" stroke="#000000" stroke-width="3" stroke-miterlimit="10" width="513.436" height="343.041"/>
+	</g>
+	<rect x="36.329" y="32.324" fill="#010202" width="479.773" height="269.872"/>
+</g>
+<g id="tijdsverloop">
+	<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="37.517,323.557 37.521,320.558 428.442,320.29 
+		428.439,323.29 	"/>
+</g>
+<text id="totaaltijd" transform="matrix(1 -0.0031 0.0031 1 439.6108 324.0508)" font-family="'HelveticaNeue'" font-size="10">03:00</text>
+<g id="audio">
+	<rect x="484.333" y="311.056" fill="none" stroke="#000000" stroke-miterlimit="10" width="4" height="18.482"/>
+	<rect x="491.667" y="311.056" fill="none" stroke="#000000" stroke-miterlimit="10" width="4" height="18.482"/>
+	<rect x="498.583" y="310.906" fill="none" stroke="#000000" stroke-miterlimit="10" width="4" height="18.482"/>
+	<rect x="505.917" y="310.906" fill="none" stroke="#000000" stroke-miterlimit="10" width="4" height="18.482"/>
+	<rect x="512.682" y="310.906" fill="none" stroke="#000000" stroke-miterlimit="10" width="4" height="18.482"/>
+	<rect x="484.333" y="317.111" width="4" height="12.427"/>
+</g>
+<g id="tijdsaanduiding">
+	<g>
+		<rect x="256.715" y="329.904" width="39" height="16"/>
+		<polyline points="281.361,329.904 288.539,323.557 295.715,329.904 		"/>
+	</g>
+	
+		<text id="totaaltijd_1_" transform="matrix(1 7.000000e-05 -7.000000e-05 1 263.0498 341.876)" fill="#FFFFFF" font-family="'HelveticaNeue'" font-size="11">02:22</text>
+	<rect x="37.517" y="320.147" width="251.317" height="3.409"/>
+</g>
+<polygon id="play" fill="#FFFFFF" points="256.715,143.111 256.715,194.111 301.333,168.611 "/>
+<g id="pause" display="none">
+	<rect x="260.492" y="143.111" display="inline" fill="#FFFFFF" width="9.787" height="51"/>
+	<rect x="279.025" y="143.111" display="inline" fill="#FFFFFF" width="9.514" height="51"/>
+</g>
+</svg>

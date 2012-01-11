@@ -1,0 +1,1 @@
+START /MIN %~dp0Update.exe

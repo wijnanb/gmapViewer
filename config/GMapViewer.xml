@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GMapViewer>
+	<Content><!-- Sets the bounds and size for each map object populated to the application -->	
+		<Source id="1"><!-- Each source must have a unique ID -->
+			<longitude>5.348904</longitude><!-- Sets the longitude of the map -->
+			<latitude>50.798426</latitude><!-- Sets the latitude of the map -->
+			<initialZoom>14</initialZoom><!-- Sets the initial zoom level of the map-->
+			<zoomStep>2</zoomStep><!-- Sets by what degrees the zoom augments when the zoom gesture is used -->
+			<initialAttitude>0</initialAttitude><!-- Sets how the map is rotated at launch relative to the frame -->
+			<initialTilt>0</initialTilt><!-- Sets the map tilt at launch relative to the frame -->
+			<initialType>2</initialType><!-- Sets the style of the map view. 0 is satellite, 1 is hybrid, 2 is street view map, 3 is terrain -->
+			<mapWidth>1280</mapWidth><!-- Sets the display width of the map in pixels -->
+			<mapHeight>800</mapHeight><!-- Sets the display height of the map in pixels -->
+			<mapRotation>0</mapRotation><!-- Sets how the map object is rotated when put on the stage at launch -->
+		</Source>		
+</Content>
+	
+	<GlobalSettings>
+		<apiKey>ABQIAAAAty-8JphdW63RQjyEH9EuFxS4OKswxGP2Jk6kerS8HZB0PQykqhRYFL8--w_-Qt50euSW6trHD4Up9A</apiKey><!-- Your Google Maps API key -->
+		<amountToShow>1</amountToShow>
+	</GlobalSettings>
+
+	<FrameStyle><!-- Sets the style of the frame that surrounds each map -->
+		<frameDraw>false</frameDraw><!-- Sets whether or not an external frame is drawn -->
+	</FrameStyle>
+	
+	<MapGestures><!-- Sets which gestures can be used on the map itself. To avoid confusion, we suggest that if <tilt>, which rotates the map in 3D space, is set to "true", <rotate>, which rotates the map in 2D space, be set to "false." -->
+		<drag>true</drag>
+		<doubleTap>false</doubleTap>
+		<flick>false</flick>
+		<rotate>false</rotate>
+		<scale>true</scale>
+		<tilt>false</tilt><!-- Tilts the map in 3D space -->
+	</MapGestures>
+
+	<FrameGestures><!-- Sets which gestures can be used to manipulate the frame/map object on the stage -->
+		<drag>true</drag>
+		<rotate>true</rotate>
+		<scale>true</scale>
+	</FrameGestures>
+
+</GMapViewer>
