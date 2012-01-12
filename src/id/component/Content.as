@@ -140,15 +140,17 @@
 
 		public function Content(contentHolder, magnifi , mId)
 		{
-//trace('eerst');
 			super();
 			blobContainerEnabled = true;
 			containerContent = contentHolder; // adds the content underneath the magnifier
 			magnifier = magnifi; // magnifier glass
 			magId = mId; //marker id
-			//sound = new Sound(new URLRequest("assets/interface/sound/knock.mp3"));
-			//sound2 = new Sound(new URLRequest("assets/interface/sound/slide-1.mp3"));
-			//sound3 = new Sound(new URLRequest("assets/interface/sound/typewriter-line-break-1.mp3"));
+			
+			if ( !Player.isAir ) {
+				sound = new Sound(new URLRequest("assets/interface/sound/knock.mp3"));
+				sound2 = new Sound(new URLRequest("assets/interface/sound/slide-1.mp3"));
+				sound3 = new Sound(new URLRequest("assets/interface/sound/typewriter-line-break-1.mp3"));
+			}
 		}
 
 		public function deleteIt():void{
@@ -161,7 +163,7 @@
 		{
 			idContent = idIn;//marker
 			//trace('Marker', idIn);
-			//sound.play();
+			if ( !Player.isAir ) sound.play();
 			schuifHolder1=new TouchSprite();
 			schuifHolder2 =new TouchSprite();
 			schuifHolder3=new TouchSprite();
@@ -299,7 +301,7 @@
 			guiTouch = event.target.name;
 			if (prevTouch != guiTouch)
 			{
-				//sound2.play();
+				if ( !Player.isAir ) sound2.play();
 				prevTouch = guiTouch;
 				addChild(holder);
 				holder.alpha = 0;
@@ -665,7 +667,8 @@
 			geenFoto = false;
 			geenTekst = false;
 			prevTouch = "";
-			//sound3.play();
+			
+			if ( !Player.isAir ) sound3.play();
 		}
 
 	}

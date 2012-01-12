@@ -131,9 +131,8 @@ var proxy:String = "http://maddoc.khlim.be/~dleen/Z33/gmapViewer/proxy.php?url="
 				var imageLoader:Loader = new Loader();
 				var image:URLRequest = new URLRequest(proxy + icoon);
 				imageLoader.load(image);
-			
-					markerOptions.icon = imageLoader ;  
-				
+				markerOptions.icon = imageLoader;
+				markerOptions.icon.cacheAsBitmap = true;
 				
 				MarkerArray[i] = new Marker(latlng,markerOptions);
 
