@@ -345,11 +345,11 @@ var touchSprite:TouchSprite=nested as TouchSprite;
 
 			// Data
 			if(niveau == "concept"){
-			//trace ("bee bop" , TekstParser.settings.Content.Source[_settingsId].concept.tekst[id].url.length());
-			if (TekstParser.settings.Content.Source[_settingsId].concept.tekst[id].url.length() > 0){
-			mediaUrl=TekstParser.settings.Content.Source[_settingsId].concept.tekst[id].url;
+			//trace ("bee bop" , TekstParser.settings.Content.Source[_settingsId].concept.text[id].url.length());
+			if (TekstParser.settings.Content.Source[_settingsId].concept.text[id].url.length() > 0){
+			mediaUrl=TekstParser.settings.Content.Source[_settingsId].concept.text[id].url;
 			//trace('ide', mediaUrl);
-			thumbUrl=TekstParser.settings.Content.Source[_settingsId].concept.tekst[id].url;
+			thumbUrl=TekstParser.settings.Content.Source[_settingsId].concept.text[id].url;
 			noImage = false;
 			}
 			else{
@@ -357,31 +357,31 @@ var touchSprite:TouchSprite=nested as TouchSprite;
 				mediaUrl="assets/Interface/leeg.jpg";
 				thumbUrl="assets/Interface/leeg.jpg";
 				}
-			qrCodeTag=TekstParser.settings.Content.Source[_settingsId].concept.tekst[id].qrCodeTag;
-			titleText=TekstParser.settings.Content.Source[_settingsId].concept.tekst[id].title;
-			descriptionText=TekstParser.settings.Content.Source[_settingsId].concept.tekst[id].description;
-			authorText=TekstParser.settings.Content.Source[_settingsId].concept.tekst[id].author;
-			publishText=TekstParser.settings.Content.Source[_settingsId].concept.tekst[id].publish;
+			qrCodeTag=TekstParser.settings.Content.Source[_settingsId].concept.text[id].qrCodeTag;
+			titleText=TekstParser.settings.Content.Source[_settingsId].concept.text[id].title;
+			descriptionText=TekstParser.settings.Content.Source[_settingsId].concept.text[id].description;
+			authorText=TekstParser.settings.Content.Source[_settingsId].concept.text[id].author;
+			publishText=TekstParser.settings.Content.Source[_settingsId].concept.text[id].publish;
 			}
 			if(niveau == "constructie"){
-			mediaUrl=TekstParser.settings.Content.Source[_settingsId].constructie.tekst[id].url;
+			mediaUrl=TekstParser.settings.Content.Source[_settingsId].constructie.text[id].url;
 			//trace('op', mediaUrl);
-			thumbUrl=TekstParser.settings.Content.Source[_settingsId].constructie.tekst[id].url;
-			qrCodeTag=TekstParser.settings.Content.Source[_settingsId].constructie.tekst[id].qrCodeTag;
-			titleText=TekstParser.settings.Content.Source[_settingsId].constructie.tekst[id].title;
-			descriptionText=TekstParser.settings.Content.Source[_settingsId].constructie.tekst[id].description;
-			authorText=TekstParser.settings.Content.Source[_settingsId].constructie.tekst[id].author;
-			publishText=TekstParser.settings.Content.Source[_settingsId].constructie.tekst[id].publish;
+			thumbUrl=TekstParser.settings.Content.Source[_settingsId].constructie.text[id].url;
+			qrCodeTag=TekstParser.settings.Content.Source[_settingsId].constructie.text[id].qrCodeTag;
+			titleText=TekstParser.settings.Content.Source[_settingsId].constructie.text[id].title;
+			descriptionText=TekstParser.settings.Content.Source[_settingsId].constructie.text[id].description;
+			authorText=TekstParser.settings.Content.Source[_settingsId].constructie.text[id].author;
+			publishText=TekstParser.settings.Content.Source[_settingsId].constructie.text[id].publish;
 			}
 			if(niveau == "resultaat"){
-			mediaUrl=TekstParser.settings.Content.Source[_settingsId].resultaat.tekst[id].url;
+			mediaUrl=TekstParser.settings.Content.Source[_settingsId].resultaat.text[id].url;
 			//trace('resul', mediaUrl);
-			thumbUrl=TekstParser.settings.Content.Source[_settingsId].resultaat.tekst[id].url;
-			qrCodeTag=TekstParser.settings.Content.Source[_settingsId].resultaat.tekst[id].qrCodeTag;
-			titleText=TekstParser.settings.Content.Source[_settingsId].resultaat.tekst[id].title;
-			descriptionText=TekstParser.settings.Content.Source[_settingsId].resultaat.tekst[id].description;
-			authorText=TekstParser.settings.Content.Source[_settingsId].resultaat.tekst[id].author;
-			publishText=TekstParser.settings.Content.Source[_settingsId].resultaat.tekst[id].publish;
+			thumbUrl=TekstParser.settings.Content.Source[_settingsId].resultaat.text[id].url;
+			qrCodeTag=TekstParser.settings.Content.Source[_settingsId].resultaat.text[id].qrCodeTag;
+			titleText=TekstParser.settings.Content.Source[_settingsId].resultaat.text[id].title;
+			descriptionText=TekstParser.settings.Content.Source[_settingsId].resultaat.text[id].description;
+			authorText=TekstParser.settings.Content.Source[_settingsId].resultaat.text[id].author;
+			publishText=TekstParser.settings.Content.Source[_settingsId].resultaat.text[id].publish;
 			}
 
 			// Objects
