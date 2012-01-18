@@ -211,7 +211,7 @@ package id.template
 			stageHeight = ApplicationGlobals.application.stage.stageHeight;
 
 		}
-var proxy:String = "http://maddoc.khlim.be/~dleen/Z33/gmapViewer/proxy.php?url=";
+
 		override protected function commitUI():void
 		{
 			alreadyMoving = 0;
@@ -225,7 +225,7 @@ var proxy:String = "http://maddoc.khlim.be/~dleen/Z33/gmapViewer/proxy.php?url="
 			_background = new Sprite();
 			_backgroundLoader = new Loader();
 			_backgroundLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, backgroundLoader_completeHandler);
-			_backgroundLoader.load(new URLRequest(proxy + backgroundUrl));
+			_backgroundLoader.load(new URLRequest(backgroundUrl));
 			_background.addChild(_backgroundLoader);
 			addChild(_background);
 
