@@ -13,17 +13,8 @@
 	</Template>
 	
 	<TouchCore>	
-		<!-- Begin Aggregator Types -->
-		<AggregatorTypes>
-		</AggregatorTypes>
-		<!-- End Aggregator Types -->
-	
-		<!-- Begin Filter Types -->
-		<FilterTypes>
-		</FilterTypes>
-		<!-- End Filter Types -->
-		
-		<!-- Begin Input Types -->
+		<AggregatorTypes></AggregatorTypes>
+		<FilterTypes></FilterTypes>
 		<InputTypes>
 			<Type name="Flosc">
 				<Package>id.data.flosc</Package>
@@ -41,14 +32,10 @@
 				<Settings>SimulatorSettings</Settings>
 			</Type>
 		</InputTypes>
-		<!-- End Input Types -->
-	
-		<!-- Begin Aggregator Settings -->
+		
 		<AggregatorSettings>
 		</AggregatorSettings>
-		<!-- End Aggregator Settings -->
 		
-		<!-- Begin Filter Settings -->
 		<FilterSettings>
 			<NoiseFilter>
 				<Histogram>
@@ -57,21 +44,16 @@
 					<backFrameCount></backFrameCount>
 					<forwardFrameCount></forwardFrameCount>
 				</Histogram>
-				
 				<Spacial>true</Spacial>
 				<Temporal>true</Temporal>
 			</NoiseFilter>
 		</FilterSettings>
-		<!-- End Filter Settings -->
-	
-		<!-- Begin Input Settings -->
+		
 		<InputSettings>
 			<FloscSettings>
 				<Host>127.0.0.1</Host>
 				<Port>3000</Port>
-				
 				<AutoReconnect>true</AutoReconnect>
-				
 				<EnforceSize>false</EnforceSize>
 				<Width>1280</Width>
 				<Height>800</Height>
@@ -79,18 +61,15 @@
 			<NativeSettings />
 			<SimulatorSettings/>
 		</InputSettings>
-		<!-- End Input Settings -->
 		
-		<!-- Begin Tracker Settings -->
 		<TrackerSettings>
 			<Frequency>61</Frequency>
 			<GhostTolerance>0</GhostTolerance>
 		</TrackerSettings>
-		<!-- End Tracker Settings -->
 		
 		<Aggregator></Aggregator>
 		<Filter></Filter>
-		<InputProvider>Native</InputProvider>
+		<InputProvider>Simulator</InputProvider>
 		
 		<Clustering>0</Clustering> <!-- 0 | 1 | 2 -->
 		<Degradation>never</Degradation> <!-- always | auto | never -->
