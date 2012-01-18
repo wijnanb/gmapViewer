@@ -77,5 +77,19 @@
 		
 		<LicenseKey></LicenseKey>
 	</TouchCore>
-		
+	
+	<Maps>
+		<Map>
+			<Name>Borgloon</Name>
+			<Content>FSCommand/Content.xml</Content>
+		</Map>
+		<Map>
+			<Name>Genk</Name>
+			<Content>FSCommand/Content-Genk.xml</Content>
+		</Map>
+		<Map>
+			<Name>Zutendaal</Name>
+			<Content>FSCommand/Content-Zutendaal.xml</Content>
+		</Map>
+	</Maps>
 </Application>
