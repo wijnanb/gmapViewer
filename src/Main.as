@@ -1,5 +1,12 @@
 package 
 {
+	import com.google.maps.LatLng;
+	import com.google.maps.Map3D;
+	import com.google.maps.MapEvent;
+	import com.google.maps.MapOptions;
+	import com.google.maps.MapType;
+	import com.google.maps.View;
+	
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageDisplayState;
@@ -12,6 +19,7 @@ package
 	import flash.system.fscommand;
 	import flash.ui.Mouse;
 	import flash.utils.Timer;
+	import flash.utils.setTimeout;
 	
 	import gl.events.GestureEvent;
 	import gl.events.TouchEvent;
@@ -31,6 +39,7 @@ package
 		
 		protected var viewerLayer:TouchSprite = new TouchSprite();
 		protected var mapSwitchButtonLayer:TouchSprite = new TouchSprite();
+		protected var mapLayer:TouchSprite = new TouchSprite();
 		
 		protected var resetTimer:Timer;
 
@@ -51,6 +60,7 @@ package
 				Security.allowInsecureDomain("*");	
 			}
 			
+			addChild(mapLayer);
 			addChild(viewerLayer);
 			addChild(mapSwitchButtonLayer);
 		}
@@ -74,7 +84,11 @@ package
 				mapSwitchButtonLayer.addChild(switchButton);
 			}
 
-			loadMapWithName( (maps[0] as MapData).name );
+			createGMap();
+			
+			var loadFirstMapTimeout:int = setTimeout( function() {
+				loadMapWithName( (maps[0] as MapData).name );
+			}, 50);
 		}
 		
 		protected function loadMapWithName(name:String):void {
@@ -105,8 +119,39 @@ package
 			if ( viewer ) 	viewer.reset();
 		}
 		
-		public function map(v:Number, a:Number, b:Number, x:Number = 0, y:Number = 1):Number {
-    		return (v == a) ? x : (v - a) * (y - x) / (b - a) + x;
+		protected function createGMap():void {
+			trace("createGMap()");
+			
+			MapData.gMap = new Map3D();
+			MapData.gMap.url = "http://maddoc.khlim.be";
+			MapData.gMap.key = "ABQIAAAAty-8JphdW63RQjyEH9EuFxS4OKswxGP2Jk6kerS8HZB0PQykqhRYFL8--w_-Qt50euSW6trHD4Up9A";
+			MapData.gMap.setSize(new Point(1280,800));
+			MapData.gMap.sensor = "false";
+			MapData.gMap.addEventListener(MapEvent.MAP_PREINITIALIZE, onMapPreInt);
+			MapData.gMap.addEventListener(MapEvent.MAP_READY, onMapReady);
+			//gMap.addEventListener(MapEvent.MAP_READY, onMapReady);
+			
+			mapLayer.addChild(MapData.gMap);
+		}
+		
+		protected function onMapPreInt(event:MapEvent=null):void
+		{
+			trace("onMapPreInt()");
+			var lat:Number = 50.798426;
+			var lng:Number = 5.348904;
+			var zoom:Number = 14;
+				
+			var mOptions:MapOptions = new MapOptions();
+			mOptions.zoom = zoom;
+			mOptions.center = new LatLng(lat,lng);
+			mOptions.viewMode = View.VIEWMODE_2D;
+			mOptions.mapType = MapData.getZOutMapType();
+			
+			MapData.gMap.setInitOptions(mOptions);
+		}
+		
+		protected function onMapReady(event:MapEvent):void {
+			trace("onMapReady()");
 		}
 	}
 }
