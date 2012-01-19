@@ -644,7 +644,15 @@ MapTypeStyleRule.visibility("off"),
 			map.removeEventListener(MapEvent.MAP_PREINITIALIZE, onMapPreInt);
 			map.removeEventListener(MapEvent.MAP_READY, onMapReady);
 			iconLogoSubExt.removeEventListener(TouchEvent.TOUCH_DOWN, changeLogoBack);
-			newMarker.removeEventListener(Event.COMPLETE, dataReadyHandler);
+			newMarker.removeEventListener(Event.COMPLETE, dataReadyHandler);		
+			
+			if ( map_holder )			map_holder.Dispose();
+			if ( frame )				frame.Dispose();
+			if ( screen )				screen.Dispose();
+			if ( screen2 )				screen2.Dispose();
+			
+			if ( iconLogoSub )			iconLogoSub.Dispose();
+			if ( iconLogoSubExt )		iconLogoSubExt.Dispose();
 			
 			if (mapDragGesture)
 			{

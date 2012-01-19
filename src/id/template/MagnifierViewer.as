@@ -99,7 +99,6 @@ package id.template
 		private var alreadyMoving:int = 0;
 
 		private var container:TouchComponent;
-
 		private var containerGlass:TouchComponent;
 
 		public var containerContent:TouchSprite = new TouchSprite();
@@ -363,7 +362,6 @@ package id.template
 
 		public function gui(vt)
 		{
-
 			var pta:Point = new Point(magnifierGlasses[vt].x,magnifierGlasses[vt].y);
 			var objectsa:Array = container.getObjectsUnderPoint(pta);
 			//looks for objects under point, if the name is a number he found something
@@ -642,11 +640,16 @@ package id.template
 		}
 		
 		override public function Dispose():void {
-			if ( myGMapViewer ) {
-				myGMapViewer.Dispose();
-				myGMapViewer = null;
-			}
+			if ( myGMapViewer )			myGMapViewer.Dispose();
+			if ( container )			container.Dispose();
+			if ( containerGlass )		containerGlass.Dispose();
 			
+			if ( addMa )				addMa.Dispose();
+			if ( addMag )				addMag.Dispose();
+			if ( ring1 )				ring1.Dispose();
+			
+			if ( testHolder )			testHolder.Dispose();
+				
 			_backgroundLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE, backgroundLoader_completeHandler);
 			if (loadingTimer)	loadingTimer.removeEventListener(TimerEvent.TIMER, updateLoadingText);
 			addMa.removeEventListener(TouchEvent.TOUCH_UP,moreMagnifiers);
