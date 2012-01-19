@@ -79,6 +79,7 @@ package
 			if ( viewer ) {
 				trace("destroy viewer");
 				viewer.Dispose();
+				viewer = null;
 			}
 			
 			viewer = new MagnifierViewer();

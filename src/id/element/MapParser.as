@@ -1,10 +1,10 @@
 ﻿package id.element
 {
-	import flash.net.URLLoader;
-	import flash.net.URLRequest;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.net.*;
+	import flash.net.URLLoader;
+	import flash.net.URLRequest;
 
 	/**
 	 * This is the MapParser class for the GMapViewer.
@@ -24,6 +24,8 @@
 		private static var settingsLoader:URLLoader;
 		protected static var dispatch:EventDispatcher;
 		private static var count:int;
+		
+		public static var loadComplete:Boolean = false;
 
 		public static function get settingsPath():String
 		{
@@ -36,6 +38,9 @@
 			{
 				return;
 			}
+			
+			loadComplete = false;
+			
 			settingsLoader = new URLLoader();
 			settingsLoader.addEventListener(Event.COMPLETE, settingsLoader_completeHandler);
 			_settingsPath=value;
@@ -58,6 +63,8 @@
 			dispatchEvent(new Event(Event.COMPLETE));
 			settingsLoader.removeEventListener(Event.COMPLETE, settingsLoader_completeHandler);
 			settingsLoader=null;
+			
+			loadComplete = true;
 		}
 
 		public static function addEventListener(p_type:String, p_listener:Function, p_useCapture:Boolean=false, p_priority:int=0, p_useWeakReference:Boolean=false):void

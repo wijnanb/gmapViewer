@@ -16,35 +16,35 @@
 ////////////////////////////////////////////////////////////////////////////////
 package id.template
 {
-	import id.core.id_internal;
-	import id.core.TouchSprite;
-	import gl.events.TouchEvent;
-	import gl.events.GestureEvent;
-
-	import flash.events.Event;
-	import flash.display.Loader;
-	import flash.net.URLRequest;
-	import flash.display.Sprite;
-	import flash.geom.Point;
+	import com.greensock.TweenLite;
+	
 	import flash.display.Bitmap;
-	import id.utils.BitmapDataUtil;
-	import flash.geom.Matrix;
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
-	import flash.geom.Rectangle;
-
-	import id.core.ApplicationGlobals;
-	import id.core.TouchComponent;
+	import flash.display.Loader;
+	import flash.display.Sprite;
+	import flash.events.Event;
 	import flash.events.TimerEvent;
+	import flash.geom.Matrix;
+	import flash.geom.Point;
+	import flash.geom.Rectangle;
+	import flash.net.URLRequest;
 	import flash.utils.Dictionary;
-	import id.element.TextDisplay;
 	import flash.utils.Timer;
 	import flash.utils.getDefinitionByName;
-	import com.greensock.TweenLite;
-	import id.element.ContentParser;
+	
+	import gl.events.GestureEvent;
+	import gl.events.TouchEvent;
+	
 	import id.component.Content;
-
+	import id.core.ApplicationGlobals;
+	import id.core.TouchComponent;
+	import id.core.TouchSprite;
+	import id.core.id_internal;
+	import id.element.ContentParser;
+	import id.element.TextDisplay;
 	import id.module.FlickrViewer;
+	import id.utils.BitmapDataUtil;
 	FlickrViewer;
 	import id.module.ImageViewer;
 	ImageViewer;
@@ -131,6 +131,8 @@ package id.template
 		private var dx:Number = 0;
 		private var dy:Number = 0;
 		private var timer;
+		
+		public var myGMapViewer:GMapViewer;
 
 
 		public function MagnifierViewer()
@@ -227,7 +229,7 @@ package id.template
 			_backgroundLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, backgroundLoader_completeHandler);
 			_backgroundLoader.load(new URLRequest(backgroundUrl));
 			_background.addChild(_backgroundLoader);
-			addChild(_background);
+			//addChild(_background);
 
 			container= new TouchComponent();
 			addChild(container);
@@ -308,6 +310,8 @@ package id.template
 
 		override protected function layoutUI():void
 		{
+			trace("layoutUI");
+			
 			layoutCalled = true;
 
 			var moduleObject:Object = getModule(moduleDictionary);
@@ -568,7 +572,13 @@ package id.template
 			txt.y=(stageHeight-txt.height)/2;
 			moduleClass = getDefinitionByName("id.module." + templates.module[count]) as Class;
 
+			trace( "callModuleClass " + moduleClass);
+			
 			module = new moduleClass(magnifierGlasses,this);
+			
+			if ( module is GMapViewer ) {
+				myGMapViewer = GMapViewer(module);
+			}
 			
 			//  ============================
 			// modules are added to the touchComponent object "contatiner".  This is so that communication between the modules and this class is still transparent and clean.
@@ -643,6 +653,17 @@ package id.template
 			}
 
 			return moduleObject;
+		}
+		
+		override public function Dispose():void {
+			if ( myGMapViewer ) {
+				myGMapViewer.Dispose();
+				myGMapViewer = null;
+			}
+			
+			trace(this + ".Dispose()");
+			
+			super.Dispose();
 		}
 	}
 }

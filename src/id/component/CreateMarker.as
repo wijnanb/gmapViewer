@@ -78,7 +78,7 @@
 		{
 			super();
 			//loadImage();
-			trace("2de eerst");
+			trace("new CreateMarker()");
 			ContentParser.settingsPath = "FSCommand/Content.xml";
 			ContentParser.addEventListener(Event.COMPLETE,onParseComplete);
 			TMarker = new TouchSprite();

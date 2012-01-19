@@ -192,7 +192,7 @@ package id.component
 		 */
 		override public function Dispose():void
 		{
-
+			trace( this + ".Dispose()" );
 
 			if (mapDragGesture)
 			{
@@ -217,7 +217,8 @@ package id.component
 				removeEventListener(GestureEvent.GESTURE_TILT, gestureTiltHandler);
 			}
 
-			super.updateUI();
+			// Don't do this :-)
+			//super.updateUI();
 
 			if (parent)
 			{
