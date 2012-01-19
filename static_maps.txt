@@ -1,0 +1,19 @@
+http://maps.google.com/maps/api/staticmap?sensor=false&size=500x300&zoom=9&center=Sao+Paulo+Brazil&style=feature:water|saturation:100|hue:0xff5e00|gamma:0.58&style=feature:landscape|invert_lightness:true&style=element:labels|visibility:off&style=feature:poi|hue:0x0800ff|ligtness:-70&style=feature:administrative|element:geometry|visibility:off
+
+http://maps.google.com/maps/api/staticmap?sensor=false&size=640x400&scale=2&zoom=14&center=Borgloon+Belgium&style=feature:all|element:labels|visibility:off&style=feature:all|element:geometry|hue:0xffe293|lightness:31|gamma:0.63
+
+
+
+feature:all|element:labels|visibility:off
+feature:all|element:geometry|hue:0x007fff|lightness:31|gamma:0.63
+
+new MapTypeStyle(
+					MapTypeStyleFeatureType.ALL,
+					MapTypeStyleElementType.LABELS,
+					[MapTypeStyleRule.visibility("off")]
+				),
+				new MapTypeStyle(
+					MapTypeStyleFeatureType.ALL,
+					MapTypeStyleElementType.GEOMETRY,
+					[MapTypeStyleRule.hue(0x007fff), MapTypeStyleRule.lightness(31), MapTypeStyleRule.gamma(0.63)]
+				)
