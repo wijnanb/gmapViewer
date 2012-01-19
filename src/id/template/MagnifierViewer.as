@@ -130,7 +130,7 @@ package id.template
 		private var friction:Number = 0.9;
 		private var dx:Number = 0;
 		private var dy:Number = 0;
-		private var timer;
+		private var updateLensTimer:Timer;
 		
 		public var myGMapViewer:GMapViewer;
 
@@ -143,33 +143,19 @@ package id.template
 			commitUI();
 			addChild(testHolder);
 			addChild(containerContent);
-			
-			timer = new Timer(300000,0); // reset application every 5 minutes when no touches are detected, touches are detected in main.as
-			timer.addEventListener(TimerEvent.TIMER, reset);
-			timer.start();
-			/*var timer2:Timer = new Timer(10000,1);
-			timer2.addEventListener(TimerEvent.TIMER, tilt);
-			timer2.start();*/
-
-		
 		}
-					
-		public function updater(){
-			//trace('up', '--> reset');
-			timer.reset();
-			timer.start();
+		
+		public function reset():void {
+			trace('MagnifierViewer.reset()');
 			
+			for(var i=0;i<contentHolders.length;i++) {
+				contentHolders[i].deleteIt();
 			}
-		private function reset(e:Event){
-			//trace('update');
 			
-			//trace('containerContent.numChildren:', containerContent.numChildren);
-			for(var i=0;i<contentHolders.length;i++){
-			contentHolders[i].deleteIt();
+			while (containerContent.numChildren > 0) {
+ 				containerContent.removeChildAt(0);
 			}
-			while (containerContent.numChildren > 0){
- 						 containerContent.removeChildAt(0);
-			}
+			
 			magnifierGlasses[0].x = stageWidth / 2;
 			magnifierGlasses[0].y = stageHeight / 2;
 			gui(0);
@@ -183,12 +169,12 @@ package id.template
     			magnifierGlasses.pop();
 			}
 
-				counter = 0;			//magnifiers added  = 0
-				// put the icon for more magnifiers back in place...
-				addChild(addMag);
-				addChild(ring1);
-				addChild(addMa);
-			}
+			counter = 0;			//magnifiers added  = 0
+			// put the icon for more magnifiers back in place...
+			addChild(addMag);
+			addChild(ring1);
+			addChild(addMa);
+		}
 
 		override public function get id():int
 		{
