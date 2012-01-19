@@ -31,6 +31,8 @@ package
 		
 		protected var viewerLayer:TouchSprite = new TouchSprite();
 		protected var mapSwitchButtonLayer:TouchSprite = new TouchSprite();
+		
+		protected var resetTimer:Timer;
 
 		public function Main()
 		{
@@ -40,8 +42,8 @@ package
 			if ( Player.runFullscreen )		stage.displayState = StageDisplayState.FULL_SCREEN;			
 			stage.align = StageAlign.TOP_LEFT;
 			
-			var resetTimer:Timer = new Timer(50000,0);// reset application every 50 seconds when no touches are detected, touches are detected in main.as
-			resetTimer.addEventListener(TimerEvent.TIMER, reset);
+			resetTimer = new Timer(50000,0);// reset application every 50 seconds when no touches are detected, touches are detected in main.as
+			resetTimer.addEventListener(TimerEvent.TIMER, onResetTimerComplete);
 			resetTimer.start();		
 			
 			if ( Player.useSecureDomain ) {
@@ -56,7 +58,7 @@ package
 		override protected function initialize():void
 		{
 			stage.frameRate = ApplicationGlobals.dataManager.data.Template.FrameRate;
-			addEventListener(TouchEvent.TOUCH_UP, update);
+			addEventListener(TouchEvent.TOUCH_UP, onTouch);
 			
 			for ( var i:int=0; i<ApplicationGlobals.dataManager.data.Maps.Map.length(); i++ ) {
 				var name:String = ApplicationGlobals.dataManager.data.Maps.Map[i].Name;
@@ -88,18 +90,19 @@ package
 			trace(viewer);
 		}
 		
+		protected function onTouch(e:TouchEvent):void {
+			resetTimer.reset();
+			resetTimer.start();
+		}
 
-		private function reset(e:Event)
+		protected function onResetTimerComplete(e:TimerEvent):void
 		{
 			if ( Player.runFullscreen )		stage.displayState = StageDisplayState.FULL_SCREEN;
 				
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.align = StageAlign.TOP_LEFT;
-		}
-		
-		private function update(e:Event)
-		{
-			viewer.updater();
+			
+			if ( viewer ) 	viewer.reset();
 		}
 		
 		public function map(v:Number, a:Number, b:Number, x:Number = 0, y:Number = 1):Number {
