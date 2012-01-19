@@ -1,10 +1,13 @@
 ﻿package id.module
 {
 	import flash.events.Event;
-	import id.element.MapParser;
-	import id.core.TouchComponent;
+	import flash.utils.setTimeout;
+	
 	import id.component.GMapDisplay;
 	import id.core.ApplicationGlobals;
+	import id.core.TouchComponent;
+	import id.element.MapParser;
+
 	/**
 	 * 
 	 * <p>The GMapViewer is a module that uses the Google Maps API to create interactive mapping window.  
@@ -59,6 +62,8 @@
 		private var isLoaded:Boolean;
 		private var vergroot:Array = new Array();
 		private var zichzelf;
+		
+		private var completeTimeout:int;
 		/**
 		 *
 		 * The Constructor.
@@ -68,14 +73,19 @@
 		 * 
 		 */
 
-		public function GMapViewer(magnifier, eigen)
+		public function GMapViewer(magnifier, eigen, settingsPath:String="config/GMapViewer.xml")
 		{
 			super();
-			MapParser.settingsPath="config/GMapViewer.xml";
+			
+			trace( "new GMapViewer" );
+			
+			MapParser.settingsPath=settingsPath;
 			MapParser.addEventListener(Event.COMPLETE,onParseComplete);
+			
+			if ( MapParser.loadComplete )	onParseComplete();
+			
 			vergroot = magnifier;
 			zichzelf = eigen;
-			
 		}
 		
 		override public function get id():int
@@ -101,8 +111,10 @@
 			callNewObject(id);
 		}
 		
-		private function onParseComplete(event:Event):void
+		private function onParseComplete(event:Event=null):void
 		{
+			trace( "onParseComplete" );
+			
 			for (count=0; count<MapParser.amountToShow; count++)
 			{
 				addObject(count);
@@ -139,6 +151,8 @@
 			
 		private function addObject(id:int):void
 		{
+			trace("addObject("+id+")");
+			
 			mapDisplay=new GMapDisplay(vergroot, zichzelf);
 			mapDisplay.id=id;
 			mapDisplay.moduleName="GMapViewer";
@@ -176,6 +190,17 @@
 					displayObject=[];
 				}
 			}
+		}
+		
+		override public function Dispose():void {
+			if ( mapDisplay ) {
+				mapDisplay.Dispose();
+				mapDisplay = null;
+			}
+			
+			trace(this + ".Dispose()");
+			
+			super.Dispose();
 		}
 
 	}
