@@ -198,6 +198,8 @@
 				mapDisplay = null;
 			}
 			
+			MapParser.removeEventListener(Event.COMPLETE,onParseComplete);
+			
 			trace(this + ".Dispose()");
 			
 			super.Dispose();

@@ -183,48 +183,7 @@ package id.component
 					
 		
 
-		/**
-		 *
-		 * The Disposal method for the module. It will clean out and nullify all children.
-		 * <pre>
-		 * <strong>mapDisplay.Dispose();</strong></pre>
-		 *
-		 */
-		override public function Dispose():void
-		{
-			trace( this + ".Dispose()" );
-
-			if (mapDragGesture)
-			{
-				removeEventListener(TouchEvent.TOUCH_MOVE, touchMoveHandler);
-				removeEventListener(TouchEvent.TOUCH_DOWN, touchDownHandler);
-				removeEventListener(TouchEvent.TOUCH_UP, touchUpHandler);
-			}
-			if (mapDoubleTapGesture)
-			{
-				removeEventListener(TouchEvent.TOUCH_DOUBLE_TAP, doubleTapHandler);
-			}
-			if (mapScaleGesture)
-			{
-				removeEventListener(GestureEvent.GESTURE_SCALE, gestureScaleHandler);
-			}
-			if (mapRotateGesture)
-			{
-				removeEventListener(GestureEvent.GESTURE_ROTATE, gestureRotateHandler);
-			}
-			if (mapTiltGesture)
-			{
-				removeEventListener(GestureEvent.GESTURE_TILT, gestureTiltHandler);
-			}
-
-			// Don't do this :-)
-			//super.updateUI();
-
-			if (parent)
-			{
-				parent.removeChild(this);
-			}
-		}
+	
 
 		override public function get id():int
 		{
@@ -570,7 +529,7 @@ MapTypeStyleRule.visibility("off"),
 		public function loadLogo():void
 		{
 			var loader:Loader = new Loader  ;
-			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, logoLoaded);
+			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, logoLoaded, false, 0, false);
 			loader.load(new URLRequest("assets/interface/pit_info.svg"));
 		}
 		private function logoLoaded(event:Event):void
@@ -668,6 +627,57 @@ MapTypeStyleRule.visibility("off"),
 			map.setAttitude(new Attitude(currAng,currtiltAng,0));
 			map.cancelFlyTo();
 		}
+		
+		
+		/**
+		 *
+		 * The Disposal method for the module. It will clean out and nullify all children.
+		 * <pre>
+		 * <strong>mapDisplay.Dispose();</strong></pre>
+		 *
+		 */
+		override public function Dispose():void
+		{
+			trace( this + ".Dispose()" );
+			
+			iconLogoSub.removeEventListener(TouchEvent.TOUCH_DOWN, changeLogo);
+			map.removeEventListener(MapEvent.MAP_PREINITIALIZE, onMapPreInt);
+			map.removeEventListener(MapEvent.MAP_READY, onMapReady);
+			iconLogoSubExt.removeEventListener(TouchEvent.TOUCH_DOWN, changeLogoBack);
+			newMarker.removeEventListener(Event.COMPLETE, dataReadyHandler);
+			
+			if (mapDragGesture)
+			{
+				removeEventListener(TouchEvent.TOUCH_MOVE, touchMoveHandler);
+				removeEventListener(TouchEvent.TOUCH_DOWN, touchDownHandler);
+				removeEventListener(TouchEvent.TOUCH_UP, touchUpHandler);
+			}
+			if (mapDoubleTapGesture)
+			{
+				removeEventListener(TouchEvent.TOUCH_DOUBLE_TAP, doubleTapHandler);
+			}
+			if (mapScaleGesture)
+			{
+				removeEventListener(GestureEvent.GESTURE_SCALE, gestureScaleHandler);
+			}
+			if (mapRotateGesture)
+			{
+				removeEventListener(GestureEvent.GESTURE_ROTATE, gestureRotateHandler);
+			}
+			if (mapTiltGesture)
+			{
+				removeEventListener(GestureEvent.GESTURE_TILT, gestureTiltHandler);
+			}
+			
+			// Don't do this :-)
+			//super.updateUI();
+			
+			if (parent)
+			{
+				parent.removeChild(this);
+			}
+		}
+		
 
 	}
 }
