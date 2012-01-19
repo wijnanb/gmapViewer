@@ -17,3 +17,19 @@ new MapTypeStyle(
 					MapTypeStyleElementType.GEOMETRY,
 					[MapTypeStyleRule.hue(0x007fff), MapTypeStyleRule.lightness(31), MapTypeStyleRule.gamma(0.63)]
 				)
+
+
+documentation:
+http://code.google.com/intl/nl-NL/apis/maps/documentation/staticmaps/#Imagesizes
+
+
+MARKERS
+
+http://img263.imageshack.us/img263/9669/tentenkamp.png
+http%3A%2F%2Fimg263.imageshack.us%2Fimg263%2F9669%2Ftentenkamp.png
+
+&markers=
+icon:http://chart.apis.google.com/chart?chst=d_map_pin_icon%26chld=cafe%257C996600%7C
+224+West+20th+Street+NY%7C75+9th+Ave+NY%7C700+E+9th+St+NY&sensor=true_or_false
+
+&markers=icon:http://img263.imageshack.us/img263/9669/tentenkamp.png|shadow:false|Borgloon+Belgium
