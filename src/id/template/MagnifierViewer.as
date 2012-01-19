@@ -647,6 +647,16 @@ package id.template
 				myGMapViewer = null;
 			}
 			
+			_backgroundLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE, backgroundLoader_completeHandler);
+			if (loadingTimer)	loadingTimer.removeEventListener(TimerEvent.TIMER, updateLoadingText);
+			addMa.removeEventListener(TouchEvent.TOUCH_UP,moreMagnifiers);
+			addMa.removeEventListener(TouchEvent.TOUCH_MOVE, moreMagnifiers1);
+			magnifierGlasses[counter].removeEventListener(TouchEvent.TOUCH_DOWN, magnifier_touchDownHandler);
+			magnifierGlasses[counter].removeEventListener(TouchEvent.TOUCH_UP, magnifier_touchUpHandler);
+			magnifierGlasses[counter].removeEventListener(TouchEvent.TOUCH_MOVE,  magnifier_touchMove);
+			magnifierGlasses[counter].removeEventListener(GestureEvent.GESTURE_FLICK,flickGestureHandler);
+			removeEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
+			
 			trace(this + ".Dispose()");
 			
 			super.Dispose();
