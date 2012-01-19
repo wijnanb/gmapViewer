@@ -75,7 +75,7 @@ package id.template
 		private var moduleClass:Class;
 		private var module:DisplayObject;
 		private var txt:TextDisplay;
-		public var loadingTime:Timer;
+		public var loadingTimer:Timer;
 		private var layoutCalled:Boolean;
 		private var secondTime:Boolean;
 		private var templateLoaded:Boolean;
@@ -226,8 +226,8 @@ package id.template
 			txt = new TextDisplay();
 			addChild(txt);
 
-			loadingTime = new Timer(500);
-			loadingTime.addEventListener(TimerEvent.TIMER, updateLoadingText);
+			loadingTimer = new Timer(500);
+			loadingTimer.addEventListener(TimerEvent.TIMER, updateLoadingText);
 
 			if (aantalVergrootGlazen - 1 > 0)
 			{
@@ -509,8 +509,8 @@ package id.template
 		{
 			if (secondTime)
 			{
-				loadingTime.reset();
-				loadingTime.stop();
+				loadingTimer.reset();
+				loadingTimer.stop();
 
 				count++;
 
@@ -519,8 +519,8 @@ package id.template
 					isTemplateLoaded = true;
 					txt.text = "The Template is complete.";
 					txt.x=(stageWidth-txt.textWidth)/2;
-					loadingTime.removeEventListener(TimerEvent.TIMER, updateLoadingText);
-					loadingTime = null;
+					loadingTimer.removeEventListener(TimerEvent.TIMER, updateLoadingText);
+					loadingTimer = null;
 					TweenLite.to(txt, 1, { alpha:0, delay:1, onComplete:addModulesToStage});
 
 					return;
@@ -534,16 +534,16 @@ package id.template
 
 			if (layoutCalled)
 			{
-				loadingTime.reset();
-				loadingTime.start();
+				loadingTimer.reset();
+				loadingTimer.start();
 				txt.text = "The \"" + templates.module[count] + "\" module has loaded.";
 				txt.x=(stageWidth-txt.textWidth)/2;
 			}
 			else
 			{
-				loadingTime.reset();
-				loadingTime.stop();
-				loadingTime.start();
+				loadingTimer.reset();
+				loadingTimer.stop();
+				loadingTimer.start();
 			}
 			secondTime = true;
 		}
@@ -552,7 +552,7 @@ package id.template
 		{
 			layoutCalled = false;
 			secondTime = false;
-			loadingTime.start();
+			loadingTimer.start();
 			txt.text = "Loading the \"" + templates.module[count] + "\" module.";
 			txt.x=(stageWidth-txt.textWidth)/2;
 			txt.y=(stageHeight-txt.height)/2;
@@ -592,9 +592,9 @@ package id.template
 				
 			}
 			objects = [];
-			var timer:Timer = new Timer(10,100);
-			timer.addEventListener(TimerEvent.TIMER, updateLens);
-			timer.start();
+			updateLensTimer = new Timer(10,100);
+			updateLensTimer.addEventListener(TimerEvent.TIMER, updateLens);
+			updateLensTimer.start();
 			
 
 		}
