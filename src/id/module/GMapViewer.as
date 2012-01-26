@@ -3,7 +3,7 @@
 	import flash.events.Event;
 	import flash.utils.setTimeout;
 	
-	import id.component.GMapDisplay;
+	import id.component.StaticGMapDisplay;
 	import id.core.ApplicationGlobals;
 	import id.core.TouchComponent;
 	import id.element.MapParser;
@@ -41,7 +41,7 @@
 
 	public class GMapViewer extends TouchComponent
 	{
-		public var mapDisplay:GMapDisplay;
+		public var mapDisplay:StaticGMapDisplay;
 		
 		
 		/**
@@ -153,9 +153,10 @@
 		{
 			trace("addObject("+id+")");
 			
-			mapDisplay=new GMapDisplay(vergroot, zichzelf);
+			mapDisplay=new StaticGMapDisplay();
 			mapDisplay.id=id;
 			mapDisplay.moduleName="GMapViewer";
+			mapDisplay.init();
 			idDisplayed.push(id);
 			
 			displayObject.push(mapDisplay);
