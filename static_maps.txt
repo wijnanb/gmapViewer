@@ -33,3 +33,6 @@ icon:http://chart.apis.google.com/chart?chst=d_map_pin_icon%26chld=cafe%257C9966
 224+West+20th+Street+NY%7C75+9th+Ave+NY%7C700+E+9th+St+NY&sensor=true_or_false
 
 &markers=icon:http://img263.imageshack.us/img263/9669/tentenkamp.png|shadow:false|Borgloon+Belgium
+
+
+&markers=size:tiny%7Ccolor:green%7CBorgloon+Belgium
