@@ -166,7 +166,8 @@ package id.component
 		}
 
 		protected function loadMap():void {
-			var url:String = "http://maps.google.com/maps/api/staticmap?sensor=false&size=640x640&scale=2&zoom=14&center=Borgloon+Belgium&style=feature:all|element:labels|visibility:off&style=feature:all|element:geometry|hue:0xffe293|lightness:31|gamma:0.63";
+			var url:String = "http://maps.google.com/maps/api/staticmap?sensor=false&size=640x400&scale=2&zoom=14&center=Borgloon+Belgium";
+			url += MapData.getStyle(MapData.COLORSCHEME_YELLOW);
 			var loader:Loader = new Loader();
 			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onMapLoaded, false, 0, true);
 			loader.load( new URLRequest(url) );
@@ -186,155 +187,7 @@ package id.component
 
 		private function onMapPreInt(event:MapEvent):void
 		{
-			var mOptions:MapOptions = new MapOptions();
-			mOptions.zoom = currSc;
-			mOptions.center = new LatLng(currLat,currLng);
-			//mOptions.viewMode = View.VIEWMODE_PERSPECTIVE;
-			//mOptions.attitude = new Attitude(currtiltAng,currAng,0);
-
-
-
-			///////////////
-
-			var Zout:Array = [
 			
-			new MapTypeStyle(MapTypeStyleFeatureType.ROAD_HIGHWAY,
-			        MapTypeStyleElementType.GEOMETRY,
-			        [MapTypeStyleRule.hue(0xffe293),
-			MapTypeStyleRule.visibility("simplified"), 
-			MapTypeStyleRule.visibility("on")]),
-			
-			new MapTypeStyle(MapTypeStyleFeatureType.ROAD_HIGHWAY,
-			        MapTypeStyleElementType.LABELS,
-			        [MapTypeStyleRule.visibility("off")]),
-			
-			new MapTypeStyle(MapTypeStyleFeatureType.ROAD_ARTERIAL,
-			        MapTypeStyleElementType.GEOMETRY,
-			        [MapTypeStyleRule.hue(0xffe293),
-			        MapTypeStyleRule.visibility("simplified"), 
-					MapTypeStyleRule.visibility("on")]),
-			
-			new MapTypeStyle(MapTypeStyleFeatureType.ROAD_ARTERIAL,
-			        MapTypeStyleElementType.LABELS,
-			        [MapTypeStyleRule.visibility("off")]),
-			
-						
-			new MapTypeStyle(MapTypeStyleFeatureType.ROAD_LOCAL,
-			        MapTypeStyleElementType.GEOMETRY,
-			        [MapTypeStyleRule.hue(0xffe293),
-					 MapTypeStyleRule.lightness(-50), 
-					 MapTypeStyleRule.gamma(3),
-					 MapTypeStyleRule.saturation(-30), 
-			        MapTypeStyleRule.visibility("simplified"), 
-					MapTypeStyleRule.visibility("on")]),
-			
-			new MapTypeStyle(MapTypeStyleFeatureType.ROAD_LOCAL,
-			        MapTypeStyleElementType.LABELS,
-			        [MapTypeStyleRule.visibility("off")]),
-			
-			
-			new MapTypeStyle(MapTypeStyleFeatureType.LANDSCAPE,
-			MapTypeStyleElementType.GEOMETRY,
-			        [MapTypeStyleRule.hue(0xffe293),
-			MapTypeStyleRule.visibility("simplified"), 
-			MapTypeStyleRule.visibility("on")]),
-			
-			new MapTypeStyle(MapTypeStyleFeatureType.LANDSCAPE,
-			MapTypeStyleElementType.LABELS,
-			        [MapTypeStyleRule.visibility("off")]),
-			
-			new MapTypeStyle(MapTypeStyleFeatureType.LANDSCAPE_MAN_MADE,
-			MapTypeStyleElementType.GEOMETRY,
-			        [MapTypeStyleRule.hue(0xffe293),
-MapTypeStyleRule.visibility("off"), 
-			MapTypeStyleRule.visibility("simplified")]),
-			
-			new MapTypeStyle(MapTypeStyleFeatureType.LANDSCAPE_NATURAL,
-			MapTypeStyleElementType.GEOMETRY,
-			        [MapTypeStyleRule.hue(0xffe293),
-					 MapTypeStyleRule.visibility("on"),
-			MapTypeStyleRule.visibility("simplified")]),
-			
-			    new MapTypeStyle(MapTypeStyleFeatureType.ROAD_LOCAL,
-			        MapTypeStyleElementType.GEOMETRY,
-			       [MapTypeStyleRule.hue(0xffe293),
-			        MapTypeStyleRule.visibility("off")]),
-			
-			new MapTypeStyle(MapTypeStyleFeatureType.ROAD_LOCAL,
-			        MapTypeStyleElementType.LABELS,
-			        [MapTypeStyleRule.visibility("off")]),
-			
-			    new MapTypeStyle(MapTypeStyleFeatureType.ADMINISTRATIVE,
-			        MapTypeStyleElementType.GEOMETRY,
-			        [MapTypeStyleRule.visibility("off")]),
-			
-			new MapTypeStyle(MapTypeStyleFeatureType.ADMINISTRATIVE,
-			        MapTypeStyleElementType.LABELS,
-			        [MapTypeStyleRule.visibility("off")]),
-			  
-			new MapTypeStyle(MapTypeStyleFeatureType.POI,
-			        MapTypeStyleElementType.GEOMETRY,
-			        [MapTypeStyleRule.visibility("off")]),
-			
-			new MapTypeStyle(MapTypeStyleFeatureType.POI,
-			        MapTypeStyleElementType.LABELS,
-			        [MapTypeStyleRule.visibility("off")]),
-			
-			
-			new MapTypeStyle(MapTypeStyleFeatureType.WATER,
-			        MapTypeStyleElementType.GEOMETRY,
-			        [MapTypeStyleRule.visibility("off"),
-			 MapTypeStyleRule.hue(0xffe293),
-			MapTypeStyleRule.visibility("simplified")]),
-			
-			new MapTypeStyle(MapTypeStyleFeatureType.WATER,
-			        MapTypeStyleElementType.LABELS,
-			        [MapTypeStyleRule.visibility("off")]),
-			
-
-			
-			new MapTypeStyle(MapTypeStyleFeatureType.ALL,
-			        MapTypeStyleElementType.GEOMETRY,
-			        [MapTypeStyleRule.visibility("on"), 
-					 MapTypeStyleRule.hue(0xffe293), 
-					MapTypeStyleRule.saturation(80), 
-					MapTypeStyleRule.lightness(25),
-					MapTypeStyleRule.gamma(0),
-					MapTypeStyleRule.visibility("simplified")]) ,
-			
-						new MapTypeStyle(MapTypeStyleFeatureType.TRANSIT,
-			        MapTypeStyleElementType.GEOMETRY,
-			        [MapTypeStyleRule.visibility("on"), 
-					 MapTypeStyleRule.hue(0x000000), 
-					  MapTypeStyleRule.lightness(1), 
-					   MapTypeStyleRule.saturation(-1), 
-					    MapTypeStyleRule.gamma(0.1)]) ,
-				
-			new MapTypeStyle(MapTypeStyleFeatureType.TRANSIT,
-			        MapTypeStyleElementType.LABELS,
-			        [MapTypeStyleRule.visibility("off")]) ,
-			    
-			
-			];
-
-			var styledMapOptions:StyledMapTypeOptions = new StyledMapTypeOptions({
-			    name: 'Z-out',
-			//minResolution: 2,
-			//maxResolution: 20, 
-			    alt: 'Z-out'
-			});
-
-			var styledMapType:StyledMapType = new StyledMapType(Zout,styledMapOptions);
-
-
-
-
-			//////////////
-
-
-			mOptions.mapType = styledMapType;
-
-			//map.setInitOptions(mOptions);
 		}
 		private function changeLogo(event:TouchEvent){
 			//trace('klik');
