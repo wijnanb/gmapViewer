@@ -98,6 +98,8 @@ package id.component
 		protected var mapLayer:Sprite;
 		
 		public static const GREENKEY_COLOR:uint = 0x65ba4a;
+		public static const GREENKEY_WIDTH:uint = 6;
+		public static const GREENKEY_HEIGHT:uint = 10;
 		
 		[Embed(source = "../../../assets/interface/pit_logo.svg")]
 		public var iconLogoClass:Class;
@@ -225,10 +227,12 @@ package id.component
 					pixelColor = bitmapData.getPixel(u,v);
 					
 					if ( pixelColor === GREENKEY_COLOR ) {
-						trace( cnt + ": " + u + ", " + v );
-						cnt++;
 						
-						bitmapData.setPixel(u,v,0xFFFF00);
+						if ( bitmapData.getPixel(u+GREENKEY_WIDTH-1,v) == GREENKEY_COLOR && bitmapData.getPixel(u,v+GREENKEY_HEIGHT-1) == GREENKEY_COLOR && bitmapData.getPixel(u+GREENKEY_WIDTH-1,v+GREENKEY_HEIGHT-1) == GREENKEY_COLOR ) {
+							trace( cnt + ": " + u + ", " + v );
+							bitmapData.setPixel(u+Math.floor(GREENKEY_WIDTH/2)-1,v+GREENKEY_HEIGHT,0xFFFF00);
+							cnt++;	
+						}
 					}
 				}
 			}
