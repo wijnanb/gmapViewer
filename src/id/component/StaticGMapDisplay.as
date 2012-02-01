@@ -92,6 +92,7 @@ package id.component
 		private var iconLogoHitarea:TouchSprite = new TouchSprite();
 		
 		protected var markers:Array;
+		protected var pinpointLocations:Array;
 		
 		protected var logoLayer:TouchSprite;
 		protected var markerLayer:TouchSprite;
@@ -199,20 +200,26 @@ package id.component
 			var loader:Loader = new Loader();
 			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onMapLoaded, false, 0, true);
 			loader.load( new URLRequest(url) );
-			addChild(loader);
+			mapLayer.addChild(loader);
 		}
 
 		protected function onMapLoaded(e:Event):void {
 			trace("map loaded");
 			
 			var image:Bitmap = Bitmap( (e.target as LoaderInfo).content );
-			//findPinpointLocations(image.bitmapData.clone());
-			findPinpointLocations(image.bitmapData);
+			pinpointLocations = findPinpointLocations(image.bitmapData);
+			
+			// match pinpointLocations with markers
+			for ( var i:int=0; i<markers.length; i++ ) {
+				var marker:Marker = markers[i];
+				var pinpoint:Point = pinpointLocations[i];
+				
+				marker.setMapLocation(pinpoint.x, pinpoint.y);
+			}
 		}
 		
-		protected function findPinpointLocations(bitmapData:BitmapData):void {
-			trace("findPinpointLocations");
-			trace(bitmapData.width + "  " + bitmapData.height );
+		protected function findPinpointLocations(bitmapData:BitmapData):Array {
+			var output:Array = new Array();
 			
 			var imgWidth:int = bitmapData.width;
 			var imgHeight:int = bitmapData.height;
@@ -229,15 +236,16 @@ package id.component
 					if ( pixelColor === GREENKEY_COLOR ) {
 						
 						if ( bitmapData.getPixel(u+GREENKEY_WIDTH-1,v) == GREENKEY_COLOR && bitmapData.getPixel(u,v+GREENKEY_HEIGHT-1) == GREENKEY_COLOR && bitmapData.getPixel(u+GREENKEY_WIDTH-1,v+GREENKEY_HEIGHT-1) == GREENKEY_COLOR ) {
-							trace( cnt + ": " + u + ", " + v );
 							bitmapData.setPixel(u+Math.floor(GREENKEY_WIDTH/2)-1,v+GREENKEY_HEIGHT,0xFFFF00);
-							cnt++;	
+							output.push( new Point(u,v) );
 						}
 					}
 				}
 			}
 			
 			bitmapData.unlock();
+			
+			return output;
 		}
 		
 		protected function parseContent():void {
@@ -258,9 +266,11 @@ package id.component
 					var marker:Marker = new Marker(lng, lat, iconURL);
 					markers.push(marker);
 					
-					addChild(marker);
+					markerLayer.addChild(marker);
 				}
 			}
+			
+			markers.sortOn(['lng', 'lat'], Array.NUMERIC); // order markers bij lng, lat
 			
 			loadMap();
 		}
