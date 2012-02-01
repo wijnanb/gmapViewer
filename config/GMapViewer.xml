@@ -4,7 +4,7 @@
 		<Source id="1"><!-- Each source must have a unique ID -->
 			<longitude>5.348904</longitude><!-- Sets the longitude of the map -->
 			<latitude>50.798426</latitude><!-- Sets the latitude of the map -->
-			<initialZoom>14</initialZoom><!-- Sets the initial zoom level of the map-->
+			<initialZoom>13</initialZoom><!-- Sets the initial zoom level of the map-->
 			<zoomStep>2</zoomStep><!-- Sets by what degrees the zoom augments when the zoom gesture is used -->
 			<initialAttitude>0</initialAttitude><!-- Sets how the map is rotated at launch relative to the frame -->
 			<initialTilt>0</initialTilt><!-- Sets the map tilt at launch relative to the frame -->

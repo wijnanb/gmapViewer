@@ -185,7 +185,11 @@ package id.component
 		}
 
 		protected function loadMap():void {
-			var url:String = "http://maps.google.com/maps/api/staticmap?sensor=false&size=640x400&scale=2&zoom=13&center=Borgloon+Belgium";
+			var url:String = "http://maps.google.com/maps/api/staticmap?sensor=false";
+			url += "&center=" + currLat + "," + currLng;
+			url += "&size=" + Math.ceil(mapWidth/2) + "x" + Math.ceil(mapHeight/2);
+			url += "&scale=2"
+			url += "&zoom=" + currSc
 			url += MapData.getStyle(MapData.COLORSCHEME_YELLOW);
 			url += MapData.getMarkers(markers);
 			
