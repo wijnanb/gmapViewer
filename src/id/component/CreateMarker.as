@@ -11,11 +11,6 @@
 	import gl.events.GestureEvent;
 	import id.core.TouchComponent;
 	import id.element.ContentParser;
-/*	import id.module.YouTubeViewer;
-	import id.module.FlickrViewer;
-	import id.module.FlickrViewer2;
-	import id.module.LiveVideoViewer;
-	import id.element.YouTubeParser;*/
 	import flash.display.Loader;
 	import flash.display.Bitmap;
 	import flash.net.URLLoader;
@@ -65,9 +60,6 @@
 		var box;
 		var point2;
 
-		
-		
-		//private var flickrViewer2:FlickrViewer2;
 		var currMap;
 		//var image:Bitmap;
 		[Embed(source = "../../../assets/interface/info.svg")]

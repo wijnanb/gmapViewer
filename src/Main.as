@@ -51,6 +51,8 @@ package
 				Security.allowInsecureDomain("*");	
 			}
 			
+			trace( MapData.getStyle( MapData.COLORSCHEME_YELLOW ) );
+			
 			addChild(viewerLayer);
 			addChild(mapSwitchButtonLayer);
 		}

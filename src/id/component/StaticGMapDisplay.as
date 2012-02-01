@@ -12,7 +12,10 @@ package id.component
 	import com.google.maps.styles.MapTypeStyleRule;
 	
 	import flash.display.Bitmap;
+	import flash.display.BitmapData;
 	import flash.display.Loader;
+	import flash.display.LoaderInfo;
+	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.geom.*;
 	import flash.net.URLRequest;
@@ -22,6 +25,7 @@ package id.component
 	import id.core.ApplicationGlobals;
 	import id.core.TouchComponent;
 	import id.core.TouchSprite;
+	import id.element.ContentParser;
 	import id.element.MapParser;
 	
 
@@ -83,10 +87,17 @@ package id.component
 		private var mapHeight:Number = 0;
 		private var mapRotation:Number = 0;
 		private var numberOfMarkers:Number = 0;
-		private var logoOn = "false";
+		private var logoCollapsed:Boolean = false;
 		
-		private var iconLogoSub:TouchSprite = new TouchSprite();
-		private var iconLogoSubExt:TouchSprite = new TouchSprite();
+		private var iconLogoHitarea:TouchSprite = new TouchSprite();
+		
+		protected var markers:Array;
+		
+		protected var logoLayer:TouchSprite;
+		protected var markerLayer:TouchSprite;
+		protected var mapLayer:Sprite;
+		
+		public static const GREENKEY_COLOR:uint = 0x65ba4a;
 		
 		[Embed(source = "../../../assets/interface/pit_logo.svg")]
 		public var iconLogoClass:Class;
@@ -115,6 +126,14 @@ package id.component
 		{
 			super();
 			
+			mapLayer = new Sprite();
+			markerLayer = new TouchSprite();
+			logoLayer = new TouchSprite();
+			
+			addChild(mapLayer);
+			addChild(markerLayer);
+			addChild(logoLayer);
+			
 			if (stage)		onStageReady();
 			else			addEventListener(Event.ADDED_TO_STAGE, onStageReady, false, 0, true);
 		}
@@ -122,13 +141,13 @@ package id.component
 		protected function onStageReady(e:Event=null):void {
 			iconLogo.x = stageWidth -150;
 			iconLogo.y = 50;
-			addChild(iconLogo);
+			logoLayer.addChild(iconLogo);
 			
-			iconLogoSub.graphics.beginFill(0x000000, 0.000001);
-			iconLogoSub.graphics.drawRect(stageWidth -150,50,200,100);
-			iconLogoSub.graphics.endFill();
-			iconLogoSub.addEventListener(TouchEvent.TOUCH_DOWN, changeLogo, false, 0, true);
-			addChild(iconLogoSub);
+			iconLogoHitarea.graphics.beginFill(0x000000, 0.000001);
+			iconLogoHitarea.graphics.drawRect(stageWidth -150,50,200,100);
+			iconLogoHitarea.graphics.endFill();
+			iconLogoHitarea.addEventListener(TouchEvent.TOUCH_DOWN, onLogoTouched, false, 0, true);
+			logoLayer.addChild(iconLogoHitarea);
 		}
 					
 		override public function get id():int
@@ -143,7 +162,7 @@ package id.component
 		
 		public function init():void {
 			configure();
-			loadMap();
+			parseContent();
 		}
 
 		protected function configure():void
@@ -166,8 +185,11 @@ package id.component
 		}
 
 		protected function loadMap():void {
-			var url:String = "http://maps.google.com/maps/api/staticmap?sensor=false&size=640x400&scale=2&zoom=14&center=Borgloon+Belgium";
+			var url:String = "http://maps.google.com/maps/api/staticmap?sensor=false&size=640x400&scale=2&zoom=13&center=Borgloon+Belgium";
 			url += MapData.getStyle(MapData.COLORSCHEME_YELLOW);
+			url += MapData.getMarkers(markers);
+			
+			trace( url );
 			var loader:Loader = new Loader();
 			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onMapLoaded, false, 0, true);
 			loader.load( new URLRequest(url) );
@@ -176,6 +198,63 @@ package id.component
 
 		protected function onMapLoaded(e:Event):void {
 			trace("map loaded");
+			
+			var image:Bitmap = Bitmap( (e.target as LoaderInfo).content );
+			//findPinpointLocations(image.bitmapData.clone());
+			findPinpointLocations(image.bitmapData);
+		}
+		
+		protected function findPinpointLocations(bitmapData:BitmapData):void {
+			trace("findPinpointLocations");
+			trace(bitmapData.width + "  " + bitmapData.height );
+			
+			var imgWidth:int = bitmapData.width;
+			var imgHeight:int = bitmapData.height;
+			var pixelColor:uint;
+			
+			var cnt:int = 0;
+			
+			bitmapData.lock();
+			
+			for ( var u:int = 0; u<imgWidth; u++ ) {
+				for ( var v:int = 0; v<imgHeight; v++ ) {
+					pixelColor = bitmapData.getPixel(u,v);
+					
+					if ( pixelColor === GREENKEY_COLOR ) {
+						trace( cnt + ": " + u + ", " + v );
+						cnt++;
+						
+						bitmapData.setPixel(u,v,0xFFFF00);
+					}
+				}
+			}
+			
+			bitmapData.unlock();
+		}
+		
+		protected function parseContent():void {
+			ContentParser.settingsPath = "FSCommand/Content.xml";
+			ContentParser.addEventListener(Event.COMPLETE,onContentParseComplete);
+		}
+		
+		protected function onContentParseComplete(e:Event):void {
+			markers = new Array();
+			
+			for (var i=0; i<ContentParser.settings.Content.Source.length(); i++)
+			{
+				var lng:String = ContentParser.settings.Content.Source[i].longitude;
+				var lat:String = ContentParser.settings.Content.Source[i].latitude;
+				var iconURL:String = ContentParser.settings.Content.Source[i].markerIcon;
+				
+				if ( lng!="" && lat!="" ) {	
+					var marker:Marker = new Marker(lng, lat, iconURL);
+					markers.push(marker);
+					
+					addChild(marker);
+				}
+			}
+			
+			loadMap();
 		}
 		
 		
@@ -184,64 +263,20 @@ package id.component
 		}
 
 		
-
-		private function onMapPreInt(event:MapEvent):void
-		{
-			
-		}
-		private function changeLogo(event:TouchEvent){
-			//trace('klik');
-			if(logoOn == "false"){
-				
-				
-			iconLogoInfo.x = stageWidth -380; 
-			iconLogoInfo.y = 55;
-			addChild(iconLogoInfo);
-			
-			iconLogoSubExt.graphics.beginFill(0x000000, 0.00001);
-			iconLogoSubExt.graphics.drawRect(stageWidth -350,50,400,400);
-			iconLogoSubExt.graphics.endFill();
-			addChild(iconLogoSubExt);
-			iconLogoSubExt.addEventListener(TouchEvent.TOUCH_DOWN, changeLogoBack);
-			logoOn = "true";
+		protected function onLogoTouched(event:TouchEvent){
+			if(!logoCollapsed){
+				iconLogoInfo.x = stageWidth -380; 
+				iconLogoInfo.y = 55;
+				logoLayer.addChild(iconLogoInfo);
+				logoLayer.setChildIndex(iconLogoHitarea, logoLayer.numChildren-1);
+				logoCollapsed = true;
 			}
-			
+			else
+			{
+				logoLayer.removeChild(iconLogoInfo);
+				logoCollapsed = false;	
 			}
-		private function changeLogoBack(event:TouchEvent){
-			removeChild(iconLogoSubExt);
-			removeChild(iconLogoInfo);
-			logoOn = "false";
-			
-			}
-		private function onMapReady(event:MapEvent):void
-		{
-			//newMarker = new CreateMarker(map);
-			//newMarker.addEventListener(Event.COMPLETE, dataReadyHandler);
 		}
-
-
-
-		public function loadLogo():void
-		{
-			var loader:Loader = new Loader  ;
-			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, logoLoaded, false, 0, false);
-			loader.load(new URLRequest("assets/interface/pit_info.svg"));
-		}
-		private function logoLoaded(event:Event):void
-		{
-			var logo = new Bitmap(event.target.content.bitmapData);
-			logo.x = 40;
-			logo.y = 40;
-			//screen.addChild(logo);
-		}
-		function dataReadyHandler(event:Event):void
-		{
-			//screen2.addChild(newMarker);
-			//newMarker.addToMap();
-
-		}
-
-
 		
 		
 		/**
@@ -255,12 +290,10 @@ package id.component
 		{
 			trace( this + ".Dispose()" );
 			
-			iconLogoSub.removeEventListener(TouchEvent.TOUCH_DOWN, changeLogo);
-			iconLogoSubExt.removeEventListener(TouchEvent.TOUCH_DOWN, changeLogoBack);
+			iconLogoHitarea.removeEventListener(TouchEvent.TOUCH_DOWN, onLogoTouched);
 			//newMarker.removeEventListener(Event.COMPLETE, dataReadyHandler);		
 				
-			if ( iconLogoSub )			iconLogoSub.Dispose();
-			if ( iconLogoSubExt )		iconLogoSubExt.Dispose();
+			if ( iconLogoHitarea )			iconLogoHitarea.Dispose();
 			
 			if (parent)
 			{

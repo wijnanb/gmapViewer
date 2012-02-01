@@ -47,5 +47,16 @@ package
 			
 			return styles.join("");
 		}
+		
+		public static function getMarkers(markers:Array):String {
+			var output:Array = new Array();
+			
+			for ( var i:int=0; i<markers.length; i++ ) {
+				var m:Marker = Marker( markers[i] );
+				output.push( "&markers=size:tiny|color:green|" + m.lat + "," + m.lng );
+			}
+			
+			return output.join("");
+		}
 	}
 }
