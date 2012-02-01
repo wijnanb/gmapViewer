@@ -194,11 +194,15 @@ package id.component
 			url += "&scale=2"
 			url += "&zoom=" + currSc
 			url += MapData.getStyle(MapData.COLORSCHEME_YELLOW);
-			url += MapData.getMarkers(markers);
 			
-			trace( url );
+			var markersUrl:String = url + MapData.getMarkers(markers);	
+			trace( markersUrl );
+			
+			var markersLoader:Loader = new Loader();
+			markersLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, onMapLoaded, false, 0, true);
+			markersLoader.load( new URLRequest(markersUrl) );
+			
 			var loader:Loader = new Loader();
-			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onMapLoaded, false, 0, true);
 			loader.load( new URLRequest(url) );
 			mapLayer.addChild(loader);
 		}
