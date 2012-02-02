@@ -51,14 +51,16 @@ package
 			icon.y = -icon.height - ICON_OFFSET_Y;
 			
 			center = new Point(icon.x + icon.width/2, icon.y + icon.height/2);
-			radius = Math.max(icon.width/2,icon.height/2) * 1.3;
+			radius = (icon.width/2 + icon.height/2)/2 * 1.4;
 			
 			graphics.lineStyle(10, 0xffe293, 0.5);
 			graphics.drawCircle( center.x, center.y, radius);
 		}
 		
 		protected function onHTTPStatus(e:HTTPStatusEvent):void{
-			trace("HTTP status "+e.status);
+			if ( e.status != 200 ) {
+				trace("loading icon: HTTP status "+e.status);
+			}
 		}
 		
 		override public function toString():String {
