@@ -98,6 +98,8 @@ package id.component
 		protected var markerLayer:TouchSprite;
 		protected var mapLayer:Sprite;
 		
+		public static const DEBUG_COLLISION_DETECTION:Boolean = false;
+		
 		public static const GREENKEY_COLOR:uint = 0x65ba4a;
 		public static const GREENKEY_WIDTH:uint = 6;
 		public static const GREENKEY_HEIGHT:uint = 10;
@@ -204,7 +206,7 @@ package id.component
 			
 			var loader:Loader = new Loader();
 			loader.load( new URLRequest(url) );
-			//mapLayer.addChild(loader);
+			if ( !DEBUG_COLLISION_DETECTION )	mapLayer.addChild(loader);
 		}
 
 		protected function onMapLoaded(e:Event):void {
@@ -300,38 +302,55 @@ package id.component
 			}
 		}
 		
-		public function collisionDetect(posX:Number, posY:Number):void {
-			trace("");
-			trace("collision detect " + posX + "," + posY);
-			
+		public function collisionDetect(posX:Number, posY:Number):Marker {
 			var m:Marker;
 			var markers_length:int = markers.length;
 			var dx:Number;
 			var dy:Number;
 			var d:Number;
+			var list:Array = new Array();
 			
-			graphics.clear();
-			graphics.lineStyle(1, 0xFFFFFF, 0.5);
-			
+			if ( DEBUG_COLLISION_DETECTION ) {
+				graphics.lineStyle(1, 0xFFFFFF, 0.5);
+			}
+				
 			for ( var i:int=0; i<markers_length; i++ ) {
 				m = markers[i];
 				dx = m.center.x - posX;
 				dy = m.center.y - posY;
 				d = Math.sqrt( dx*dx + dy*dy );
 				
-				
-				graphics.moveTo(posX, posY);
-				graphics.lineTo(m.center.x, m.center.y);
-				
 				if ( d <= m.radius ) {
-					m.highlight();
-					trace(d + " " + m.radius + " *");
+					list.push(m);
 				}
-				else {
+				
+				if ( DEBUG_COLLISION_DETECTION ) {
 					m.reset();
-					trace(d + " " + m.radius);
+					graphics.moveTo(posX, posY);
+					graphics.lineTo(m.center.x, m.center.y);
+					
+					if ( d <= m.radius ) {
+						trace(d + " " + m.radius + " *");
+					}
+					else {
+						trace(d + " " + m.radius);
+					}
 				}
 			}
+			
+			if ( DEBUG_COLLISION_DETECTION )	trace( "detected :" + list.length );
+			
+			if (list.length > 1 ) {
+				// Always take the smallest hotspot
+				list.sortOn("radius", Array.NUMERIC);
+			}
+			
+			if ( list.length > 0 ) {
+				if ( DEBUG_COLLISION_DETECTION )	(list[0] as Marker).highlight();
+				return list[0];
+			}
+			
+			return null;
 		}
 		
 		

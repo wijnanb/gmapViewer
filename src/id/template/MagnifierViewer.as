@@ -55,6 +55,8 @@ package id.template
 	import id.module.KeyViewer;
 	KeyViewer;
 	import id.module.GMapViewer;
+	import id.component.StaticGMapDisplay;
+
 	//import flash.events.GestureEvent;
 
 	GMapViewer;
@@ -399,12 +401,13 @@ package id.template
 
 		private function magnifier_touchMove(event:TouchEvent):void
 		{
-			if ( myGMapViewer ) {
-				trace(magnifierGlasses[0]);
-				trace(event.target);
-				trace("magnifier: " + magnifierGlasses[0].x + "  " + magnifierGlasses[0].y );
+			if ( myGMapViewer ) {			
+				if ( StaticGMapDisplay.DEBUG_COLLISION_DETECTION ) 		myGMapViewer.mapDisplay.graphics.clear();
 				
-				myGMapViewer.mapDisplay.collisionDetect(magnifierGlasses[0].x, magnifierGlasses[0].y);
+				for each( var magnifier:Magnifier in magnifierGlasses) {
+					var target:Marker = myGMapViewer.mapDisplay.collisionDetect(magnifier.x, magnifier.y);
+					if ( target )	trace(target);
+				}
 			}
 			
 			/*
