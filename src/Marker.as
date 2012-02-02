@@ -6,6 +6,7 @@ package
 	import flash.display.LoaderInfo;
 	import flash.events.Event;
 	import flash.events.HTTPStatusEvent;
+	import flash.geom.Point;
 	import flash.net.URLRequest;
 	
 	import id.core.TouchSprite;
@@ -16,6 +17,8 @@ package
 		public var lat:String;
 		public var u:Number;
 		public var v:Number;
+		public var radius:Number;
+		public var center:Point;
 		protected var iconURL:String;
 		protected var icon:DisplayObject;
 		
@@ -48,6 +51,12 @@ package
 			icon.x = ICON_OFFSET_X;
 			icon.y = -icon.height - ICON_OFFSET_Y;
 			addChild(icon);
+			
+			center = new Point(icon.x + icon.width/2, icon.y + icon.height/2);
+			radius = (icon.width/2 + icon.height/2) / 2;
+			
+			graphics.lineStyle(10, 0xffe293, 0.5);
+			graphics.drawCircle( center.x, center.y, radius);
 		}
 		
 		protected function onHTTPStatus(e:HTTPStatusEvent):void{
