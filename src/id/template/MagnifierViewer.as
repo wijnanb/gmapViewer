@@ -89,11 +89,11 @@ package id.template
 		private var moduleDictionary:Dictionary = new Dictionary();
 		private var moduleID:Array = new Array();
 		private var moduleNameArray:Array = new Array();
-		private var magnifierGlasses:Array = new Array();
+		private var magnifiers:Array = new Array();
 		private var contentHolders:Array = new Array();
 		private var _moduleName:String = "";
 
-		private var _background:Sprite;
+		private var splashScreen:Sprite;
 		
 		private var _displayMask:Sprite;
 		private var _magnifier:Magnifier;
@@ -112,7 +112,7 @@ package id.template
 		private var naam:Number = new Number();
 		private var eigenKlasse;
 
-		private var aantalVergrootGlazen = Player.isAir ? 1 : 3; //number of magnifier glasses
+		private var numMagnifiers = Player.isAir ? 1 : 3; //number of magnifier glasses
 		private var addMa:TouchSprite = new TouchSprite();
 		private var addMag:TouchSprite = new TouchSprite();
 		private var ring1:TouchSprite  = new TouchSprite();
@@ -136,6 +136,7 @@ package id.template
 		
 		public var gMapViewer:GMapViewer;
 		
+		public var splashScreenLayer:Sprite;
 		public var mapViewerLayer:TouchSprite;
 		public var magnifierLayer:TouchSprite;
 
@@ -143,6 +144,9 @@ package id.template
 		public function MagnifierViewer()
 		{
 			super();
+			
+			splashScreenLayer = new Sprite();
+			addChild(splashScreenLayer);
 			
 			mapViewerLayer = new TouchSprite();
 			addChild(mapViewerLayer);
@@ -153,6 +157,29 @@ package id.template
 			templates = ApplicationGlobals.dataManager.data.Template;
 			initModules(templates[0]);
 			
+			width = ApplicationGlobals.application.stage.stageWidth;
+			height = ApplicationGlobals.application.stage.stageHeight;
+			stageWidth = ApplicationGlobals.application.stage.stageWidth;
+			stageHeight = ApplicationGlobals.application.stage.stageHeight;
+			
+			splashScreen = new Sprite();
+			var splashScreenLoader:Loader = new Loader();
+			splashScreenLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, function(e:Event):void {
+				(e.target as LoaderInfo).content.width = stageWidth;
+				(e.target as LoaderInfo).content.height = stageHeight;
+			}, false, 0, true);
+			splashScreenLoader.load(new URLRequest(templates.background));
+			splashScreen.addChild(splashScreenLoader);
+			if ( !StaticGMapDisplay.DEBUG_COLLISION_DETECTION ) splashScreenLayer.addChild(splashScreen);
+			
+			for ( var i:int=0; i<numMagnifiers; i++ ) {
+				var m:Magnifier = new Magnifier();
+				m.x = Math.random() * width;
+				m.y = Math.random() * height;
+				magnifiers.push( m );
+				
+				magnifierLayer.addChild(m);
+			}
 			//commitUI();
 			//addChild(testHolder);
 			//addChild(containerContent);
@@ -171,8 +198,6 @@ package id.template
 						break;
 				}
 			}
-			
-			
 		}
 		
 		public function reset():void {
@@ -186,15 +211,15 @@ package id.template
  				containerContent.removeChildAt(0);
 			}
 			
-			magnifierGlasses[0].x = stageWidth / 2;
-			magnifierGlasses[0].y = stageHeight / 2;
+			magnifiers[0].x = stageWidth / 2;
+			magnifiers[0].y = stageHeight / 2;
 			gui(0);
-			magnifierGlasses[0].captureBitmap();
+			magnifiers[0].captureBitmap();
 			
-			while(magnifierGlasses.length > 1)
+			while(magnifiers.length > 1)
 			{
-				removeChild(magnifierGlasses[magnifierGlasses.length - 1]);
-    			magnifierGlasses.pop();
+				removeChild(magnifiers[magnifiers.length - 1]);
+    			magnifiers.pop();
 			}
 
 			counter = 0;			
@@ -229,12 +254,12 @@ package id.template
 			stageWidth = ApplicationGlobals.application.stage.stageWidth;
 			stageHeight = ApplicationGlobals.application.stage.stageHeight;
 
-			_background = new Sprite();
+			splashScreen = new Sprite();
 			var _backgroundLoader:Loader = new Loader();
 			_backgroundLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, backgroundLoader_completeHandler, false, 0, true);
 			_backgroundLoader.load(new URLRequest(templates.background));
-			_background.addChild(_backgroundLoader);
-			if ( !StaticGMapDisplay.DEBUG_COLLISION_DETECTION ) addChild(_background);
+			splashScreen.addChild(_backgroundLoader);
+			if ( !StaticGMapDisplay.DEBUG_COLLISION_DETECTION ) addChild(splashScreen);
 
 			container= new TouchComponent();
 			addChild(container);
@@ -248,7 +273,7 @@ package id.template
 			loadingTimer = new Timer(500);
 			loadingTimer.addEventListener(TimerEvent.TIMER, updateLoadingText);
 
-			if (aantalVergrootGlazen - 1 > 0)
+			if (numMagnifiers - 1 > 0)
 			{
 
 				addMag.graphics.lineStyle(16, 0x222223, 1 , true);
@@ -270,8 +295,8 @@ package id.template
 			}
 
 			_magnifier = new Magnifier();
-			magnifierGlasses[0] = _magnifier;
-			magnifierGlasses[0].name = counter;
+			magnifiers[0] = _magnifier;
+			magnifiers[0].name = counter;
 
 			txt.multilined = false;
 			txt.color = 0xFFFFFF;
@@ -281,14 +306,14 @@ package id.template
 
 		private function moreMagnifiers1(e:TouchEvent)
 		{
-			if (counter < aantalVergrootGlazen - 1 && alreadyMoving == 0)
+			if (counter < numMagnifiers - 1 && alreadyMoving == 0)
 			{
 				counter++;
 				//trace('counter yeeah: ', counter);//_magnifier 
-				magnifierGlasses[counter] = new Magnifier();
-				magnifierGlasses[counter].name = counter;
+				magnifiers[counter] = new Magnifier();
+				magnifiers[counter].name = counter;
 				backgroundLoader_completeHandler(e);
-				if (aantalVergrootGlazen - 1 == counter)
+				if (numMagnifiers - 1 == counter)
 				{
 					removeChild(addMa);
 					removeChild(addMag);
@@ -298,8 +323,8 @@ package id.template
 				 if (alreadyMoving==1)
 				{
 					//trace('already moving');
-					magnifierGlasses[counter].x = e.localX;
-					magnifierGlasses[counter].y = e.localY;
+					magnifiers[counter].x = e.localX;
+					magnifiers[counter].y = e.localY;
 					naam = counter;
 				//magnifierGlasses[naam].captureBitmap();
 					gui(naam);
@@ -346,43 +371,43 @@ package id.template
 
 			(event.target as LoaderInfo).content.width = stageWidth;
 			(event.target as LoaderInfo).content.height = stageHeight;
-			magnifierGlasses[counter].minSize = 1;
-			magnifierGlasses[counter].maxSize = 3;
-			magnifierGlasses[counter].scaleAdjustable = false;
+			magnifiers[counter].minSize = 1;
+			magnifiers[counter].maxSize = 3;
+			magnifiers[counter].scaleAdjustable = false;
 
 			if (firstTime == false)
 			{
-				magnifierGlasses[counter].x = stageWidth / 2;
-				magnifierGlasses[counter].y = stageHeight / 3;
+				magnifiers[counter].x = stageWidth / 2;
+				magnifiers[counter].y = stageHeight / 3;
 				firstTime = true;
 			}
 			else
 			{
-				magnifierGlasses[counter].x = 0;
-				magnifierGlasses[counter].y = 0;
+				magnifiers[counter].x = 0;
+				magnifiers[counter].y = 0;
 			}
 
-			magnifierGlasses[counter].continuousRenderer = true;
-			magnifierGlasses[counter].vectorRenderer = true;
+			magnifiers[counter].continuousRenderer = true;
+			magnifiers[counter].vectorRenderer = true;
 
-			magnifierGlasses[counter].addEventListener(TouchEvent.TOUCH_DOWN, magnifier_touchDownHandler);
-			magnifierGlasses[counter].addEventListener(TouchEvent.TOUCH_UP, magnifier_touchUpHandler);
-			magnifierGlasses[counter].addEventListener(TouchEvent.TOUCH_MOVE,  magnifier_touchMove);
-			magnifierGlasses[counter].addEventListener(GestureEvent.GESTURE_FLICK,flickGestureHandler);
+			magnifiers[counter].addEventListener(TouchEvent.TOUCH_DOWN, magnifier_touchDownHandler);
+			magnifiers[counter].addEventListener(TouchEvent.TOUCH_UP, magnifier_touchUpHandler);
+			magnifiers[counter].addEventListener(TouchEvent.TOUCH_MOVE,  magnifier_touchMove);
+			magnifiers[counter].addEventListener(GestureEvent.GESTURE_FLICK,flickGestureHandler);
 
 			//  ============================;
 			// now adding maginifier to parent, which in this case = Main document class.
 			//  ============================
 
-			addChild(magnifierGlasses[counter]);
-			contentHolder = new Content(containerContent,magnifierGlasses,counter); // important --> calls content class!
+			addChild(magnifiers[counter]);
+			contentHolder = new Content(containerContent,magnifiers,counter); // important --> calls content class!
 			contentHolders[counter] = contentHolder;
-			magnifierGlasses[counter].addChild(contentHolders[counter]);
+			magnifiers[counter].addChild(contentHolders[counter]);
 		}
 
 		public function gui(vt)
 		{
-			var pta:Point = new Point(magnifierGlasses[vt].x,magnifierGlasses[vt].y);
+			var pta:Point = new Point(magnifiers[vt].x,magnifiers[vt].y);
 			var objectsa:Array = container.getObjectsUnderPoint(pta);
 			//looks for objects under point, if the name is a number he found something
 			for (var i = 0; i < objectsa.length; i++)
@@ -425,7 +450,7 @@ package id.template
 			if ( gMapViewer ) {			
 				if ( StaticGMapDisplay.DEBUG_COLLISION_DETECTION ) 		gMapViewer.mapDisplay.graphics.clear();
 				
-				for each( var magnifier:Magnifier in magnifierGlasses) {
+				for each( var magnifier:Magnifier in magnifiers) {
 					var target:Marker = gMapViewer.mapDisplay.collisionDetect(magnifier.x, magnifier.y);
 					if ( target )	trace(target);
 				}
@@ -458,7 +483,7 @@ package id.template
 			else
 			{
 				//trace("hallo");
-				magnifierGlasses[naam].startTouchDrag(-1, true, new Rectangle(0, 0,stageWidth,stageHeight));
+				magnifiers[naam].startTouchDrag(-1, true, new Rectangle(0, 0,stageWidth,stageHeight));
 			}
 
 		}
@@ -472,7 +497,7 @@ package id.template
 			else
 			{
 				naam = event.target.name;
-				magnifierGlasses[naam].stopTouchDrag(-1);
+				magnifiers[naam].stopTouchDrag(-1);
 				gui(naam);
 			}
 		}
@@ -486,33 +511,33 @@ package id.template
 
 		private function onEnterFrameHandler(e:Event):void
 		{
-			if (magnifierGlasses[naam].x <= 0)
+			if (magnifiers[naam].x <= 0)
 			{
 				dx =  -  dx;
-				magnifierGlasses[naam].x = 0;
+				magnifiers[naam].x = 0;
 			}
-			if (magnifierGlasses[naam].x >= stageWidth)
+			if (magnifiers[naam].x >= stageWidth)
 			{
 				dx =  -  dx;
-				magnifierGlasses[naam].x = stageWidth;
+				magnifiers[naam].x = stageWidth;
 			}
 			if (Math.abs(dx) <= 1)
 			{
 				dx = 0;
 				removeEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
 			}
-			magnifierGlasses[naam].x +=  dx;
+			magnifiers[naam].x +=  dx;
 			dx *=  friction;
 
-			if (magnifierGlasses[naam].y <= 0)
+			if (magnifiers[naam].y <= 0)
 			{
 				dy =  -  dy;
-				magnifierGlasses[naam].y = 0;
+				magnifiers[naam].y = 0;
 			}
-			if (magnifierGlasses[naam].y >= stageHeight)
+			if (magnifiers[naam].y >= stageHeight)
 			{
 				dy =  -  dy;
-				magnifierGlasses[naam].y = stageHeight;
+				magnifiers[naam].y = stageHeight;
 
 			}
 			if (Math.abs(dy) <= 1)
@@ -520,17 +545,17 @@ package id.template
 				dy = 0;
 				removeEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
 			}
-			magnifierGlasses[naam].y +=  dy;
+			magnifiers[naam].y +=  dy;
 			dy *=  friction;
 			try
 			{
-				magnifierGlasses[naam].captureBitmap();
+				magnifiers[naam].captureBitmap();
 			}
 			catch (error:Error)
 			{
-				magnifierGlasses[naam].x = 5;
-				magnifierGlasses[naam].y = 5;
-				magnifierGlasses[naam].captureBitmap();
+				magnifiers[naam].x = 5;
+				magnifiers[naam].y = 5;
+				magnifiers[naam].captureBitmap();
 			}
 		}
 		
@@ -589,7 +614,7 @@ package id.template
 
 			trace( "callModuleClass " + moduleClass);
 			
-			module = new moduleClass(magnifierGlasses,this);
+			module = new moduleClass(magnifiers,this);
 			
 			if ( module is GMapViewer ) {
 				gMapViewer = GMapViewer(module);
@@ -638,13 +663,13 @@ package id.template
 			}
 			else
 			{
-				magnifierGlasses[naam].captureBitmap();
+				magnifiers[naam].captureBitmap();
 			}
 		}
 
 		public function updateLenzen(delens):void
 		{
-			magnifierGlasses[delens].captureBitmap();
+			magnifiers[delens].captureBitmap();
 		}
 
 		private function addToObjectsArray(value:Array):void
@@ -684,10 +709,10 @@ package id.template
 			if (loadingTimer)	loadingTimer.removeEventListener(TimerEvent.TIMER, updateLoadingText);
 			addMa.removeEventListener(TouchEvent.TOUCH_UP,moreMagnifiers);
 			addMa.removeEventListener(TouchEvent.TOUCH_MOVE, moreMagnifiers1);
-			magnifierGlasses[counter].removeEventListener(TouchEvent.TOUCH_DOWN, magnifier_touchDownHandler);
-			magnifierGlasses[counter].removeEventListener(TouchEvent.TOUCH_UP, magnifier_touchUpHandler);
-			magnifierGlasses[counter].removeEventListener(TouchEvent.TOUCH_MOVE,  magnifier_touchMove);
-			magnifierGlasses[counter].removeEventListener(GestureEvent.GESTURE_FLICK,flickGestureHandler);
+			magnifiers[counter].removeEventListener(TouchEvent.TOUCH_DOWN, magnifier_touchDownHandler);
+			magnifiers[counter].removeEventListener(TouchEvent.TOUCH_UP, magnifier_touchUpHandler);
+			magnifiers[counter].removeEventListener(TouchEvent.TOUCH_MOVE,  magnifier_touchMove);
+			magnifiers[counter].removeEventListener(GestureEvent.GESTURE_FLICK,flickGestureHandler);
 			removeEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
 			
 			trace(this + ".Dispose()");
