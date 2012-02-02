@@ -159,8 +159,6 @@ package id.template
 			magnifierGlasses[0].y = stageHeight / 2;
 			gui(0);
 			magnifierGlasses[0].captureBitmap();
-			var deKaart = container.getChildAt(0);
-			deKaart.resetter();
 			
 			while(magnifierGlasses.length > 1)
 			{
@@ -168,8 +166,7 @@ package id.template
     			magnifierGlasses.pop();
 			}
 
-			counter = 0;			//magnifiers added  = 0
-			// put the icon for more magnifiers back in place...
+			counter = 0;			
 			addChild(addMag);
 			addChild(ring1);
 			addChild(addMa);
@@ -402,6 +399,15 @@ package id.template
 
 		private function magnifier_touchMove(event:TouchEvent):void
 		{
+			if ( myGMapViewer ) {
+				trace(magnifierGlasses[0]);
+				trace(event.target);
+				trace("magnifier: " + magnifierGlasses[0].x + "  " + magnifierGlasses[0].y );
+				
+				myGMapViewer.mapDisplay.collisionDetect(magnifierGlasses[0].x, magnifierGlasses[0].y);
+			}
+			
+			/*
 			if (isNaN(naam))
 			{
 				//trace('niet goed');
@@ -412,6 +418,7 @@ package id.template
 				magnifierGlasses[naam].captureBitmap();
 				gui(naam);
 			}
+			*/
 		}
 
 		private function magnifier_touchDownHandler(event:TouchEvent):void

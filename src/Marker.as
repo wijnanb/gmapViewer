@@ -19,6 +19,8 @@ package
 		public var v:Number;
 		public var radius:Number;
 		public var center:Point;
+		public var locationIsSet:Boolean = false;
+		protected var relative_center:Point;
 		protected var iconURL:String;
 		protected var icon:DisplayObject;
 		
@@ -43,6 +45,9 @@ package
 		public function setMapLocation(u:Number, v:Number):void {
 			this.x = this.u = u;
 			this.y = this.v = v;
+			
+			if ( icon ) 	center = new Point( this.x + relative_center.x, this.y + relative_center.y );
+			locationIsSet = true;
 		}
 		
 		protected function onIconLoaded(e:Event):void {
@@ -50,11 +55,23 @@ package
 			icon.x = ICON_OFFSET_X;
 			icon.y = -icon.height - ICON_OFFSET_Y;
 			
-			center = new Point(icon.x + icon.width/2, icon.y + icon.height/2);
+			relative_center = new Point(icon.x + icon.width/2, icon.y + icon.height/2);
+			if ( locationIsSet ) 	center = new Point( this.x + relative_center.x, this.y + relative_center.y );
 			radius = (icon.width/2 + icon.height/2)/2 * 1.4;
 			
-			graphics.lineStyle(10, 0xffe293, 0.5);
-			graphics.drawCircle( center.x, center.y, radius);
+			reset();
+		}
+		
+		public function highlight():void {
+			graphics.clear();
+			graphics.lineStyle(1, 0xff0000, 0.5);
+			graphics.drawCircle( relative_center.x, relative_center.y, radius);
+		}
+		
+		public function reset():void {
+			graphics.clear();
+			graphics.lineStyle(1, 0xffe293, 0.5);
+			graphics.drawCircle( relative_center.x, relative_center.y, radius);
 		}
 		
 		protected function onHTTPStatus(e:HTTPStatusEvent):void{

@@ -51,8 +51,6 @@ package
 				Security.allowInsecureDomain("*");	
 			}
 			
-			trace( MapData.getStyle( MapData.COLORSCHEME_YELLOW ) );
-			
 			addChild(viewerLayer);
 			addChild(mapSwitchButtonLayer);
 		}
@@ -88,8 +86,6 @@ package
 			
 			viewer = new MagnifierViewer();
 			viewerLayer.addChild(viewer);
-			
-			trace(viewer);
 		}
 		
 		protected function onTouch(e:TouchEvent):void {

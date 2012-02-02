@@ -204,7 +204,7 @@ package id.component
 			
 			var loader:Loader = new Loader();
 			loader.load( new URLRequest(url) );
-			mapLayer.addChild(loader);
+			//mapLayer.addChild(loader);
 		}
 
 		protected function onMapLoaded(e:Event):void {
@@ -297,6 +297,40 @@ package id.component
 			{
 				logoLayer.removeChild(iconLogoInfo);
 				logoCollapsed = false;	
+			}
+		}
+		
+		public function collisionDetect(posX:Number, posY:Number):void {
+			trace("");
+			trace("collision detect " + posX + "," + posY);
+			
+			var m:Marker;
+			var markers_length:int = markers.length;
+			var dx:Number;
+			var dy:Number;
+			var d:Number;
+			
+			graphics.clear();
+			graphics.lineStyle(1, 0xFFFFFF, 0.5);
+			
+			for ( var i:int=0; i<markers_length; i++ ) {
+				m = markers[i];
+				dx = m.center.x - posX;
+				dy = m.center.y - posY;
+				d = Math.sqrt( dx*dx + dy*dy );
+				
+				
+				graphics.moveTo(posX, posY);
+				graphics.lineTo(m.center.x, m.center.y);
+				
+				if ( d <= m.radius ) {
+					m.highlight();
+					trace(d + " " + m.radius + " *");
+				}
+				else {
+					m.reset();
+					trace(d + " " + m.radius);
+				}
 			}
 		}
 		
