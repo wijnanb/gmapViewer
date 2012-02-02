@@ -56,6 +56,7 @@ package id.template
 	KeyViewer;
 	import id.module.GMapViewer;
 	import id.component.StaticGMapDisplay;
+	import flash.display.LoaderInfo;
 
 	//import flash.events.GestureEvent;
 
@@ -71,7 +72,9 @@ package id.template
 	     */
 	public class MagnifierViewer extends TouchComponent
 	{
-		private var templates:Object;
+		protected var templates:Object;
+		protected var modules:Object;
+		
 		private var _id:int;
 		private var count:int;
 		private var moduleClass:Class;
@@ -88,12 +91,10 @@ package id.template
 		private var moduleNameArray:Array = new Array();
 		private var magnifierGlasses:Array = new Array();
 		private var contentHolders:Array = new Array();
-		private var backgroundUrl:String;
 		private var _moduleName:String = "";
 
 		private var _background:Sprite;
-		private var _backgroundLoader:Loader;
-
+		
 		private var _displayMask:Sprite;
 		private var _magnifier:Magnifier;
 		private var stageWidth:int;
@@ -133,17 +134,45 @@ package id.template
 		private var dy:Number = 0;
 		private var updateLensTimer:Timer;
 		
-		public var myGMapViewer:GMapViewer;
+		public var gMapViewer:GMapViewer;
+		
+		public var mapViewerLayer:TouchSprite;
+		public var magnifierLayer:TouchSprite;
 
 
 		public function MagnifierViewer()
 		{
 			super();
+			
+			mapViewerLayer = new TouchSprite();
+			addChild(mapViewerLayer);
+			
+			magnifierLayer = new TouchSprite();
+			addChild(magnifierLayer);
+			
 			templates = ApplicationGlobals.dataManager.data.Template;
-			createUI();
-			commitUI();
-			addChild(testHolder);
-			addChild(containerContent);
+			initModules(templates[0]);
+			
+			//commitUI();
+			//addChild(testHolder);
+			//addChild(containerContent);
+		}
+		
+		protected function initModules(template:Object):void {	
+			modules = template.module;
+			
+			for ( var i:int=0; i<modules.length(); i++) {
+				var moduleClass:Class = getDefinitionByName("id.module." + modules[i]) as Class;
+				moduleDictionary[module] = modules[i];
+				switch(String(modules[i])) {
+					case "GMapViewer":
+						gMapViewer = new GMapViewer();
+						mapViewerLayer.addChild(gMapViewer);
+						break;
+				}
+			}
+			
+			
 		}
 		
 		public function reset():void {
@@ -191,12 +220,6 @@ package id.template
 		{
 			_moduleName = value;
 		}
-		override protected function createUI():void
-		{
-			stageWidth = ApplicationGlobals.application.stage.stageWidth;
-			stageHeight = ApplicationGlobals.application.stage.stageHeight;
-
-		}
 
 		override protected function commitUI():void
 		{
@@ -206,14 +229,12 @@ package id.template
 			stageWidth = ApplicationGlobals.application.stage.stageWidth;
 			stageHeight = ApplicationGlobals.application.stage.stageHeight;
 
-			backgroundUrl = templates.background;
-
 			_background = new Sprite();
-			_backgroundLoader = new Loader();
-			_backgroundLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, backgroundLoader_completeHandler);
-			_backgroundLoader.load(new URLRequest(backgroundUrl));
+			var _backgroundLoader:Loader = new Loader();
+			_backgroundLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, backgroundLoader_completeHandler, false, 0, true);
+			_backgroundLoader.load(new URLRequest(templates.background));
 			_background.addChild(_backgroundLoader);
-			//addChild(_background);
+			if ( !StaticGMapDisplay.DEBUG_COLLISION_DETECTION ) addChild(_background);
 
 			container= new TouchComponent();
 			addChild(container);
@@ -323,8 +344,8 @@ package id.template
 				alreadyMoving = 1;
 			}
 
-			_backgroundLoader.width = stageWidth;
-			_backgroundLoader.height = stageHeight;
+			(event.target as LoaderInfo).content.width = stageWidth;
+			(event.target as LoaderInfo).content.height = stageHeight;
 			magnifierGlasses[counter].minSize = 1;
 			magnifierGlasses[counter].maxSize = 3;
 			magnifierGlasses[counter].scaleAdjustable = false;
@@ -401,11 +422,11 @@ package id.template
 
 		private function magnifier_touchMove(event:TouchEvent):void
 		{
-			if ( myGMapViewer ) {			
-				if ( StaticGMapDisplay.DEBUG_COLLISION_DETECTION ) 		myGMapViewer.mapDisplay.graphics.clear();
+			if ( gMapViewer ) {			
+				if ( StaticGMapDisplay.DEBUG_COLLISION_DETECTION ) 		gMapViewer.mapDisplay.graphics.clear();
 				
 				for each( var magnifier:Magnifier in magnifierGlasses) {
-					var target:Marker = myGMapViewer.mapDisplay.collisionDetect(magnifier.x, magnifier.y);
+					var target:Marker = gMapViewer.mapDisplay.collisionDetect(magnifier.x, magnifier.y);
 					if ( target )	trace(target);
 				}
 			}
@@ -571,7 +592,7 @@ package id.template
 			module = new moduleClass(magnifierGlasses,this);
 			
 			if ( module is GMapViewer ) {
-				myGMapViewer = GMapViewer(module);
+				gMapViewer = GMapViewer(module);
 			}
 			
 			//  ============================
@@ -650,7 +671,7 @@ package id.template
 		}
 		
 		override public function Dispose():void {
-			if ( myGMapViewer )			myGMapViewer.Dispose();
+			if ( gMapViewer )			gMapViewer.Dispose();
 			if ( container )			container.Dispose();
 			if ( containerGlass )		containerGlass.Dispose();
 			
@@ -660,7 +681,6 @@ package id.template
 			
 			if ( testHolder )			testHolder.Dispose();
 				
-			_backgroundLoader.contentLoaderInfo.removeEventListener(Event.COMPLETE, backgroundLoader_completeHandler);
 			if (loadingTimer)	loadingTimer.removeEventListener(TimerEvent.TIMER, updateLoadingText);
 			addMa.removeEventListener(TouchEvent.TOUCH_UP,moreMagnifiers);
 			addMa.removeEventListener(TouchEvent.TOUCH_MOVE, moreMagnifiers1);

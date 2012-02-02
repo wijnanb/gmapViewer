@@ -60,8 +60,6 @@
 		private var idWaiting:Array = new Array();		
 		private var _moduleName:String="";
 		private var isLoaded:Boolean;
-		private var vergroot:Array = new Array();
-		private var zichzelf;
 		
 		private var completeTimeout:int;
 		/**
@@ -73,7 +71,7 @@
 		 * 
 		 */
 
-		public function GMapViewer(magnifier, eigen, settingsPath:String="config/GMapViewer.xml")
+		public function GMapViewer(settingsPath:String="config/GMapViewer.xml")
 		{
 			super();
 			
@@ -83,9 +81,6 @@
 			MapParser.addEventListener(Event.COMPLETE,onParseComplete);
 			
 			if ( MapParser.loadComplete )	onParseComplete();
-			
-			vergroot = magnifier;
-			zichzelf = eigen;
 		}
 		
 		override public function get id():int
