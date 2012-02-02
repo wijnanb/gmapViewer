@@ -33,12 +33,11 @@ package
 			this.lat = lat;
 			this.iconURL = iconURL;
 			
-			iconURL = "http://localhost:8000/z33/images/Tentenkamp.png";
-			
 			var loader:Loader = new Loader();
 			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onIconLoaded, false, 0, true);
 			loader.contentLoaderInfo.addEventListener(HTTPStatusEvent.HTTP_STATUS, onHTTPStatus);
 			loader.load( new URLRequest(iconURL) );
+			addChild(loader);
 		}
 		
 		public function setMapLocation(u:Number, v:Number):void {
@@ -50,10 +49,9 @@ package
 			icon = (e.currentTarget as LoaderInfo).content;
 			icon.x = ICON_OFFSET_X;
 			icon.y = -icon.height - ICON_OFFSET_Y;
-			addChild(icon);
 			
 			center = new Point(icon.x + icon.width/2, icon.y + icon.height/2);
-			radius = (icon.width/2 + icon.height/2) / 2;
+			radius = Math.max(icon.width/2,icon.height/2) * 1.3;
 			
 			graphics.lineStyle(10, 0xffe293, 0.5);
 			graphics.drawCircle( center.x, center.y, radius);
