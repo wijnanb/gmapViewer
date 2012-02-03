@@ -112,7 +112,7 @@ package id.template
 		private var naam:Number = new Number();
 		private var eigenKlasse;
 
-		private var numMagnifiers = Player.isAir ? 1 : 3; //number of magnifier glasses
+		private var numMagnifiers = Player.isAir ? 1 : 1; //number of magnifier glasses
 		private var addMa:TouchSprite = new TouchSprite();
 		private var addMag:TouchSprite = new TouchSprite();
 		private var ring1:TouchSprite  = new TouchSprite();
@@ -136,9 +136,9 @@ package id.template
 		
 		public var gMapViewer:GMapViewer;
 		
-		public var splashScreenLayer:Sprite;
-		public var mapViewerLayer:TouchSprite;
+		public var mapViewerLayer:Sprite;
 		public var magnifierLayer:TouchSprite;
+		public var splashScreenLayer:Sprite;
 
 
 		public function MagnifierViewer()
@@ -146,15 +146,14 @@ package id.template
 			super();
 			
 			width = stageWidth = ApplicationGlobals.application.stage.stageWidth;
-			height = stageHeight = ApplicationGlobals.application.stage.stageHeight;	
+			height = stageHeight = ApplicationGlobals.application.stage.stageHeight;
 			
 			splashScreenLayer = new Sprite();
 			addChild(splashScreenLayer);
 			
-			mapViewerLayer = new TouchSprite();
-			mapViewerLayer.graphics.beginFill(0xFFCC00);
+			mapViewerLayer = new Sprite();
+			mapViewerLayer.graphics.beginFill(0xFFFFFF);
 			mapViewerLayer.graphics.drawRect(0,0,stageWidth,stageHeight);
-			
 			addChild(mapViewerLayer);
 			
 			magnifierLayer = new TouchSprite();
@@ -162,7 +161,6 @@ package id.template
 			
 			templates = ApplicationGlobals.dataManager.data.Template;
 			initModules(templates[0]);
-			
 			
 			splashScreen = new Sprite();
 			var splashScreenLoader:Loader = new Loader();
@@ -193,12 +191,8 @@ package id.template
 				
 				magnifiers.push( m );
 				
-				magnifierLayer.addChild(m);
+				magnifierLayer.addChild( m );
 			}
-			
-			//commitUI();
-			//addChild(testHolder);
-			//addChild(containerContent);
 		}
 		
 		protected function initModules(template:Object):void {	
@@ -215,11 +209,6 @@ package id.template
 				}
 			}
 		}
-		
-		protected function onMapReady():void {
-			
-		}
-		
 		
 		public function reset():void {
 			trace('MagnifierViewer.reset()');
@@ -423,7 +412,7 @@ package id.template
 			//  ============================
 
 			addChild(magnifiers[counter]);
-			contentHolder = new Content(containerContent,magnifiers,counter); // important --> calls content class!
+			//contentHolder = new Content(containerContent,magnifiers,counter); // important --> calls content class!
 			contentHolders[counter] = contentHolder;
 			magnifiers[counter].addChild(contentHolders[counter]);
 		}
@@ -468,46 +457,32 @@ package id.template
 			}
 		}
 
-		private function magnifier_touchMove(event:TouchEvent):void
+		protected function magnifier_touchMove(event:TouchEvent):void
 		{
 			if ( gMapViewer ) {			
 				if ( StaticGMapDisplay.DEBUG_COLLISION_DETECTION ) 		gMapViewer.mapDisplay.graphics.clear();
 				
 				for each( var magnifier:Magnifier in magnifiers) {
+					//magnifier.captureBitmap();
+					
 					var target:Marker = gMapViewer.mapDisplay.collisionDetect(magnifier.x, magnifier.y);
 					if ( target )	{
 						// show content if not shown yet
-						//trace(target);
+						var contentId:int = target.contentId;
+						magnifier.collapse(contentId);
 					}
-					
-					//magnifier.captureBitmap();
 				}
 			}
-			
-			/*
-			if (isNaN(naam))
-			{
-				//trace('niet goed');
-			}
-			else
-			{
-				naam = event.target.name;
-				magnifierGlasses[naam].captureBitmap();
-				gui(naam);
-			}
-			*/
 		}
 
-		private function magnifier_touchDownHandler(event:TouchEvent):void
+		protected function magnifier_touchDownHandler(event:TouchEvent):void
 		{
 			(event.target as Magnifier).startTouchDrag(-1, true, new Rectangle(0, 0,stageWidth,stageHeight));
 		}
 		
-		private function magnifier_touchUpHandler(event:TouchEvent):void
+		protected function magnifier_touchUpHandler(event:TouchEvent):void
 		{
 			(event.target as Magnifier).stopTouchDrag(-1);
-			
-			//gui(naam);
 		}
 		
 		private function flickGestureHandler(e:GestureEvent):void

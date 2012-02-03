@@ -110,7 +110,7 @@
 		public var iconVideoClass:Class;
 		private var iconVideo = new iconVideoClass();
 
-		private var idContent;
+		private var contentId:int;
 		private var mX;
 		private var mY;
 		private var containerContent;
@@ -156,12 +156,12 @@
 		public function deleteIt():void{
 			for(var i=0;i<youtubeList.length;i++){
 				//trace("hallo ", i);
-				youtubeList[idContent].verwijder();
+				youtubeList[contentId].verwijder();
 				}
 			}
-		public function inFocus(idIn):void // function called when magnifier hovers over marker
+		public function inFocus(contentId:int):void // function called when magnifier hovers over marker
 		{
-			idContent = idIn;//marker
+			contentId = contentId;//marker
 			//trace('Marker', idIn);
 			if ( !Player.isAir ) sound.play();
 			schuifHolder1=new TouchSprite();
@@ -263,8 +263,8 @@
 			schuifHolder2.addChild(field2);
 			schuifHolder3.addChild(field3);
 
-			tekstCircleTitle = ContentParser.settings.Content.Source[idContent].title;
-			tekstCircleDesc = ContentParser.settings.Content.Source[idContent].name;
+			tekstCircleTitle = ContentParser.settings.Content.Source[contentId].title;
+			tekstCircleDesc = ContentParser.settings.Content.Source[contentId].name;
 
 
 			var tekstCircleAfterDesc = tekstCircleDesc.toUpperCase();
@@ -330,17 +330,17 @@
 					activeResultaat = false;
 				//trace("hiep hoi", ContentParser.settings.Content.Source[idContent].concept.text());
 				//trace('alles', ContentParser.settings.Content.Source[idContent].concept.image.length());
-					if (ContentParser.settings.Content.Source[idContent].concept.image.length() == 0)
+					if (ContentParser.settings.Content.Source[contentId].concept.image.length() == 0)
 					{
 						
 						//trace('geen foto', idContent);
 						geenFoto = true;
 					}
-					if (ContentParser.settings.Content.Source[idContent].concept.youtube.length() == 0)
+					if (ContentParser.settings.Content.Source[contentId].concept.youtube.length() == 0)
 					{
 						geenVideo = true;
 					}
-					if (ContentParser.settings.Content.Source[idContent].concept.tekst.length() == 0)
+					if (ContentParser.settings.Content.Source[contentId].concept.tekst.length() == 0)
 					{
 
 						geenTekst = true;
@@ -371,15 +371,15 @@
 					activeConstruction = true;
 					activeResultaat = false;
 
-					if (ContentParser.settings.Content.Source[idContent].constructie.image.length() == 0)
+					if (ContentParser.settings.Content.Source[contentId].constructie.image.length() == 0)
 					{
 						geenFoto = true;
 					}
-					if (ContentParser.settings.Content.Source[idContent].constructie.youtube.length() == 0)
+					if (ContentParser.settings.Content.Source[contentId].constructie.youtube.length() == 0)
 					{
 						geenVideo = true;
 					}
-					if (ContentParser.settings.Content.Source[idContent].constructie.tekst.length() == 0)
+					if (ContentParser.settings.Content.Source[contentId].constructie.tekst.length() == 0)
 					{
 						geenTekst = true;
 					}
@@ -404,16 +404,16 @@
 					activeConstruction = false;
 					activeResultaat = true;
 
-					if (ContentParser.settings.Content.Source[idContent].resultaat.image.length() == 0)
+					if (ContentParser.settings.Content.Source[contentId].resultaat.image.length() == 0)
 					{
 						trace('geen foto');
 						geenFoto = true;
 					}
-					if (ContentParser.settings.Content.Source[idContent].resultaat.youtube.length() == 0)
+					if (ContentParser.settings.Content.Source[contentId].resultaat.youtube.length() == 0)
 					{
 						geenVideo = true;
 					}
-					if (ContentParser.settings.Content.Source[idContent].resultaat.tekst.length() == 0)
+					if (ContentParser.settings.Content.Source[contentId].resultaat.tekst.length() == 0)
 					{
 						geenTekst = true;
 					}
@@ -519,7 +519,7 @@
 
 		private function streamHandler(niveau):void // not used stream instance
 		{
-			var i = idContent;
+			var i = contentId;
 			var livevideoViewer:LiveVideoViewer = new LiveVideoViewer;
 			livevideoViewer.id = i;//id marker
 			liveVideoList[i] = livevideoViewer;
@@ -530,7 +530,7 @@
 
 		private function flickrHandler(niveau):void // not used flickr instance
 		{
-			var i = idContent;
+			var i = contentId;
 			flickrViewer = new FlickrViewer(i);
 			flickrList[i] = flickrViewer;
 			containerContent.addChild(flickrList[i]);
@@ -545,7 +545,7 @@
 			timerPress.start();
 			if(pressedFoto == false){
 				pressedFoto = true;
-			var ip = idContent;
+			var ip = contentId;
 			var imageViewer:ImageViewer = new ImageViewer(ip,guiTouch,magnifier);
 			imageList[ip] = imageViewer;
 			imageViewer.id = ip;
@@ -576,7 +576,7 @@
 			if(pressedTekst == false){
 				pressedTekst = true;
 
-			var ip = idContent;
+			var ip = contentId;
 			var tekstViewer:TekstViewer = new TekstViewer(ip,guiTouch,magnifier);
 			tekstList[ip] = tekstViewer;
 			tekstViewer.id = ip;
@@ -622,7 +622,7 @@
 			if(pressedVideo == false){
 				pressedVideo = true;
 
-			var i = idContent;
+			var i = contentId;
 			youTubeViewer = new YouTubeViewer(i,guiTouch,magnifier);
 			youtubeList[i] = youTubeViewer;
 			containerContent.addChild(youtubeList[i]);
