@@ -145,10 +145,16 @@ package id.template
 		{
 			super();
 			
+			width = stageWidth = ApplicationGlobals.application.stage.stageWidth;
+			height = stageHeight = ApplicationGlobals.application.stage.stageHeight;	
+			
 			splashScreenLayer = new Sprite();
 			addChild(splashScreenLayer);
 			
 			mapViewerLayer = new TouchSprite();
+			mapViewerLayer.graphics.beginFill(0xFFCC00);
+			mapViewerLayer.graphics.drawRect(0,0,stageWidth,stageHeight);
+			
 			addChild(mapViewerLayer);
 			
 			magnifierLayer = new TouchSprite();
@@ -157,10 +163,6 @@ package id.template
 			templates = ApplicationGlobals.dataManager.data.Template;
 			initModules(templates[0]);
 			
-			width = ApplicationGlobals.application.stage.stageWidth;
-			height = ApplicationGlobals.application.stage.stageHeight;
-			stageWidth = ApplicationGlobals.application.stage.stageWidth;
-			stageHeight = ApplicationGlobals.application.stage.stageHeight;
 			
 			splashScreen = new Sprite();
 			var splashScreenLoader:Loader = new Loader();
@@ -176,10 +178,24 @@ package id.template
 				var m:Magnifier = new Magnifier();
 				m.x = Math.random() * width;
 				m.y = Math.random() * height;
+				
+				m.minSize = 1;
+				m.maxSize = 3;
+				m.scaleAdjustable = false;
+				m.continuousRenderer = true;
+				m.vectorRenderer = true;
+				m.captureTarget = mapViewerLayer;
+				
+				m.addEventListener(TouchEvent.TOUCH_DOWN, magnifier_touchDownHandler, false, 0, true);
+				m.addEventListener(TouchEvent.TOUCH_UP, magnifier_touchUpHandler, false, 0, true);
+				m.addEventListener(TouchEvent.TOUCH_MOVE,  magnifier_touchMove, false, 0, true);
+				m.addEventListener(GestureEvent.GESTURE_FLICK,flickGestureHandler, false, 0, true);
+				
 				magnifiers.push( m );
 				
 				magnifierLayer.addChild(m);
 			}
+			
 			//commitUI();
 			//addChild(testHolder);
 			//addChild(containerContent);
@@ -200,9 +216,15 @@ package id.template
 			}
 		}
 		
+		protected function onMapReady():void {
+			
+		}
+		
+		
 		public function reset():void {
 			trace('MagnifierViewer.reset()');
 			
+			/*
 			for(var i=0;i<contentHolders.length;i++) {
 				contentHolders[i].deleteIt();
 			}
@@ -226,6 +248,7 @@ package id.template
 			addChild(addMag);
 			addChild(ring1);
 			addChild(addMa);
+			*/
 		}
 
 		override public function get id():int
@@ -452,7 +475,12 @@ package id.template
 				
 				for each( var magnifier:Magnifier in magnifiers) {
 					var target:Marker = gMapViewer.mapDisplay.collisionDetect(magnifier.x, magnifier.y);
-					if ( target )	trace(target);
+					if ( target )	{
+						// show content if not shown yet
+						//trace(target);
+					}
+					
+					//magnifier.captureBitmap();
 				}
 			}
 			
@@ -472,41 +500,21 @@ package id.template
 
 		private function magnifier_touchDownHandler(event:TouchEvent):void
 		{
-			//  ============================
-			//  no longer need to pop magnifier to the top because it is a child to the parent class, Main.
-			//  ============================
-			naam = event.target.name;
-			if (isNaN(naam))
-			{
-				//trace('niet goed');
-			}
-			else
-			{
-				//trace("hallo");
-				magnifiers[naam].startTouchDrag(-1, true, new Rectangle(0, 0,stageWidth,stageHeight));
-			}
-
+			(event.target as Magnifier).startTouchDrag(-1, true, new Rectangle(0, 0,stageWidth,stageHeight));
 		}
 		
 		private function magnifier_touchUpHandler(event:TouchEvent):void
 		{
-			if (isNaN(naam))
-			{
-				//trace('niet goed up');
-			}
-			else
-			{
-				naam = event.target.name;
-				magnifiers[naam].stopTouchDrag(-1);
-				gui(naam);
-			}
+			(event.target as Magnifier).stopTouchDrag(-1);
+			
+			//gui(naam);
 		}
 		
 		private function flickGestureHandler(e:GestureEvent):void
 		{
 			dx = e.velocityX;
 			dy = e.velocityY;
-			addEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
+			//addEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
 		}
 
 		private function onEnterFrameHandler(e:Event):void

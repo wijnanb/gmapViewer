@@ -595,8 +595,6 @@ public class Magnifier extends TouchSprite
 		
 	public function captureBitmap():void
 	{
-		//vount++;
-		//trace('ik ben aan het werk' , vount);
 		destroyBitmap();
 		
 		var tempData:BitmapData;
@@ -605,8 +603,6 @@ public class Magnifier extends TouchSprite
 
 		if(_vectorRenderer)
 		{
-			//transformation = _captureTarget.transform.matrix.clone();
-			
 			transformation.scale(_scale, _scale);
 		}
 		
@@ -639,7 +635,6 @@ public class Magnifier extends TouchSprite
 		}
 		
 		visible = false;
-		
 		
 		tempData = new BitmapData
 		(

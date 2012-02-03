@@ -316,6 +316,9 @@ package id.component
 				
 			for ( var i:int=0; i<markers_length; i++ ) {
 				m = markers[i];
+				
+				if ( ! m.center ) break;
+				
 				dx = m.center.x - posX;
 				dy = m.center.y - posY;
 				d = Math.sqrt( dx*dx + dy*dy );
