@@ -263,9 +263,11 @@
 			schuifHolder2.addChild(field2);
 			schuifHolder3.addChild(field3);
 
-			tekstCircleTitle = ContentParser.settings.Content.Source[contentId].title;
-			tekstCircleDesc = ContentParser.settings.Content.Source[contentId].name;
-
+			trace("source: " );
+			trace( ContentParser.settings.Content.Source.(@id == contentId).title );
+			
+			tekstCircleTitle = ContentParser.settings.Content.Source.(@id == contentId).title;
+			tekstCircleDesc = ContentParser.settings.Content.Source.(@id == contentId).name;
 
 			var tekstCircleAfterDesc = tekstCircleDesc.toUpperCase();
 			var tekstCircleAfterTitle = tekstCircleTitle.toUpperCase();
@@ -330,17 +332,17 @@
 					activeResultaat = false;
 				//trace("hiep hoi", ContentParser.settings.Content.Source[idContent].concept.text());
 				//trace('alles', ContentParser.settings.Content.Source[idContent].concept.image.length());
-					if (ContentParser.settings.Content.Source[contentId].concept.image.length() == 0)
+					if (ContentParser.settings.Content.Source.(@id == contentId).concept.image.length() == 0)
 					{
 						
 						//trace('geen foto', idContent);
 						geenFoto = true;
 					}
-					if (ContentParser.settings.Content.Source[contentId].concept.youtube.length() == 0)
+					if (ContentParser.settings.Content.Source.(@id == contentId).concept.youtube.length() == 0)
 					{
 						geenVideo = true;
 					}
-					if (ContentParser.settings.Content.Source[contentId].concept.tekst.length() == 0)
+					if (ContentParser.settings.Content.Source.(@id == contentId).concept.tekst.length() == 0)
 					{
 
 						geenTekst = true;
@@ -371,15 +373,15 @@
 					activeConstruction = true;
 					activeResultaat = false;
 
-					if (ContentParser.settings.Content.Source[contentId].constructie.image.length() == 0)
+					if (ContentParser.settings.Content.Source.(@id == contentId).constructie.image.length() == 0)
 					{
 						geenFoto = true;
 					}
-					if (ContentParser.settings.Content.Source[contentId].constructie.youtube.length() == 0)
+					if (ContentParser.settings.Content.Source.(@id == contentId).constructie.youtube.length() == 0)
 					{
 						geenVideo = true;
 					}
-					if (ContentParser.settings.Content.Source[contentId].constructie.tekst.length() == 0)
+					if (ContentParser.settings.Content.Source.(@id == contentId).constructie.tekst.length() == 0)
 					{
 						geenTekst = true;
 					}
@@ -404,16 +406,16 @@
 					activeConstruction = false;
 					activeResultaat = true;
 
-					if (ContentParser.settings.Content.Source[contentId].resultaat.image.length() == 0)
+					if (ContentParser.settings.Content.Source.(@id == contentId).resultaat.image.length() == 0)
 					{
 						trace('geen foto');
 						geenFoto = true;
 					}
-					if (ContentParser.settings.Content.Source[contentId].resultaat.youtube.length() == 0)
+					if (ContentParser.settings.Content.Source.(@id == contentId).resultaat.youtube.length() == 0)
 					{
 						geenVideo = true;
 					}
-					if (ContentParser.settings.Content.Source[contentId].resultaat.tekst.length() == 0)
+					if (ContentParser.settings.Content.Source.(@id == contentId).resultaat.tekst.length() == 0)
 					{
 						geenTekst = true;
 					}
