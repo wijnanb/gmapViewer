@@ -76,6 +76,8 @@ public class Magnifier extends TouchSprite
 	public var contentId:int;
 	public var content:Content;
 	protected var contentContainer:TouchSprite;
+	
+	public var expanded:Boolean = false;
 
 	
     //--------------------------------------------------------------------------
@@ -120,10 +122,26 @@ public class Magnifier extends TouchSprite
 		addEventListener("dragging", draggingHandler);
 	}
 	
-	public function collapse(contentId:int):void {
-		this.contentId = contentId;
-		content.inFocus(contentId);
+	public function expand(newContentId:int):void {
+		if ( !expanded ) {
+			content.inFocus(newContentId);
+			expanded = true;
+		} else if ( this.contentId != newContentId ) {
+			content.outFocus();
+			content.inFocus(newContentId);
+			expanded = true;
+		}
+		
+		this.contentId = newContentId;
 	}
+	
+	public function collapse():void {
+		if ( expanded ) {
+			content.outFocus();
+			expanded = false;
+		}
+	}
+	 
 	
 	override public function Dispose():void
 	{

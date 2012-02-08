@@ -162,7 +162,7 @@
 		public function inFocus(contentId:int):void // function called when magnifier hovers over marker
 		{
 			contentId = contentId;//marker
-			//trace('Marker', idIn);
+			
 			if ( !Player.isAir ) sound.play();
 			schuifHolder1=new TouchSprite();
 			schuifHolder2 =new TouchSprite();
@@ -644,14 +644,12 @@
 			}
 		}
 
-		public function outFocus(idOut):void // Magnifier off marker
+		public function outFocus():void // Magnifier off marker
 		{
-			var it = idOut;
 			if (uitgeschoven == true)
 			{
 				removeChild(holder);
 				uitgeschoven = false;
-
 			}
 
 			removeChild(alles);

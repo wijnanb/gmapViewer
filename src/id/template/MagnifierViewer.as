@@ -244,7 +244,9 @@ package id.template
 					if ( target )	{
 						// show content if not shown yet
 						var contentId:int = target.contentId;
-						magnifier.collapse(contentId);
+						magnifier.expand(contentId);
+					} else {
+						magnifier.collapse();
 					}
 				}
 			}
