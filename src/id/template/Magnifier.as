@@ -16,39 +16,40 @@
 package id.template
 {
 
-import id.core.id_internal;
-import id.core.TouchObject;
-import id.core.TouchSprite;
-
-import gl.events.GestureEvent;
-import gl.events.TouchEvent;
-
-import flash.display.BitmapData;
 import flash.display.Bitmap;
+import flash.display.BitmapData;
 import flash.display.BlendMode;
 import flash.display.DisplayObject;
 import flash.display.PixelSnapping;
 import flash.display.Shape;
 import flash.display.Sprite;
 import flash.events.Event;
+import flash.events.TimerEvent;
+import flash.filters.DropShadowFilter;
 import flash.geom.Matrix;
 import flash.geom.Point;
 import flash.geom.Rectangle;
+import flash.utils.Dictionary;
+import flash.utils.Timer;
 import flash.utils.clearTimeout;
 import flash.utils.setTimeout;
 
-import mx.utils.MatrixUtil;
-import flash.utils.Dictionary;
-import flash.filters.DropShadowFilter;
+import gl.events.GestureEvent;
+import gl.events.TouchEvent;
+
+import id.component.Content;
 import id.core.ApplicationGlobals;
-	import flash.events.TimerEvent;
-	import flash.utils.Timer;
+import id.core.TouchObject;
+import id.core.TouchSprite;
+import id.core.id_internal;
+
+import mx.utils.MatrixUtil;
 
 
 public class Magnifier extends TouchSprite
 {
 	
-	private static var magnifiers:Array = [];
+	//private static var magnifiers:Array = [];
 	private static var zeroPoint:Point = new Point(0, 0);
 	private var sizeMagnifier;
 	
@@ -71,6 +72,10 @@ public class Magnifier extends TouchSprite
 	private var color:String;
 	private var style:String;
 	private var sprite:Sprite;
+	
+	public var contentId:int;
+	public var content:Content;
+	protected var contentContainer:TouchSprite;
 
 	
     //--------------------------------------------------------------------------
@@ -92,14 +97,19 @@ public class Magnifier extends TouchSprite
 	{
 		super();
 		
-		id = magnifiers.length;
+		//id = magnifiers.length;
 		//trace("length", id);
-		magnifiers.push(this);
+		//magnifiers.push(this);
 		
 		blobContainerEnabled = true;
 		shape=ApplicationGlobals.dataManager.data.Template.magnifier.shape;
 		color=ApplicationGlobals.dataManager.data.Template.magnifier.color;
 		style=ApplicationGlobals.dataManager.data.Template.magnifier.style;
+		
+		contentContainer = new TouchSprite();
+		content = new Content(contentContainer,this,null);
+		content.addChild(contentContainer);
+		addChild(content);
 		
 		createUI();
 		updateUI();
@@ -110,10 +120,15 @@ public class Magnifier extends TouchSprite
 		addEventListener("dragging", draggingHandler);
 	}
 	
+	public function collapse(contentId:int):void {
+		this.contentId = contentId;
+		content.inFocus(contentId);
+	}
+	
 	override public function Dispose():void
 	{
 		parent.removeChild(this);
-		magnifiers.splice(magnifiers.indexOf(this), 1);
+		//magnifiers.splice(magnifiers.indexOf(this), 1);
 	}
 	
     //--------------------------------------------------------------------------
@@ -595,8 +610,6 @@ public class Magnifier extends TouchSprite
 		
 	public function captureBitmap():void
 	{
-		//vount++;
-		//trace('ik ben aan het werk' , vount);
 		destroyBitmap();
 		
 		var tempData:BitmapData;
@@ -605,8 +618,6 @@ public class Magnifier extends TouchSprite
 
 		if(_vectorRenderer)
 		{
-			//transformation = _captureTarget.transform.matrix.clone();
-			
 			transformation.scale(_scale, _scale);
 		}
 		
@@ -639,7 +650,6 @@ public class Magnifier extends TouchSprite
 		}
 		
 		visible = false;
-		
 		
 		tempData = new BitmapData
 		(
@@ -1000,6 +1010,7 @@ public class Magnifier extends TouchSprite
 		}
 		
 		_listenersAttached = true;
+		
 		ValidationHelper.getInstance().registerCallback(captureBitmap);
 	}
 	

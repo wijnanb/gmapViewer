@@ -13,6 +13,7 @@ package
 	
 	public class Marker extends TouchSprite
 	{
+		public var contentId:int;
 		public var lng:String;
 		public var lat:String;
 		public var u:Number;
@@ -27,10 +28,11 @@ package
 		public static const ICON_OFFSET_X:Number = -2;
 		public static const ICON_OFFSET_Y:Number = -25;
 		
-		public function Marker(lng:String, lat:String, iconURL:String )
+		public function Marker(contentId:int, lng:String, lat:String, iconURL:String )
 		{
 			super();
 			
+			this.contentId = contentId;
 			this.lng = lng;
 			this.lat = lat;
 			this.iconURL = iconURL;

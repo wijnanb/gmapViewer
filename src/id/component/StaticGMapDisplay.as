@@ -264,12 +264,13 @@ package id.component
 			
 			for (var i=0; i<ContentParser.settings.Content.Source.length(); i++)
 			{
+				var id:int = parseInt(ContentParser.settings.Content.Source[i].@id);
 				var lng:String = ContentParser.settings.Content.Source[i].longitude;
 				var lat:String = ContentParser.settings.Content.Source[i].latitude;
 				var iconURL:String = ContentParser.settings.Content.Source[i].markerIcon;
 				
 				if ( lng!="" && lat!="" ) {	
-					var marker:Marker = new Marker(lng, lat, iconURL);
+					var marker:Marker = new Marker(id, lng, lat, iconURL);
 					markers.push(marker);
 					
 					markerLayer.addChild(marker);
@@ -316,6 +317,9 @@ package id.component
 				
 			for ( var i:int=0; i<markers_length; i++ ) {
 				m = markers[i];
+				
+				if ( ! m.center ) break;
+				
 				dx = m.center.x - posX;
 				dy = m.center.y - posY;
 				d = Math.sqrt( dx*dx + dy*dy );
