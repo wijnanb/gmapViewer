@@ -161,7 +161,7 @@
 			}
 		public function inFocus(contentId:int):void // function called when magnifier hovers over marker
 		{
-			contentId = contentId;//marker
+			this.contentId = contentId;//marker
 			
 			if ( !Player.isAir ) sound.play();
 			schuifHolder1=new TouchSprite();
@@ -262,9 +262,6 @@
 			schuifHolder1.addChild(field1);
 			schuifHolder2.addChild(field2);
 			schuifHolder3.addChild(field3);
-
-			trace("source: " );
-			trace( ContentParser.settings.Content.Source.(@id == contentId).title );
 			
 			tekstCircleTitle = ContentParser.settings.Content.Source.(@id == contentId).title;
 			tekstCircleDesc = ContentParser.settings.Content.Source.(@id == contentId).name;
@@ -330,12 +327,9 @@
 					activeConcept = true;
 					activeConstruction = false;
 					activeResultaat = false;
-				//trace("hiep hoi", ContentParser.settings.Content.Source[idContent].concept.text());
-				//trace('alles', ContentParser.settings.Content.Source[idContent].concept.image.length());
+						
 					if (ContentParser.settings.Content.Source.(@id == contentId).concept.image.length() == 0)
 					{
-						
-						//trace('geen foto', idContent);
 						geenFoto = true;
 					}
 					if (ContentParser.settings.Content.Source.(@id == contentId).concept.youtube.length() == 0)
