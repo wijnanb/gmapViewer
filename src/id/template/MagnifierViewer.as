@@ -136,6 +136,7 @@ package id.template
 		
 		public var gMapViewer:GMapViewer;
 		
+		public var mapAndContentLayer:TouchSprite;
 		public var mapViewerLayer:Sprite;
 		public var contentLayer:TouchSprite;
 		public var magnifierLayer:TouchSprite;
@@ -152,13 +153,16 @@ package id.template
 			splashScreenLayer = new Sprite();
 			addChild(splashScreenLayer);
 			
+			mapAndContentLayer = new TouchSprite();
+			addChild(mapAndContentLayer);
+			
 			mapViewerLayer = new Sprite();
 			mapViewerLayer.graphics.beginFill(0xFFFFFF);
 			mapViewerLayer.graphics.drawRect(0,0,stageWidth,stageHeight);
-			addChild(mapViewerLayer);
+			mapAndContentLayer.addChild(mapViewerLayer);
 			
 			contentLayer = new TouchSprite();
-			addChild(contentLayer);
+			mapAndContentLayer.addChild(contentLayer);
 			
 			magnifierLayer = new TouchSprite();
 			addChild(magnifierLayer);
@@ -186,7 +190,7 @@ package id.template
 				m.scaleAdjustable = false;
 				m.continuousRenderer = true;
 				m.vectorRenderer = true;
-				m.captureTarget = mapViewerLayer;
+				m.captureTarget = mapAndContentLayer;
 				m.contentLayer = contentLayer;
 				
 				m.addEventListener(TouchEvent.TOUCH_DOWN, magnifier_touchDownHandler, false, 0, true);
