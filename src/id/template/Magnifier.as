@@ -75,7 +75,7 @@ public class Magnifier extends TouchSprite
 	
 	public var contentId:int;
 	public var content:Content;
-	protected var contentContainer:TouchSprite;
+	public var contentLayer:TouchSprite;
 	
 	public var expanded:Boolean = false;
 
@@ -98,19 +98,18 @@ public class Magnifier extends TouchSprite
 	public function Magnifier()
 	{
 		super();
-		
-		//id = magnifiers.length;
-		//trace("length", id);
-		//magnifiers.push(this);
-		
+	}
+	
+	public function init() {
 		blobContainerEnabled = true;
-		shape=ApplicationGlobals.dataManager.data.Template.magnifier.shape;
-		color=ApplicationGlobals.dataManager.data.Template.magnifier.color;
-		style=ApplicationGlobals.dataManager.data.Template.magnifier.style;
+		shape = ApplicationGlobals.dataManager.data.Template.magnifier.shape;
+		color = ApplicationGlobals.dataManager.data.Template.magnifier.color;
+		style = ApplicationGlobals.dataManager.data.Template.magnifier.style;
 		
-		contentContainer = new TouchSprite();
-		content = new Content(contentContainer,this,null);
-		content.addChild(contentContainer);
+		var contentContainer:TouchSprite = new TouchSprite();
+		contentLayer.addChild(contentContainer);
+		
+		content = new Content(contentContainer,this);
 		addChild(content);
 		
 		createUI();

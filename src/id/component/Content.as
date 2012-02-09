@@ -33,6 +33,7 @@
 	import id.module.LiveVideoViewer;
 	import id.module.TekstViewer;
 	import id.module.YouTubeViewer;
+	import id.template.Magnifier;
 	import id.utils.CurvedText;
 
 
@@ -113,8 +114,8 @@
 		private var contentId:int;
 		private var mX;
 		private var mY;
-		private var containerContent;
-		private var magnifier;
+		protected var contentContainer;
+		protected var magnifier:Magnifier;
 		public var iconscale = 0;
 		private var geenVideo = false;
 		private var geenFoto = false;
@@ -138,13 +139,12 @@
 		private var pressedTekst:Boolean = false;
 		private var pressedVideo:Boolean = false;
 
-		public function Content(contentHolder, magnifi , mId)
+		public function Content(contentContainer:TouchSprite, magnifier:Magnifier)
 		{
 			super();
 			blobContainerEnabled = true;
-			containerContent = contentHolder; // adds the content underneath the magnifier
-			magnifier = magnifi; // magnifier glass
-			magId = mId; //marker id
+			this.contentContainer = contentContainer; // adds the content underneath the magnifier
+			this.magnifier = magnifier;
 			
 			if ( !Player.isAir ) {
 				sound = new Sound(new URLRequest("assets/interface/sound/knock.mp3"));
@@ -402,7 +402,6 @@
 
 					if (ContentParser.settings.Content.Source.(@id == contentId).resultaat.image.length() == 0)
 					{
-						trace('geen foto');
 						geenFoto = true;
 					}
 					if (ContentParser.settings.Content.Source.(@id == contentId).resultaat.youtube.length() == 0)
@@ -519,7 +518,7 @@
 			var livevideoViewer:LiveVideoViewer = new LiveVideoViewer;
 			livevideoViewer.id = i;//id marker
 			liveVideoList[i] = livevideoViewer;
-			containerContent.addChild(liveVideoList[i]);
+			contentContainer.addChild(liveVideoList[i]);
 			liveVideoList[i].x = parent.x;
 			liveVideoList[i].y = parent.y;
 		}
@@ -529,7 +528,7 @@
 			var i = contentId;
 			flickrViewer = new FlickrViewer(i);
 			flickrList[i] = flickrViewer;
-			containerContent.addChild(flickrList[i]);
+			contentContainer.addChild(flickrList[i]);
 			flickrList[i].x = parent.x;
 			flickrList[i].y = parent.y;
 		}
@@ -541,25 +540,26 @@
 			timerPress.start();
 			if(pressedFoto == false){
 				pressedFoto = true;
-			var ip = contentId;
-			var imageViewer:ImageViewer = new ImageViewer(ip,guiTouch,magnifier);
-			imageList[ip] = imageViewer;
-			imageViewer.id = ip;
-			if (parent.x < 640)
-			{
-				offset3 = 350;
-			}
-			else
-			{
-				offset3 = -350;
-			}
-			imageList[ip].x = parent.x + offset3 * Math.random() - Math.random()*4;
-			imageList[ip].y = parent.y * Math.random();
-			containerContent.addChild(imageList[ip]);
-			
-			var timer:Timer = new Timer(10,100);
-			timer.addEventListener(TimerEvent.TIMER, updateLens);
-			timer.start();
+				var ip = contentId;
+				var imageViewer:ImageViewer = new ImageViewer(ip,guiTouch,magnifier);
+				imageList[ip] = imageViewer;
+				imageViewer.id = ip;
+				if (parent.x < 640)
+				{
+					offset3 = 350;
+				}
+				else
+				{
+					offset3 = -350;
+				}
+				imageList[ip].x = parent.x + offset3 * Math.random() - Math.random()*4;
+				imageList[ip].y = parent.y * Math.random();
+					
+				contentContainer.addChild(imageList[ip]);
+				
+				var timer:Timer = new Timer(10,100);
+				timer.addEventListener(TimerEvent.TIMER, updateLens);
+				timer.start();
 			}
 		}
 
@@ -586,7 +586,7 @@
 			}
 			tekstList[ip].x = parent.x + offset2;
 			tekstList[ip].y = parent.y;
-			containerContent.addChild(tekstList[ip]);
+			contentContainer.addChild(tekstList[ip]);
 			var timer:Timer = new Timer(10,100);
 			timer.addEventListener(TimerEvent.TIMER, updateLens);
 			timer.start();
@@ -621,7 +621,7 @@
 			var i = contentId;
 			youTubeViewer = new YouTubeViewer(i,guiTouch,magnifier);
 			youtubeList[i] = youTubeViewer;
-			containerContent.addChild(youtubeList[i]);
+			contentContainer.addChild(youtubeList[i]);
 			if (parent.x < 640)
 			{
 				offset = 550;

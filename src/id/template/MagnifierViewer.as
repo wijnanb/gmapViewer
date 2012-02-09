@@ -137,6 +137,7 @@ package id.template
 		public var gMapViewer:GMapViewer;
 		
 		public var mapViewerLayer:Sprite;
+		public var contentLayer:TouchSprite;
 		public var magnifierLayer:TouchSprite;
 		public var splashScreenLayer:Sprite;
 
@@ -155,6 +156,9 @@ package id.template
 			mapViewerLayer.graphics.beginFill(0xFFFFFF);
 			mapViewerLayer.graphics.drawRect(0,0,stageWidth,stageHeight);
 			addChild(mapViewerLayer);
+			
+			contentLayer = new TouchSprite();
+			addChild(contentLayer);
 			
 			magnifierLayer = new TouchSprite();
 			addChild(magnifierLayer);
@@ -183,11 +187,14 @@ package id.template
 				m.continuousRenderer = true;
 				m.vectorRenderer = true;
 				m.captureTarget = mapViewerLayer;
+				m.contentLayer = contentLayer;
 				
 				m.addEventListener(TouchEvent.TOUCH_DOWN, magnifier_touchDownHandler, false, 0, true);
 				m.addEventListener(TouchEvent.TOUCH_UP, magnifier_touchUpHandler, false, 0, true);
 				m.addEventListener(TouchEvent.TOUCH_MOVE,  magnifier_touchMove, false, 0, true);
 				m.addEventListener(GestureEvent.GESTURE_FLICK,flickGestureHandler, false, 0, true);
+				
+				m.init();
 				
 				magnifiers.push( m );
 				
@@ -254,12 +261,16 @@ package id.template
 
 		protected function magnifier_touchDownHandler(event:TouchEvent):void
 		{
-			(event.target as Magnifier).startTouchDrag(-1, true, new Rectangle(0, 0,stageWidth,stageHeight));
+			if ( event.target is Magnifier ) {
+				(event.target as Magnifier).startTouchDrag(-1, true, new Rectangle(0, 0,stageWidth,stageHeight));
+			}
 		}
 		
 		protected function magnifier_touchUpHandler(event:TouchEvent):void
 		{
-			(event.target as Magnifier).stopTouchDrag(-1);
+			if ( event.target is Magnifier ) {
+				(event.target as Magnifier).stopTouchDrag(-1);
+			}
 		}
 		
 		private function flickGestureHandler(e:GestureEvent):void
