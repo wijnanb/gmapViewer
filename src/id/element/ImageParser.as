@@ -1,9 +1,9 @@
 ﻿package id.element
 {
-	import flash.net.URLLoader;
-	import flash.net.URLRequest;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
+	import flash.net.URLLoader;
+	import flash.net.URLRequest;
 
 	/**
 	 * This is the ImageParser class.
@@ -58,24 +58,20 @@
 		private static function settingsLoader_completeHandler(event:Event):void
 		{
 			settings = new XML(settingsLoader.data);
-			trace('id: ', _settingsId);
-
+			
 			if (niveau  == "concept"){
-				amountToShow=settings.Content.Source[_settingsId].concept.image.length();
-				totalAmount=settings.Content.Source[_settingsId].concept.image.length();
-				trace('idee: ',settings.Content.Source[_settingsId].concept.image);
+				amountToShow=settings.Content.Source.(@id==_settingsId).concept.image.length();
+				totalAmount=settings.Content.Source.(@id==_settingsId).concept.image.length();
 			}
 			
 			if (niveau  == "constructie"){
-				amountToShow=settings.Content.Source[_settingsId].constructie.image.length();
-				totalAmount=settings.Content.Source[_settingsId].constructie.image.length();
-				trace('opbouw',amountToShow);
+				amountToShow=settings.Content.Source.(@id==_settingsId).constructie.image.length();
+				totalAmount=settings.Content.Source.(@id==_settingsId).constructie.image.length();
 			}
 			
 			if (niveau  == "resultaat"){
-				amountToShow=settings.Content.Source[_settingsId].resultaat.image.length();
-				totalAmount=settings.Content.Source[_settingsId].resultaat.image.length();
-				trace('resultaat',amountToShow);
+				amountToShow=settings.Content.Source.(@id==_settingsId).resultaat.image.length();
+				totalAmount=settings.Content.Source.(@id==_settingsId).resultaat.image.length();
 			}
 						
 			if (!amountToShow)

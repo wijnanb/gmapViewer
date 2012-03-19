@@ -316,34 +316,34 @@
 
 			// Data
 			if(niveau == "concept"){
-			mediaUrl=ImageParser.settings.Content.Source[_settingsId].concept.image[id].url;
+			mediaUrl=ImageParser.settings.Content.Source.(@id==_settingsId).concept.image[id].url;
 			//trace('ide', id);
-			thumbUrl=ImageParser.settings.Content.Source[_settingsId].concept.image[id].url;
-			qrCodeTag=ImageParser.settings.Content.Source[_settingsId].concept.image[id].qrCodeTag;
-			titleText=ImageParser.settings.Content.Source[_settingsId].concept.image[id].title;
-			descriptionText=ImageParser.settings.Content.Source[_settingsId].concept.image[id].description;
-			authorText=ImageParser.settings.Content.Source[_settingsId].concept.image[id].author;
-			publishText=ImageParser.settings.Content.Source[_settingsId].concept.image[id].publish;
+			thumbUrl=ImageParser.settings.Content.Source.(@id==_settingsId).concept.image[id].url;
+			qrCodeTag=ImageParser.settings.Content.Source.(@id==_settingsId).concept.image[id].qrCodeTag;
+			titleText=ImageParser.settings.Content.Source.(@id==_settingsId).concept.image[id].title;
+			descriptionText=ImageParser.settings.Content.Source.(@id==_settingsId).concept.image[id].description;
+			authorText=ImageParser.settings.Content.Source.(@id==_settingsId).concept.image[id].author;
+			publishText=ImageParser.settings.Content.Source.(@id==_settingsId).concept.image[id].publish;
 			}
 			if(niveau == "constructie"){
-			mediaUrl=ImageParser.settings.Content.Source[_settingsId].constructie.image[id].url;
+			mediaUrl=ImageParser.settings.Content.Source.(@id==_settingsId).constructie.image[id].url;
 			//trace('op', mediaUrl);
-			thumbUrl=ImageParser.settings.Content.Source[_settingsId].constructie.image[id].url;
-			qrCodeTag=ImageParser.settings.Content.Source[_settingsId].constructie.image[id].qrCodeTag;
-			titleText=ImageParser.settings.Content.Source[_settingsId].constructie.image[id].title;
-			descriptionText=ImageParser.settings.Content.Source[_settingsId].constructie.image[id].description;
-			authorText=ImageParser.settings.Content.Source[_settingsId].constructie.image[id].author;
-			publishText=ImageParser.settings.Content.Source[_settingsId].constructie.image[id].publish;
+			thumbUrl=ImageParser.settings.Content.Source.(@id==_settingsId).constructie.image[id].url;
+			qrCodeTag=ImageParser.settings.Content.Source.(@id==_settingsId).constructie.image[id].qrCodeTag;
+			titleText=ImageParser.settings.Content.Source.(@id==_settingsId).constructie.image[id].title;
+			descriptionText=ImageParser.settings.Content.Source.(@id==_settingsId).constructie.image[id].description;
+			authorText=ImageParser.settings.Content.Source.(@id==_settingsId).constructie.image[id].author;
+			publishText=ImageParser.settings.Content.Source.(@id==_settingsId).constructie.image[id].publish;
 			}
 			if(niveau == "resultaat"){
-			mediaUrl=ImageParser.settings.Content.Source[_settingsId].resultaat.image[id].url;
+			mediaUrl=ImageParser.settings.Content.Source.(@id==_settingsId).resultaat.image[id].url;
 			//trace('resul', mediaUrl);
-			thumbUrl=ImageParser.settings.Content.Source[_settingsId].resultaat.image[id].url;
-			qrCodeTag=ImageParser.settings.Content.Source[_settingsId].resultaat.image[id].qrCodeTag;
-			titleText=ImageParser.settings.Content.Source[_settingsId].resultaat.image[id].title;
-			descriptionText=ImageParser.settings.Content.Source[_settingsId].resultaat.image[id].description;
-			authorText=ImageParser.settings.Content.Source[_settingsId].resultaat.image[id].author;
-			publishText=ImageParser.settings.Content.Source[_settingsId].resultaat.image[id].publish;
+			thumbUrl=ImageParser.settings.Content.Source.(@id==_settingsId).resultaat.image[id].url;
+			qrCodeTag=ImageParser.settings.Content.Source.(@id==_settingsId).resultaat.image[id].qrCodeTag;
+			titleText=ImageParser.settings.Content.Source.(@id==_settingsId).resultaat.image[id].title;
+			descriptionText=ImageParser.settings.Content.Source.(@id==_settingsId).resultaat.image[id].description;
+			authorText=ImageParser.settings.Content.Source.(@id==_settingsId).resultaat.image[id].author;
+			publishText=ImageParser.settings.Content.Source.(@id==_settingsId).resultaat.image[id].publish;
 			}
 
 			// Objects
@@ -476,7 +476,7 @@ var proxy:String = "http://maddoc.khlim.be/~dleen/Z33/gmapViewer/proxy.php?url="
 			title.text=titleText;
 			description.text=descriptionText;
 			if (id == 0){
-			stringTemp = ImageParser.settings.Content.Source[_settingsId].name;
+			stringTemp = ImageParser.settings.Content.Source.(@id==_settingsId).name;
 			author.text= stringTemp.toUpperCase();
 			}
 			publish.text=publishText;
