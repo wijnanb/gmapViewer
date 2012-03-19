@@ -1,0 +1,8 @@
+
+
+4 mei
+
+enkel switchen tussen kaarten, nog geen layers
+2de week na paasvakantie kaartswitch ontwikkelen (2 weken doorloop)
+backend: dringend bekijken om met meerdere kaarten te kunnen werken.  Proberen om gewoon kopies te maken, zodat geen aanpassingen aan backend nodig is.
+Bespreken met Danny over samenwerking met EDM
