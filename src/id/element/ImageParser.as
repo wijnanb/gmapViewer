@@ -57,40 +57,33 @@
 
 		private static function settingsLoader_completeHandler(event:Event):void
 		{
-			
-			settings=new XML(settingsLoader.data);
-			trace('id',_settingsId);
+			settings = new XML(settingsLoader.data);
+			trace('id: ', _settingsId);
 
-			//trace('blup',settings.Content.Source[_settingsId].concept.image);
 			if (niveau  == "concept"){
-				
 				amountToShow=settings.Content.Source[_settingsId].concept.image.length();
 				totalAmount=settings.Content.Source[_settingsId].concept.image.length();
 				trace('idee: ',settings.Content.Source[_settingsId].concept.image);
-				}
+			}
+			
 			if (niveau  == "constructie"){
 				amountToShow=settings.Content.Source[_settingsId].constructie.image.length();
 				totalAmount=settings.Content.Source[_settingsId].constructie.image.length();
 				trace('opbouw',amountToShow);
-				}
+			}
+			
 			if (niveau  == "resultaat"){
 				amountToShow=settings.Content.Source[_settingsId].resultaat.image.length();
 				totalAmount=settings.Content.Source[_settingsId].resultaat.image.length();
 				trace('resultaat',amountToShow);
-				}
-			
-			//trace('xmller', settings);
-			//trace('amount', amountToShow);*/
-			
-
-			
-			if(!amountToShow)
+			}
+						
+			if (!amountToShow)
 			{
 				amountToShow=totalAmount;
 			}
+			
 			dispatchEvent(new Event(Event.COMPLETE));
-
-			//settingsLoader.removeEventListener(Event.COMPLETE, settingsLoader_completeHandler);
 			settingsLoader=null;
 		}
 
