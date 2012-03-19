@@ -1,14 +1,16 @@
 ﻿package id.module
 {
+	import com.greensock.TweenMax;
+	
 	import flash.events.Event;
-	import id.core.TouchComponent;
+	
 	import id.component.ImageDisplay;
+	import id.component.LaderIcoon;
+	import id.core.ApplicationGlobals;
+	import id.core.TouchComponent;
 	import id.element.ImageDisplayParser;
 	import id.element.ImageParser;
-	import id.core.ApplicationGlobals;
-	import com.greensock.TweenMax;
-
-	import id.component.LaderIcoon;
+	import id.template.Magnifier;
 
 	/**
 	 * 
@@ -103,14 +105,11 @@
 			_id = value;
 		}
 
-		private function onParseComplete(event:Event):void
+		protected function onParseComplete(event:Event):void
 		{
 			counter++;
 			if (counter == 2)
 			{
-				//addChild(LaadIcon);
-				//LaadIcon.progresser(true , -440, -380);
-				
 				ImageParser.removeEventListener(Event.COMPLETE, onParseComplete);
 				for (var ti = 0; ti < ImageParser.amountToShow; ti++)
 				{
@@ -123,10 +122,6 @@
 					addChild(imageDisplayList[ti]);
 					
 				}
-				
-				//LaadIcon.progresser(false);
-				//removeChild(LaadIcon);
-			
 			}
 		}
 	}
