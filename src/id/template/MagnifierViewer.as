@@ -89,7 +89,7 @@ package id.template
 		private var moduleDictionary:Dictionary = new Dictionary();
 		private var moduleID:Array = new Array();
 		private var moduleNameArray:Array = new Array();
-		private var magnifiers:Array = new Array();
+		public var magnifiers:Array = new Array();
 		private var contentHolders:Array = new Array();
 		private var _moduleName:String = "";
 
@@ -282,6 +282,13 @@ package id.template
 			dx = e.velocityX;
 			dy = e.velocityY;
 			//addEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
+		}
+		
+		public function updateAllMagnifiers():void {
+			var magnifiers_length:int = magnifiers.length;
+			for ( var i:int=0; i<magnifiers_length; i++ ) {
+				 (magnifiers[i] as Magnifier).captureBitmap();
+			}	
 		}
 		
 		override public function Dispose():void {

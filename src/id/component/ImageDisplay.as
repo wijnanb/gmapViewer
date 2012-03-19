@@ -1,34 +1,36 @@
 ﻿package id.component
 {
-	import flash.events.Event;
+	import com.greensock.TweenLite;
+	
+	import flash.display.Bitmap;
 	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
-	import flash.display.Bitmap;
 	import flash.display.Loader;
-	import flash.text.TextField;
-	import flash.display.Sprite;
 	import flash.display.Shape;
-	import flash.media.Video;
-	import id.core.ApplicationGlobals;
-	import id.core.TouchSprite;
-	import id.core.TouchComponent;
-	import id.component.ControlBtns;
-	import id.element.ThumbLoader;
-	import id.element.BitmapLoader;
-	import id.element.Outline;
-	import id.element.Graphic;
-	import id.element.TextDisplay;
-	import id.element.ImageParser;
-	import id.element.ImageDisplayParser;
-	import id.element.QRCodeDisplay;
-	import gl.events.TouchEvent;
-	import gl.events.GestureEvent;
-	import com.greensock.TweenLite;
+	import flash.display.Sprite;
+	import flash.events.Event;
 	import flash.geom.Point;
-import flash.text.*;
-import flash.geom.Point;
-		 import flash.system.Security;
- import flash.system.SecurityPanel;
+	import flash.media.Video;
+	import flash.system.Security;
+	import flash.system.SecurityPanel;
+	import flash.text.*;
+	import flash.text.TextField;
+	
+	import gl.events.GestureEvent;
+	import gl.events.TouchEvent;
+	
+	import id.component.ControlBtns;
+	import id.core.ApplicationGlobals;
+	import id.core.TouchComponent;
+	import id.core.TouchSprite;
+	import id.element.BitmapLoader;
+	import id.element.Graphic;
+	import id.element.ImageDisplayParser;
+	import id.element.ImageParser;
+	import id.element.Outline;
+	import id.element.QRCodeDisplay;
+	import id.element.TextDisplay;
+	import id.element.ThumbLoader;
 
 	public class ImageDisplay extends TouchComponent
 	{
@@ -662,18 +664,15 @@ if (id == 0){
 		{
 			TweenLite.to(this, .5, {scaleX:1, scaleY:1, onUpdate:updateUI});
 		}
-		private function touchMoveHandler(event:TouchEvent){
-			for (var i = 0; i<magnifier.length;i++){
-				magnifier[i].captureBitmap();
-				}
-				
-				
-				//trace(test.x);
-				//trace('x', parent.x , 'stage' , stageWidth/2);
-				
+		
+		private function touchMoveHandler(event:TouchEvent)
+		{
+			Global.viewer.updateAllMagnifiers();	
 		}
+		
 		var stageX =0;
 		var stageY = 0;
+		
 		private function flickGestureHandler(event:GestureEvent):void
 		{
 			dx = event.velocityX;

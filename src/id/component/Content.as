@@ -607,7 +607,7 @@
 
 		function updateLens(e:TimerEvent):void // update the lense when something moves
 		{
-			magnifier[magId].captureBitmap();
+			magnifier.captureBitmap();
 		}
 
 		private function videoHandler(event:Event):void // make a video instance
