@@ -188,7 +188,7 @@ package id.template
 				m.minSize = 1;
 				m.maxSize = 3;
 				m.scaleAdjustable = false;
-				m.continuousRenderer = true;
+				m.continuousRenderer = false;
 				m.vectorRenderer = true;
 				m.captureTarget = mapAndContentLayer;
 				m.contentLayer = contentLayer;

@@ -15,6 +15,8 @@
 	import flash.system.SecurityPanel;
 	import flash.text.*;
 	import flash.text.TextField;
+	import flash.utils.clearInterval;
+	import flash.utils.setInterval;
 	
 	import gl.events.GestureEvent;
 	import gl.events.TouchEvent;
@@ -100,6 +102,8 @@
 		public var shade:Class;
 		private var shaduw = new shade();
 		private var aantal = 0;
+		
+		protected var updateIntervalId:int;
 		
 		/**
 		 *
@@ -648,11 +652,16 @@ if (id == 0){
 		{
 			startTouchDrag(-1);
 			parent.setChildIndex(this as DisplayObject,parent.numChildren-1);
+			
+			clearInterval(updateIntervalId);
+			updateIntervalId = setInterval(onUpdate, 40); //25FPS
 		}
 
 		private function touchUpHandler(event:TouchEvent):void
 		{
 			stopTouchDrag(-1);
+			
+			clearInterval(updateIntervalId);
 		}
 
 		private function rotateGestureHandler(event:GestureEvent):void
@@ -667,7 +676,12 @@ if (id == 0){
 		
 		private function touchMoveHandler(event:TouchEvent)
 		{
-			Global.viewer.updateAllMagnifiers();	
+			// strange behaviour: is only called when move has finished
+			onUpdate();
+		}
+		
+		protected function onUpdate():void {
+			Global.viewer.updateAllMagnifiers();
 		}
 		
 		var stageX =0;
