@@ -27,7 +27,7 @@ package
 	public class Main extends Application
 	{
 		protected var maps:Array = [];
-		protected var viewer:MagnifierViewer;
+		public var viewer:MagnifierViewer;
 		
 		protected var viewerLayer:TouchSprite = new TouchSprite();
 		protected var mapSwitchButtonLayer:TouchSprite = new TouchSprite();
@@ -81,10 +81,10 @@ package
 			if ( viewer ) {
 				trace("destroy viewer");
 				viewer.Dispose();
-				viewer = null;
+				Global.viewer = viewer = null;
 			}
 			
-			viewer = new MagnifierViewer();
+			Global.viewer = viewer = new MagnifierViewer();
 			viewerLayer.addChild(viewer);
 		}
 		
