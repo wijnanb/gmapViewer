@@ -258,6 +258,8 @@
 
 			removeEventListener(ControlBtns.INFO_CALL, informationHandler);
 
+			clearInterval(updateIntervalId);
+			
 			super.updateUI();
 
 			if (parent)
