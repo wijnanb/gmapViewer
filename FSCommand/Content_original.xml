@@ -740,34 +740,6 @@ Tadashi Kawamata</description>
       <constructie />
       <resultaat />
     </Source>
-    <Source id="21">
-      <name>Gijs Van Vaerenbergh</name>
-      <title>Reading Between The Lines</title>
-      <description>Pieterjan Gijs (1983) en Arnout Van Vaerenbergh (1983) studeerden beide architectuur en werken samen onder de naam Gijs Van Vaerenbergh in een multidisciplinaire praktijk met een sterke focus op de openbare ruimte.</description>
-      <longitude>5.356800856294837</longitude>
-      <latitude>50.793815335235216</latitude>
-      <markerIcon>http://epics.edm.uhasselt.be/z33/images/Baerenbergh.swf</markerIcon>
-      <concept />
-      <constructie />
-      <resultaat />
-    </Source>
-    <Source id="22">
-      <name>
-      </name>
-      <title>
-      </title>
-      <description>
-      </description>
-      <longitude>
-      </longitude>
-      <latitude>
-      </latitude>
-      <markerIcon>
-      </markerIcon>
-      <concept />
-      <constructie />
-      <resultaat />
-    </Source>
   </Content>
   <GlobalSettings>
     <amountToShow>7</amountToShow>
