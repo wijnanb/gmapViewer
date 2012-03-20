@@ -700,7 +700,6 @@ var touchSprite:TouchSprite=nested as TouchSprite;
 		private function touchMoveHandler(event:TouchEvent)
 		{
 			// strange behaviour: is only called when move has finished
-			onUpdate();
 		}
 		
 		protected function onUpdate():void {

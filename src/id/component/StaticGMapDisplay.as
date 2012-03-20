@@ -224,6 +224,8 @@ package id.component
 				
 				marker.setMapLocation(pinpoint.x, pinpoint.y);
 			}
+			
+			Global.viewer.updateAllMagnifiers();
 		}
 		
 		protected function findPinpointLocations(bitmapData:BitmapData):Array {
