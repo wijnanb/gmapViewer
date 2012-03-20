@@ -1,12 +1,9 @@
 ﻿package id.element
 {
-	import flash.net.URLLoader;
-	import flash.net.URLRequest;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
-	import flash.net.URLRequest;
 	import flash.net.URLLoader;
-	import flash.events.Event;
+	import flash.net.URLRequest;
 	import flash.system.Security;
 
 	/**
@@ -67,85 +64,46 @@
 		private static function settingsLoader_completeHandler(event:Event):void
 		{
 			settings = new XML(settingsLoader.data);
-			//trace('rockabilly: ', niveau);
-
-
-			if (niveau == "constructie")
-			{
-				amountToShow = settings.Content.Source[_settingsId].constructie.youtube.length();
-				//trace('yeehaa', settings.Content.Source[_settingsId].constructie.youtube.length());
-				for (var tel = 0; tel < settings.Content.Source[_settingsId].constructie.youtube.length(); tel++)
-				{
-					request = new URLRequest();
-					if (settings.Content.Source[_settingsId].constructie.youtube[tel].url.slice(0,15) ==  "http://youtu.be"){
-						trace('youtu.be');
-						request.url = "http://gdata.youtube.com/feeds/api/videos/" + settings.Content.Source[_settingsId].constructie.youtube[tel].url.slice(16,27);
-						}
-						else{
-					request.url = "http://gdata.youtube.com/feeds/api/videos/" + settings.Content.Source[_settingsId].constructie.youtube[tel].url.slice(31,42);
-						}
-					onYouTubeParseComplete(request);
-				}
-			}
-			if (niveau == "concept")
-			{
-				amountToShow = settings.Content.Source[_settingsId].concept.youtube.length();
-				//trace('yeehaa', settings.Content.Source[_settingsId].concept);
-				for (var tem = 0; tem < settings.Content.Source[_settingsId].concept.youtube.length(); tem++)
-				{
-					request = new URLRequest();
-					if (settings.Content.Source[_settingsId].concept.youtube[tem].url.slice(0,15) ==  "http://youtu.be"){
-					
-					request.url = "http://gdata.youtube.com/feeds/api/videos/" + settings.Content.Source[_settingsId].concept.youtube[tem].url.slice(16,27);
-					}
-					else{
-					request.url = "http://gdata.youtube.com/feeds/api/videos/" + settings.Content.Source[_settingsId].concept.youtube[tem].url.slice(31,42);
-					}
-					onYouTubeParseComplete(request);
-				}
-			}
-			if (niveau == "resultaat")
-			{
-				amountToShow = settings.Content.Source[_settingsId].resultaat.youtube.length();
-				//trace('yeehaa', settings.Content.Source[_settingsId].resultaat);
-				for (var teq = 0; teq < settings.Content.Source[_settingsId].resultaat.youtube.length(); teq++)
-				{
-					request = new URLRequest();
-					if (settings.Content.Source[_settingsId].resultaat.youtube[teq].url.slice(0,15) ==  "http://youtu.be"){
-					
-					request.url = "http://gdata.youtube.com/feeds/api/videos/" + settings.Content.Source[_settingsId].resultaat.youtube[teq].url.slice(16,27);
-					}
-					else{
-					request.url = "http://gdata.youtube.com/feeds/api/videos/" + settings.Content.Source[_settingsId].resultaat.youtube[teq].url.slice(31,42);
-					}
-					onYouTubeParseComplete(request);
-				}
-			}
-
-			/*amountToShow = settings.Content.Source[_settingsId].youtubeAmount;
 			
-			for (var i =0; i< amountToShow; i++)
+			var content:XMLList = settings.Content.Source.(@id==_settingsId);
+			var movies:XMLList;
+			
+			switch ( niveau ) {
+				case "constructie":
+					movies = content.constructie.youtube;
+					break;
+				case "concept":
+					movies = content.concept.youtube;
+					break;
+				case "resultaat":
+					movies = content.resultaat.youtube;
+					break;
+			}
+			
+			var movies_length:int = movies.length();
+			amountToShow = movies_length;
+			
+			for (var i:int = 0; i < movies_length; i++)
 			{
-			onYouTubeParseComplete(i);
-			arrayId = _settingsId + i;
-			}*/
+				var request:URLRequest = new URLRequest();
+				if (movies[i].url.slice(0,15) ==  "http://youtu.be"){
+					request.url = "http://gdata.youtube.com/feeds/api/videos/" + movies[i].url.slice(16,27);
+				}
+				else{
+					request.url = "http://gdata.youtube.com/feeds/api/videos/" + movies[i].url.slice(31,42);
+				}
+				onYouTubeParseComplete(request);
+			}
+			
 			settingsLoader.removeEventListener(Event.COMPLETE, settingsLoader_completeHandler);
 			settingsLoader = null;
 		}
 
-		private static function onYouTubeParseComplete(telk):void
+		private static function onYouTubeParseComplete(request:URLRequest):void
 		{
-
-
-
-			//trace('url :', settings.Content.Source[_settingsId].constructie.youtube[telk].slice(31,42));
-			//request.contentType = "application/atom+xml";
-			//request.method = URLRequestMethod.POST;
 			var loader:URLLoader=new URLLoader();
-			loader.load(telk);
+			loader.load(request);
 			loader.addEventListener(Event.COMPLETE,onLoadCompleteHandle);
-
-
 		}
 
 		private static function onLoadCompleteHandle(e:Event):void
