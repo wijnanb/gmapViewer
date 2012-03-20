@@ -428,7 +428,7 @@
 				iconVideo.scaleY = iconscale;
 				iconVideo.alpha = 0;
 				holder.addChild(iconVideo);
-				TweenLite.to(iconVideo, speedCircle, {alpha:0.1,scaleX:iconSize, rotation: 10,scaleY :iconSize,delay: 0.3, ease:Back.easeOut});
+				TweenLite.to(iconVideo, speedCircle, {alpha:0.2,scaleX:iconSize, rotation: 10,scaleY :iconSize,delay: 0.3, ease:Back.easeOut});
 				geenVideo = false;
 
 			}
@@ -459,7 +459,7 @@
 				iconFoto.scaleX = iconscale;
 				iconFoto.scaleY = iconscale;
 				iconFoto.alpha = 0;
-				TweenLite.to(iconFoto, speedCircle, {alpha:0.1 ,scaleX:iconSize, scaleY :iconSize, rotation: 10, delay: 0.4, ease:Back.easeOut});
+				TweenLite.to(iconFoto, speedCircle, {alpha:0.2 ,scaleX:iconSize, scaleY :iconSize, rotation: 10, delay: 0.4, ease:Back.easeOut});
 				geenFoto = false;
 			}
 			else
@@ -491,7 +491,7 @@
 				iconTekst.scaleX = iconscale;
 				iconTekst.scaleY = iconscale;
 				iconTekst.alpha = 0;
-				TweenLite.to(iconTekst, speedCircle, {alpha:0.1,scaleX:iconSize, scaleY :iconSize , rotation: 50,delay:0.5, ease:Back.easeOut});
+				TweenLite.to(iconTekst, speedCircle, {alpha:0.2,scaleX:iconSize, scaleY :iconSize , rotation: 50,delay:0.5, ease:Back.easeOut});
 			}
 			else
 			{
