@@ -1,34 +1,36 @@
 ﻿package id.component
 {
-	import flash.events.Event;
+	import com.google.maps.LatLng;
+	import com.greensock.TweenLite;
+	
 	import flash.display.DisplayObject;
-		import flash.text.*;
+	import flash.display.Shape;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.events.TimerEvent;
+	import flash.geom.*;
+	import flash.text.*;
+	import flash.utils.Timer;
+	import flash.utils.clearInterval;
+	import flash.utils.setInterval;
+	
+	import gl.events.GestureEvent;
+	import gl.events.TouchEvent;
+	
+	import id.component.ControlBtns;
+	import id.component.CreateLine;
 	import id.core.ApplicationGlobals;
 	import id.core.TouchComponent;
-	import id.component.ControlBtns;
-	import id.element.ThumbLoader;
-	import id.element.Outline;
+	import id.core.TouchSprite;
+	import id.element.ContentParser;
 	import id.element.Graphic;
+	import id.element.Outline;
+	import id.element.QRCodeDisplay;
 	import id.element.TextDisplay;
+	import id.element.ThumbLoader;
+	import id.element.YouTubeDisplayParser;
 	import id.element.YouTubeParser;
 	import id.element.YouTubePlayer;
-	import id.element.QRCodeDisplay;
-	import gl.events.TouchEvent;
-	import gl.events.GestureEvent;
-	import com.greensock.TweenLite;
-	import id.element.YouTubeDisplayParser;
-	import id.core.TouchSprite;
-	import id.component.CreateLine;
-	import flash.display.Sprite;
-	import flash.geom.*;
-	//import flash.filters.DropShadowFilter;
-		import flash.events.TimerEvent;
-	import flash.utils.Timer;
-	 	import id.element.ContentParser;
-
-
-	import com.google.maps.LatLng;
-	import flash.display.Shape;
 
 	
 	/**
@@ -165,6 +167,9 @@
 		var stringTemp:String
 		var lineDrawing:Shape = new Shape();
 		var lineDrawing2:Shape = new Shape();
+		
+		protected var updateIntervalId:int;
+		
 		/**
 		 *
 		 * The Constructor.
@@ -249,6 +254,8 @@
 				
 			}
 
+			clearInterval(updateIntervalId);
+			
 			super.updateUI();
 
 
@@ -742,29 +749,14 @@ private function playVideo(e:Event){
 
 		private function touchDownHandler(event:TouchEvent):void
 		{
-		
-			//updateIt();
 			startTouchDrag(-1);
-			//trace('set: ',this.parent.parent.numChildren);
 			parent.parent.setChildIndex(parent,parent.parent.numChildren - 1);
 			parent.setChildIndex(this,parent.numChildren - 1);
 
+			clearInterval(updateIntervalId);
+			updateIntervalId = setInterval(onUpdate, 40); //25FPS
 		}
-		private function touchMoveHandler(event:TouchEvent):void
-		{
-			//updateIt();
-			/*for (var i = 0; i<magnifier.length;i++){
-				magnifier[i].captureBitmap();
-				}*/
-			startTouchDrag(-1);
-		}
-
-		private function touchUpHandler(event:TouchEvent):void
-		{
-			//updateIt();
-			stopTouchDrag(-1);
-		}
-
+		
 		private function rotateGestureHandler(event:GestureEvent):void
 		{
 			rotation +=  event.value;
@@ -772,13 +764,29 @@ private function playVideo(e:Event){
 
 		private function doubleTapHandler(event:TouchEvent):void
 		{
-			//TweenLite.to(this,.5,{scaleX:1,scaleY:1,onUpdate:updateUI});
-			/*if (! firstStart)
-			{
-				media.play();
-				firstStart = true;
-			}*/
+		
 		}
+		
+		private function touchUpHandler(event:TouchEvent):void
+		{
+			stopTouchDrag(-1);
+			
+			clearInterval(updateIntervalId);
+		}
+	
+		
+		private function touchMoveHandler(event:TouchEvent)
+		{
+			// strange behaviour: is only called when move has finished
+		}
+		
+		protected function onUpdate():void {
+			Global.viewer.updateAllMagnifiers();
+		}
+		
+		
+		
+		
 		private var friction:Number = 0.97;
 		private var dx:Number = 0;
 		private var dy:Number = 0;
@@ -787,7 +795,7 @@ private function playVideo(e:Event){
 		{
 			dx = e.velocityX;
 			dy = e.velocityY;
-			addEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
+			//addEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
 		}
 
 		private function onEnterFrameHandler(e:Event):void
@@ -840,7 +848,7 @@ private function playVideo(e:Event){
 			//trace('schaal: ', line.scaleX	, ' ' ,scaleX );
 			scaleY = scaleY > Number(maxScale) ? Number(maxScale):scaleY < Number(minScale) ? Number(minScale):scaleY;
 			scaleX = scaleX > Number(maxScale) ? Number(maxScale):scaleX < Number(minScale) ? Number(minScale):scaleX;
-
+			
 			updateUI();
 		}
 
