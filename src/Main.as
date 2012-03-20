@@ -66,12 +66,14 @@ package
 
 				maps.push( new MapData(name, content) );
 				
-				var switchButton:SwitchButton = new SwitchButton(name);
-				switchButton.y = (switchButton.size + 10) * i;
-				switchButton.addEventListener(TouchEvent.TOUCH_UP, function(e:TouchEvent):void {
-					loadMapWithName( (e.target as SwitchButton).caption );
-				} );
-				mapSwitchButtonLayer.addChild(switchButton);
+				if ( Global.MULTIMAPMODE ) {
+					var switchButton:SwitchButton = new SwitchButton(name);
+					switchButton.y = (switchButton.size + 10) * i;
+					switchButton.addEventListener(TouchEvent.TOUCH_UP, function(e:TouchEvent):void {
+						loadMapWithName( (e.target as SwitchButton).caption );
+					} );
+					mapSwitchButtonLayer.addChild(switchButton);
+				}
 			}
 
 			loadMapWithName( (maps[0] as MapData).name );
