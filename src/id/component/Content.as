@@ -272,12 +272,12 @@
 			var gradenTitle = tekstCircleTitle.length * 5 - 30;
 			var gradenDesc = tekstCircleDesc.length * 5;
 			addChild(rotateTekstCircle);
-			_textTitle = new CurvedText(tekstCircleAfterTitle,114,-30,gradenTitle,CurvedText.DIRECTION_UP,format4);
+			_textTitle = new CurvedText(tekstCircleAfterTitle,112,-30,gradenTitle,CurvedText.DIRECTION_UP,format4);
 			_textTitle.showCurve = false;
 			_textTitle.showLetterBorder = false;
 			_textTitle.draw();
-			_textTitle.x = -59;
-			_textTitle.y = -123;
+			_textTitle.x = -57;
+			_textTitle.y = -121;
 			rotateTekstCircle.addChild(_textTitle);
 
 			_textDesc = new CurvedText(tekstCircleAfterDesc,95,0,gradenDesc,CurvedText.DIRECTION_UP,format4);
