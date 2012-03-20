@@ -347,7 +347,7 @@
 			authorText=ImageParser.settings.Content.Source.(@id==_settingsId).resultaat.image[id].author;
 			publishText=ImageParser.settings.Content.Source.(@id==_settingsId).resultaat.image[id].publish;
 			}
-
+			
 			// Objects
 			thumbnail = new ThumbLoader();
 			media = new BitmapLoader();
@@ -364,10 +364,9 @@
 			format.font = myFont.fontName;
 			format.bold = true;
 			format.color = 0x000000;
-			format.leftMargin = 20;
-			format.rightMargin = 20;
-
-
+			format.leftMargin = 0;
+			format.rightMargin = 0;
+			
 			format2.align = "left";
 			format2.size = 26;
 			format2.font = myFont.fontName;
@@ -384,11 +383,19 @@
 			format4.leftMargin = 20;
 			format4.rightMargin = 20;
 			
+			description.defaultTextFormat = format;
+			description.embedFonts = true;
+			description.antiAliasType = AntiAliasType.ADVANCED;
+			description.autoSize = TextFieldAutoSize.LEFT;
+			description.multiline = true;
+			description.width= 224;
+			description.x=- 224/2;
+			description.y= 303/2-25;
+			
 			author.embedFonts = true;
 			author.antiAliasType = AntiAliasType.ADVANCED;
-			author.defaultTextFormat = format2;
-
-
+			author.defaultTextFormat = format2;			
+			
 			metadata = new TouchComponent();
 
 			// Add Children
@@ -472,15 +479,16 @@ var proxy:String = "http://maddoc.khlim.be/~dleen/Z33/gmapViewer/proxy.php?url="
 			publish.styleList=publishStyle;
 
 			media.url= mediaUrl;
-			trace(media.url);
 			thumbnail.url=thumbUrl;
 
 			title.text=titleText;
-			description.text=descriptionText;
+			//description.text=descriptionText;
+			
 			if (id == 0){
-			stringTemp = ImageParser.settings.Content.Source.(@id==_settingsId).name;
-			author.text= stringTemp.toUpperCase();
+				stringTemp = ImageParser.settings.Content.Source.(@id==_settingsId).name;
+				author.text= stringTemp.toUpperCase();
 			}
+			
 			publish.text=publishText;
 
 			if (infoPaddingNumber)
@@ -488,7 +496,7 @@ var proxy:String = "http://maddoc.khlim.be/~dleen/Z33/gmapViewer/proxy.php?url="
 				infoPadding=infoPaddingNumber;
 			}
 
-			metadata.alpha=0;
+			//metadata.alpha=0;
 		}
 
 		override protected function layoutUI():void
@@ -530,22 +538,17 @@ var proxy:String = "http://maddoc.khlim.be/~dleen/Z33/gmapViewer/proxy.php?url="
 			guiImage.y =  303/2-25;
 			
 			
-			description.embedFonts = true;
-			description.antiAliasType = AntiAliasType.ADVANCED;
-			description.defaultTextFormat = format;
-			description.width= 224;
-			description.x=- 224/2;
-			description.y= 303/2-25;
+			if (id == 0){
+				
+						author.autoSize=  TextFieldAutoSize.LEFT;
+						author.x= (-249/2) - (author.width - 249/2) ;
+						author.y=  (-303/2) - (author.height*2-15) ;
+						author.background = true;
+						author.backgroundColor = 0x222223;
 			
-if (id == 0){
-	
-			author.autoSize=  TextFieldAutoSize.LEFT;
-			author.x= (-249/2) - (author.width - 249/2) ;
-			author.y=  (-303/2) - (author.height*2-15) ;
-			author.background = true;
-			author.backgroundColor = 0x222223;
-
-}
+			}
+			
+			
 			publish.textWidth=media.width-(thumbnail.x+thumbnail.width)-(infoPadding*2);
 			publish.x=thumbnail.x+thumbnail.width+infoPadding;
 			publish.y=thumbnail.y+thumbnail.height-publish.height;
