@@ -1,0 +1,33 @@
+Backend van z33
+
+
+Backend
+
+http://epics.edm.uhasselt.be/WebserviceCRUDFinal/Werkend.html
+Hier kan je de gegevens invullen
+
+
+Web service
+
+http://epics.edm.uhasselt.be/z33/xmlFile/Content.xml
+
+
+Manual refresh
+
+cd FSCommand; curl -O http://epics.edm.uhasselt.be/z33/xmlFile/Content.xml
+
+
+
+
+
+URL van static map:
+http://maps.google.com/maps/api/staticmap?sensor=false&center=50.798426,5.348904&size=640x400&scale=2&zoom=13&style=feature:all|element:geometry|hue:0xffe293|saturation:80|lightness:25|gamma:0|visibility:simplified&style=feature:all|element:labels|visibility:off&style=feature:road.local|element:geometry|visibility:simplified|lightness:-50|gamma:3|saturation:-30&style=feature:road.highway|element:geometry|hue:0xffe293|visibility:simplified&style=feature:road.arterial|element:geometry|hue:0xffe293|visibility:simplified&style=feature:landscape|element:geometry|hue:0xffe293|visibility:simplified&style=feature:landscape.man.made|element:geometry|hue:0xffe293|visibility:off&style=feature:landscape.natural|element:geometry|hue:0xffe293|visibility:simplified&style=feature:water|element:geometry|hue:0xffe293|visibility:simplified&style=feature:transit|element:geometry|hue:0x000000|lightness:1|saturation:-1|gamma:0.1|visibility:on&style=feature:poi|element:geometry|visibility:off&style=feature:administrative|element:geometry|visibility:off
+
+&markers=size:tiny|color:green|50.792305391053546,5.312082919112924
+&markers=size:tiny|color:green|50.79651008534819,5.329936633952097
+&markers=size:tiny|color:green|50.801166064915705,5.343524546263936
+&markers=size:tiny|color:green|50.815342674268585,5.3457946442342985
+&markers=size:tiny|color:green|50.789427366602354,5.35495988603476
+&markers=size:tiny|color:green|50.793815335235216,5.356800856294837
+&markers=size:tiny|color:green|50.793815335235216,5.356800856294837
+&markers=size:tiny|color:green|50.78474896292773,5.38029670715332
