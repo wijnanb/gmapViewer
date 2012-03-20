@@ -72,8 +72,8 @@ package
 		
 		public function reset():void {
 			graphics.clear();
-			graphics.lineStyle(1, 0xffe293, 0.5);
-			graphics.drawCircle( relative_center.x, relative_center.y, radius);
+			//graphics.lineStyle(1, 0xffe293, 0.5);
+			//graphics.drawCircle( relative_center.x, relative_center.y, radius);
 		}
 		
 		protected function onHTTPStatus(e:HTTPStatusEvent):void{
