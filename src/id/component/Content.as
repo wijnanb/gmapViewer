@@ -139,6 +139,8 @@
 		private var pressedTekst:Boolean = false;
 		private var pressedVideo:Boolean = false;
 
+		protected const Y_OFFSET:Number = 200;
+		
 		public function Content(contentContainer:TouchSprite, magnifier:Magnifier)
 		{
 			super();
@@ -552,7 +554,7 @@
 					offset3 = -350;
 				}
 				imageList[ip].x = parent.x + offset3 * Math.random() - Math.random()*4;
-				imageList[ip].y = parent.y * Math.random();
+				imageList[ip].y = parent.y * Math.random() + Y_OFFSET;
 					
 				contentContainer.addChild(imageList[ip]);
 				
@@ -584,7 +586,7 @@
 				offset2 = -350;
 			}
 			tekstList[ip].x = parent.x + offset2;
-			tekstList[ip].y = parent.y;
+			tekstList[ip].y = parent.y + Y_OFFSET;
 			contentContainer.addChild(tekstList[ip]);
 			var timer:Timer = new Timer(10,100);
 			timer.addEventListener(TimerEvent.TIMER, updateLens);
@@ -630,7 +632,7 @@
 				offset = -550;
 			}
 			youtubeList[i].x = parent.x + offset;
-			youtubeList[i].y = parent.y;
+			youtubeList[i].y = parent.y + Y_OFFSET;
 			var timer2:Timer = new Timer(10,100);
 			timer2.addEventListener(TimerEvent.TIMER, updateLens);
 			timer2.start();
