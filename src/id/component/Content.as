@@ -558,7 +558,7 @@
 					
 				contentContainer.addChild(imageList[ip]);
 				
-				var timer:Timer = new Timer(10,100);
+				var timer:Timer = new Timer(40,25); // 25FPS during 1 sec
 				timer.addEventListener(TimerEvent.TIMER, updateLens);
 				timer.start();
 			}
@@ -588,7 +588,7 @@
 			tekstList[ip].x = parent.x + offset2;
 			tekstList[ip].y = parent.y + Y_OFFSET;
 			contentContainer.addChild(tekstList[ip]);
-			var timer:Timer = new Timer(10,100);
+			var timer:Timer = new Timer(40,25);
 			timer.addEventListener(TimerEvent.TIMER, updateLens);
 			timer.start();
 			}
@@ -633,7 +633,7 @@
 			}
 			youtubeList[i].x = parent.x + offset;
 			youtubeList[i].y = parent.y + Y_OFFSET;
-			var timer2:Timer = new Timer(10,100);
+			var timer2:Timer = new Timer(40,25);
 			timer2.addEventListener(TimerEvent.TIMER, updateLens);
 			timer2.start();
 			}
