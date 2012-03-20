@@ -1,30 +1,35 @@
 ﻿package id.component
 {
-	import flash.events.Event;
+	import com.greensock.TweenLite;
+	
+	import flash.display.Bitmap;
 	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
-	import flash.display.Bitmap;
 	import flash.display.Loader;
-	import flash.text.TextField;
-	import flash.display.Sprite;
 	import flash.display.Shape;
+	import flash.display.Sprite;
+	import flash.events.Event;
 	import flash.media.Video;
-	import id.core.ApplicationGlobals;
-	import id.core.TouchSprite;
-	import id.core.TouchComponent;
-	import id.component.ControlBtns;
-	import id.element.ThumbLoader;
-	import id.element.BitmapLoader;
-	import id.element.Outline;
-	import id.element.Graphic;
-	import id.element.TextDisplay;
-	import id.element.TekstParser;
-	import id.element.TekstDisplayParser;
-	import id.element.QRCodeDisplay;
-	import gl.events.TouchEvent;
+	import flash.text.*;
+	import flash.text.TextField;
+	import flash.utils.clearInterval;
+	import flash.utils.setInterval;
+	
 	import gl.events.GestureEvent;
-	import com.greensock.TweenLite;
-import flash.text.*;
+	import gl.events.TouchEvent;
+	
+	import id.component.ControlBtns;
+	import id.core.ApplicationGlobals;
+	import id.core.TouchComponent;
+	import id.core.TouchSprite;
+	import id.element.BitmapLoader;
+	import id.element.Graphic;
+	import id.element.Outline;
+	import id.element.QRCodeDisplay;
+	import id.element.TekstDisplayParser;
+	import id.element.TekstParser;
+	import id.element.TextDisplay;
+	import id.element.ThumbLoader;
 
 	public class TekstDisplay extends TouchComponent
 	{
@@ -93,6 +98,10 @@ import flash.text.*;
 		public var shade:Class;
 		private var shaduw = new shade();
 		var lineDrawing2:Shape = new Shape();
+		
+		
+		protected var updateIntervalId:int;
+		
 		/**
 		 *
 		 * The Constructor.
@@ -345,11 +354,11 @@ var touchSprite:TouchSprite=nested as TouchSprite;
 
 			// Data
 			if(niveau == "concept"){
-			//trace ("bee bop" , TekstParser.settings.Content.Source[_settingsId].concept.text[id].url.length());
-			if (TekstParser.settings.Content.Source[_settingsId].concept.text[id].url.length() > 0){
-			mediaUrl=TekstParser.settings.Content.Source[_settingsId].concept.text[id].url;
+			//trace ("bee bop" , TekstParser.settings.Content.Source.(@id==_settingsId).concept.text[id].url.length());
+			if (TekstParser.settings.Content.Source.(@id==_settingsId).concept.text[id].url.length() > 0){
+			mediaUrl=TekstParser.settings.Content.Source.(@id==_settingsId).concept.text[id].url;
 			//trace('ide', mediaUrl);
-			thumbUrl=TekstParser.settings.Content.Source[_settingsId].concept.text[id].url;
+			thumbUrl=TekstParser.settings.Content.Source.(@id==_settingsId).concept.text[id].url;
 			noImage = false;
 			}
 			else{
@@ -357,31 +366,31 @@ var touchSprite:TouchSprite=nested as TouchSprite;
 				mediaUrl="assets/Interface/leeg.jpg";
 				thumbUrl="assets/Interface/leeg.jpg";
 				}
-			qrCodeTag=TekstParser.settings.Content.Source[_settingsId].concept.text[id].qrCodeTag;
-			titleText=TekstParser.settings.Content.Source[_settingsId].concept.text[id].title;
-			descriptionText=TekstParser.settings.Content.Source[_settingsId].concept.text[id].description;
-			authorText=TekstParser.settings.Content.Source[_settingsId].concept.text[id].author;
-			publishText=TekstParser.settings.Content.Source[_settingsId].concept.text[id].publish;
+			qrCodeTag=TekstParser.settings.Content.Source.(@id==_settingsId).concept.text[id].qrCodeTag;
+			titleText=TekstParser.settings.Content.Source.(@id==_settingsId).concept.text[id].title;
+			descriptionText=TekstParser.settings.Content.Source.(@id==_settingsId).concept.text[id].description;
+			authorText=TekstParser.settings.Content.Source.(@id==_settingsId).concept.text[id].author;
+			publishText=TekstParser.settings.Content.Source.(@id==_settingsId).concept.text[id].publish;
 			}
 			if(niveau == "constructie"){
-			mediaUrl=TekstParser.settings.Content.Source[_settingsId].constructie.text[id].url;
+			mediaUrl=TekstParser.settings.Content.Source.(@id==_settingsId).constructie.text[id].url;
 			//trace('op', mediaUrl);
-			thumbUrl=TekstParser.settings.Content.Source[_settingsId].constructie.text[id].url;
-			qrCodeTag=TekstParser.settings.Content.Source[_settingsId].constructie.text[id].qrCodeTag;
-			titleText=TekstParser.settings.Content.Source[_settingsId].constructie.text[id].title;
-			descriptionText=TekstParser.settings.Content.Source[_settingsId].constructie.text[id].description;
-			authorText=TekstParser.settings.Content.Source[_settingsId].constructie.text[id].author;
-			publishText=TekstParser.settings.Content.Source[_settingsId].constructie.text[id].publish;
+			thumbUrl=TekstParser.settings.Content.Source.(@id==_settingsId).constructie.text[id].url;
+			qrCodeTag=TekstParser.settings.Content.Source.(@id==_settingsId).constructie.text[id].qrCodeTag;
+			titleText=TekstParser.settings.Content.Source.(@id==_settingsId).constructie.text[id].title;
+			descriptionText=TekstParser.settings.Content.Source.(@id==_settingsId).constructie.text[id].description;
+			authorText=TekstParser.settings.Content.Source.(@id==_settingsId).constructie.text[id].author;
+			publishText=TekstParser.settings.Content.Source.(@id==_settingsId).constructie.text[id].publish;
 			}
 			if(niveau == "resultaat"){
-			mediaUrl=TekstParser.settings.Content.Source[_settingsId].resultaat.text[id].url;
+			mediaUrl=TekstParser.settings.Content.Source.(@id==_settingsId).resultaat.text[id].url;
 			//trace('resul', mediaUrl);
-			thumbUrl=TekstParser.settings.Content.Source[_settingsId].resultaat.text[id].url;
-			qrCodeTag=TekstParser.settings.Content.Source[_settingsId].resultaat.text[id].qrCodeTag;
-			titleText=TekstParser.settings.Content.Source[_settingsId].resultaat.text[id].title;
-			descriptionText=TekstParser.settings.Content.Source[_settingsId].resultaat.text[id].description;
-			authorText=TekstParser.settings.Content.Source[_settingsId].resultaat.text[id].author;
-			publishText=TekstParser.settings.Content.Source[_settingsId].resultaat.text[id].publish;
+			thumbUrl=TekstParser.settings.Content.Source.(@id==_settingsId).resultaat.text[id].url;
+			qrCodeTag=TekstParser.settings.Content.Source.(@id==_settingsId).resultaat.text[id].qrCodeTag;
+			titleText=TekstParser.settings.Content.Source.(@id==_settingsId).resultaat.text[id].title;
+			descriptionText=TekstParser.settings.Content.Source.(@id==_settingsId).resultaat.text[id].description;
+			authorText=TekstParser.settings.Content.Source.(@id==_settingsId).resultaat.text[id].author;
+			publishText=TekstParser.settings.Content.Source.(@id==_settingsId).resultaat.text[id].publish;
 			}
 
 			// Objects
@@ -489,7 +498,7 @@ var touchSprite:TouchSprite=nested as TouchSprite;
 			title.text=titleText;
 			description.text=descriptionText;
 			
-			stringTemp = TekstParser.settings.Content.Source[_settingsId].name;
+			stringTemp = TekstParser.settings.Content.Source.(@id==_settingsId).name;
 			author.text= stringTemp.toUpperCase();
 			
 			publish.text=publishText;
@@ -681,18 +690,26 @@ var touchSprite:TouchSprite=nested as TouchSprite;
 		{
 			startTouchDrag(-1);
 			parent.setChildIndex(this as DisplayObject,parent.numChildren-1);
+			
+			clearInterval(updateIntervalId);
+			updateIntervalId = setInterval(onUpdate, 40); //25FPS
 		}
-		private function touchMoveHandler(event:TouchEvent){
-			//trace('update');
-	for (var i = 0; i<magnifier.length;i++){
-		
-				magnifier[i].captureBitmap();
-				}
 	
+		private function touchMoveHandler(event:TouchEvent)
+		{
+			// strange behaviour: is only called when move has finished
+			onUpdate();
 		}
+		
+		protected function onUpdate():void {
+			Global.viewer.updateAllMagnifiers();
+		}
+		
 		private function touchUpHandler(event:TouchEvent):void
 		{
 			stopTouchDrag(-1);
+			
+			clearInterval(updateIntervalId);
 		}
 
 		private function rotateGestureHandler(event:GestureEvent):void

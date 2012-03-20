@@ -336,9 +336,8 @@
 					{
 						geenVideo = true;
 					}
-					if (ContentParser.settings.Content.Source.(@id == contentId).concept.tekst.length() == 0)
+					if (ContentParser.settings.Content.Source.(@id == contentId).concept.text.length() == 0)
 					{
-
 						geenTekst = true;
 					}
 				}
@@ -375,7 +374,7 @@
 					{
 						geenVideo = true;
 					}
-					if (ContentParser.settings.Content.Source.(@id == contentId).constructie.tekst.length() == 0)
+					if (ContentParser.settings.Content.Source.(@id == contentId).constructie.text.length() == 0)
 					{
 						geenTekst = true;
 					}
@@ -408,7 +407,7 @@
 					{
 						geenVideo = true;
 					}
-					if (ContentParser.settings.Content.Source.(@id == contentId).resultaat.tekst.length() == 0)
+					if (ContentParser.settings.Content.Source.(@id == contentId).resultaat.text.length() == 0)
 					{
 						geenTekst = true;
 					}

@@ -61,20 +61,20 @@
 			settings=new XML(settingsLoader.data);
 			//trace('id',_settingsId);
 			
-			//trace('blup',settings.Content.Source[_settingsId].concept.image);
+			//trace('blup',settings.Content.Source.(@id==_settingsId).concept.image);
 			if (niveau  == "concept"){
-				amountToShow=settings.Content.Source[_settingsId].concept.text.length();
-				totalAmount=settings.Content.Source[_settingsId].concept.text.length();
-				//trace('idee: ',settings.Content.Source[_settingsId].concept.image);
+				amountToShow=settings.Content.Source.(@id==_settingsId).concept.text.length();
+				totalAmount=settings.Content.Source.(@id==_settingsId).concept.text.length();
+				//trace('idee: ',settings.Content.Source.(@id==_settingsId).concept.image);
 				}
 			if (niveau  == "constructie"){
-				amountToShow=settings.Content.Source[_settingsId].constructie.text.length();
-				totalAmount=settings.Content.Source[_settingsId].constructie.text.length();
+				amountToShow=settings.Content.Source.(@id==_settingsId).constructie.text.length();
+				totalAmount=settings.Content.Source.(@id==_settingsId).constructie.text.length();
 				//trace('opbouw',amountToShow);
 				}
 			if (niveau  == "resultaat"){
-				amountToShow=settings.Content.Source[_settingsId].resultaat.text.length();
-				totalAmount=settings.Content.Source[_settingsId].resultaat.text.length();
+				amountToShow=settings.Content.Source.(@id==_settingsId).resultaat.text.length();
+				totalAmount=settings.Content.Source.(@id==_settingsId).resultaat.text.length();
 				//trace('resultaat',amountToShow);
 				}
 			
