@@ -754,7 +754,10 @@ private function playVideo(e:Event){
 			parent.setChildIndex(this,parent.numChildren - 1);
 
 			clearInterval(updateIntervalId);
-			updateIntervalId = setInterval(onUpdate, 40); //25FPS
+			
+			if ( Global.MAGNIFIER_ON_TOP ) {
+				updateIntervalId = setInterval(onUpdate, 40); //25FPS
+			}
 		}
 		
 		private function rotateGestureHandler(event:GestureEvent):void

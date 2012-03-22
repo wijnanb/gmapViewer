@@ -694,7 +694,10 @@ var touchSprite:TouchSprite=nested as TouchSprite;
 			parent.setChildIndex(this as DisplayObject,parent.numChildren-1);
 			
 			clearInterval(updateIntervalId);
-			updateIntervalId = setInterval(onUpdate, 40); //25FPS
+			
+			if ( Global.MAGNIFIER_ON_TOP ) {
+				updateIntervalId = setInterval(onUpdate, 40); //25FPS
+			}
 		}
 	
 		private function touchMoveHandler(event:TouchEvent)

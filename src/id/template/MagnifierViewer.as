@@ -161,11 +161,18 @@ package id.template
 			mapViewerLayer.graphics.drawRect(0,0,stageWidth,stageHeight);
 			mapAndContentLayer.addChild(mapViewerLayer);
 			
-			contentLayer = new TouchSprite();
-			mapAndContentLayer.addChild(contentLayer);
+			if ( Global.MAGNIFIER_ON_TOP ) {
+				contentLayer = new TouchSprite();
+				mapAndContentLayer.addChild(contentLayer);
+			}
 			
 			magnifierLayer = new TouchSprite();
 			addChild(magnifierLayer);
+			
+			if ( !Global.MAGNIFIER_ON_TOP ) {
+				contentLayer = new TouchSprite();
+				addChild(contentLayer);
+			}
 			
 			templates = ApplicationGlobals.dataManager.data.Template;
 			initModules(templates[0]);

@@ -6,5 +6,6 @@ package
 	{
 		public static var viewer:MagnifierViewer;
 		public static var MULTIMAPMODE:Boolean = false;
+		public static var MAGNIFIER_ON_TOP:Boolean = false;
 	}
 }
