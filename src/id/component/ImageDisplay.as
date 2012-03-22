@@ -122,6 +122,7 @@
 			
 			blobContainerEnabled=true;
 			visible=false;
+			cacheAsBitmap = true;
 			_settingsId = markerNr;
 			niveau = depth;
 			magnifier = magnifi;
@@ -386,9 +387,6 @@
 			description.defaultTextFormat = format;
 			description.embedFonts = true;
 			description.antiAliasType = AntiAliasType.ADVANCED;
-			description.autoSize = TextFieldAutoSize.LEFT;
-			description.multiline = true;
-			description.width= 224;
 			description.x=- 224/2;
 			description.y= 303/2-25;
 			
@@ -482,7 +480,12 @@ var proxy:String = "http://maddoc.khlim.be/~dleen/Z33/gmapViewer/proxy.php?url="
 			thumbnail.url=thumbUrl;
 
 			title.text=titleText;
-			//description.text=descriptionText;
+			
+			description.multiline = true;
+			description.text = descriptionText;
+			description.autoSize = TextFieldAutoSize.LEFT;
+			description.wordWrap = true;
+			description.width = 224;
 			
 			if (id == 0){
 				stringTemp = ImageParser.settings.Content.Source.(@id==_settingsId).name;
@@ -501,6 +504,8 @@ var proxy:String = "http://maddoc.khlim.be/~dleen/Z33/gmapViewer/proxy.php?url="
 
 		override protected function layoutUI():void
 		{
+			var descriptionExtraHeight:Number = Math.max( 0, (description.height - 32) );
+			
 			if (! intialize)
 			{
 				if (globalScale)
@@ -532,7 +537,7 @@ var proxy:String = "http://maddoc.khlim.be/~dleen/Z33/gmapViewer/proxy.php?url="
 			shaduw.x = -249/2-5;
 			shaduw.y = -303/2+11;
 			shaduw.width = 249+15;
-			shaduw.height = 303+38;
+			shaduw.height = 303+38 + descriptionExtraHeight;
 			
 			guiImage.x = - 224/2;
 			guiImage.y =  303/2-25;
@@ -564,14 +569,8 @@ var proxy:String = "http://maddoc.khlim.be/~dleen/Z33/gmapViewer/proxy.php?url="
 			metadata.visible=false;
 			
 			square.graphics.beginFill(0xffffff);
-			//square.graphics.lineStyle(1,0x000000, 1, true, "normal", "SQUARE", "mitter");
-			square.graphics.drawRect(-imagesNormalize/2 -12,-303/2 +20,249, 310);
+			square.graphics.drawRect(-imagesNormalize/2 -12,-303/2 +20,249, 310+descriptionExtraHeight);
 			square.graphics.endFill();
-			
-			//square2.graphics.beginFill(0xffffff);
-/*			square3.graphics.lineStyle(4,0xff0000, 1, true, "normal", "SQUARE", "mitter");
-			square3.graphics.drawRect(0,0,stageWidth, stageHeight);
-			square3.graphics.endFill();*/
 			
 			square2.graphics.beginFill(0x000000);
 			square2.graphics.drawRect(-imagesNormalize/2 -1 ,-303/2 +39,226, 226);
@@ -594,32 +593,33 @@ var proxy:String = "http://maddoc.khlim.be/~dleen/Z33/gmapViewer/proxy.php?url="
 			touchWeg.graphics.drawRect(303/2-55, -303/2-10, 40,40);
 			touchWeg.graphics.endFill();
 			addChild(touchWeg);
+			
 			if (id == 0){
 				trace(aantal);
-			TextDesc.embedFonts = true;
-			TextDesc.antiAliasType = AntiAliasType.ADVANCED;
-			TextDesc.defaultTextFormat = format4;
-			TextDesc.x = (-249/2) - (TextDesc.width - 249/2);
-			TextDesc.y = (-303/2) - (TextDesc.height-15);
-			TextDesc.autoSize = TextFieldAutoSize.LEFT;
-			TextDesc.background = true;
-			TextDesc.backgroundColor = 0x36A9E1;
-			stringTemp = niveau;
-			TextDesc.text = stringTemp.toUpperCase();
-			addChild(TextDesc);
-						
-			lineDrawing2.graphics.clear();
-			lineDrawing2.graphics.beginFill(0x36A9E1);
-			//lineDrawing2.graphics.lineStyle( 5 , 0x000000 );
-			lineDrawing2.graphics.moveTo(TextDesc.x + TextDesc.width ,TextDesc.y+TextDesc.height-2); ///This is where we start drawing
-			lineDrawing2.graphics.lineTo(TextDesc.x + TextDesc.width, TextDesc.y+45);
-			
-			lineDrawing2.graphics.lineTo(TextDesc.x + TextDesc.width- 20,TextDesc.y +TextDesc.height-2);
-			lineDrawing2.graphics.lineTo(TextDesc.x + TextDesc.width ,TextDesc.y +TextDesc.height-2);
-			addChild(lineDrawing2);
+				TextDesc.embedFonts = true;
+				TextDesc.antiAliasType = AntiAliasType.ADVANCED;
+				TextDesc.defaultTextFormat = format4;
+				TextDesc.x = (-249/2) - (TextDesc.width - 249/2);
+				TextDesc.y = (-303/2) - (TextDesc.height-15);
+				TextDesc.autoSize = TextFieldAutoSize.LEFT;
+				TextDesc.background = true;
+				TextDesc.backgroundColor = 0x36A9E1;
+				stringTemp = niveau;
+				TextDesc.text = stringTemp.toUpperCase();
+				addChild(TextDesc);
+							
+				lineDrawing2.graphics.clear();
+				lineDrawing2.graphics.beginFill(0x36A9E1);
+				//lineDrawing2.graphics.lineStyle( 5 , 0x000000 );
+				lineDrawing2.graphics.moveTo(TextDesc.x + TextDesc.width ,TextDesc.y+TextDesc.height-2); ///This is where we start drawing
+				lineDrawing2.graphics.lineTo(TextDesc.x + TextDesc.width, TextDesc.y+45);
+				
+				lineDrawing2.graphics.lineTo(TextDesc.x + TextDesc.width- 20,TextDesc.y +TextDesc.height-2);
+				lineDrawing2.graphics.lineTo(TextDesc.x + TextDesc.width ,TextDesc.y +TextDesc.height-2);
+				addChild(lineDrawing2);
 			}
-			touchWeg.addEventListener(TouchEvent.TOUCH_UP, doeWeg);
 			
+			touchWeg.addEventListener(TouchEvent.TOUCH_UP, doeWeg);
 		}
 		private function doeWeg(e:Event){
 	
@@ -659,7 +659,10 @@ var proxy:String = "http://maddoc.khlim.be/~dleen/Z33/gmapViewer/proxy.php?url="
 			parent.setChildIndex(this as DisplayObject,parent.numChildren-1);
 			
 			clearInterval(updateIntervalId);
-			updateIntervalId = setInterval(onUpdate, 40); //25FPS
+			
+			if ( Global.MAGNIFIER_ON_TOP ) {
+				updateIntervalId = setInterval(onUpdate, 40); //25FPS
+			}
 		}
 
 		private function touchUpHandler(event:TouchEvent):void
