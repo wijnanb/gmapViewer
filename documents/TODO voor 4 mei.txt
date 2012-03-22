@@ -1,8 +1,27 @@
 
 
+
+
+Tim Toubacq  (rode brievenbus)
+Ridderstraat 189
+Leuven
+
+
+25 maart
+
+Tablet prototype voor voorstellingsmoment
+
+
 4 mei
 
 enkel switchen tussen kaarten, nog geen layers
 2de week na paasvakantie kaartswitch ontwikkelen (2 weken doorloop)
 backend: dringend bekijken om met meerdere kaarten te kunnen werken.  Proberen om gewoon kopies te maken, zodat geen aanpassingen aan backend nodig is.
 Bespreken met Danny over samenwerking met EDM
+
+
+
+Meerdere kaarten
+4 regio's
+
+Liever eerst gastenboek, dan pas meerdere kaarten.   Berichten achterlaten bij kunstwerk.  Op moedertafel (en ook op tablets?) kan je alle berichten lezen.
