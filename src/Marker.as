@@ -25,8 +25,8 @@ package
 		protected var iconURL:String;
 		protected var icon:DisplayObject;
 		
-		public static const ICON_OFFSET_X:Number = -2;
-		public static const ICON_OFFSET_Y:Number = -25;
+		public static const ICON_OFFSET_X:Number = 10;
+		public static const ICON_OFFSET_Y:Number = -85;
 		
 		public function Marker(contentId:int, lng:String, lat:String, iconURL:String )
 		{
