@@ -188,7 +188,7 @@ package id.component
 			mapHeight = MapParser.settings.Content.Source[id].mapHeight;
 			mapRotation = MapParser.settings.Content.Source[id].mapRotation;
 			
-			mapHeight = Math.min(1280, mapHeight + 100);  // remove Google advertising
+			mapHeight = Math.min(1280, mapHeight - 0);  // remove Google advertising
 		}
 
 		protected function loadMap():void {
