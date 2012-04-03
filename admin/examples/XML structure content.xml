@@ -1,0 +1,30 @@
+<?xml ?>
+Content
+	Content
+		Source
+			@id
+			name
+			title
+			description
+			longitude
+			latitude
+			markerIcon
+			concept
+				youtube
+					url
+					title
+					description
+					author
+					publish
+				image
+					...
+				text
+					...
+			constructie
+				...
+			resultaat
+				...
+
+	GlobalSettings
+		amountToShow
+		FlickrApiKey

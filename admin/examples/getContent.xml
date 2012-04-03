@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body>
+    <getContentResponse xmlns="http://tempuri.org/">
+      <getContentResult>
+        <anyType xsi:type="xsd:string">55</anyType>
+        <anyType xsi:type="xsd:string">Youtube</anyType>
+        <anyType xsi:type="xsd:string">http://www.youtube.com/watch?v=y2msP67D5gY</anyType>
+        <anyType xsi:type="xsd:string">concept Tentvillage Revisited</anyType>
+        <anyType xsi:type="xsd:string">Dré Wapenaar over het concept achter zijn tentsculpturen</anyType>
+        <anyType xsi:type="xsd:string">Dré Wapenaar</anyType>
+        <anyType xsi:type="xsd:string">audiovisuele studio - provincie Limburg</anyType>
+        <anyType xsi:type="xsd:string">Concept</anyType>
+        <anyType xsi:type="xsd:string">56</anyType>
+        <anyType xsi:type="xsd:string">Youtube</anyType>
+        <anyType xsi:type="xsd:string">http://www.youtube.com/watch?v=f23W8ICn8z0</anyType>
+        <anyType xsi:type="xsd:string">constructie Tentvillage Revisited</anyType>
+        <anyType xsi:type="xsd:string">Dré Wapenaar over de constructiewijze</anyType>
+        <anyType xsi:type="xsd:string">Dré Wapenaar</anyType>
+        <anyType xsi:type="xsd:string">audiovisuele studio - provincie Limburg</anyType>
+        <anyType xsi:type="xsd:string">Constructie</anyType>
+        <anyType xsi:type="xsd:string">57</anyType>
+        <anyType xsi:type="xsd:string">Youtube</anyType>
+        <anyType xsi:type="xsd:string">http://www.youtube.com/watch?v=zZgj-V_an-w</anyType>
+        <anyType xsi:type="xsd:string">resultaat Tentvillage revisited</anyType>
+        <anyType xsi:type="xsd:string">Dré Wapenaar over wat hij wilt bereiken met zijn tentsculpturen</anyType>
+        <anyType xsi:type="xsd:string">Dré Wapenaar</anyType>
+        <anyType xsi:type="xsd:string">audiovisuele studio - Provincie Limburg</anyType>
+        <anyType xsi:type="xsd:string">Resultaat</anyType>
+        <anyType xsi:type="xsd:string">60</anyType>
+        <anyType xsi:type="xsd:string">Image</anyType>
+        <anyType xsi:type="xsd:string">http://epics.edm.uhasselt.be/z33/images/birds-perspective rendering5331.jpg</anyType>
+        <anyType xsi:type="xsd:string">Tentvillage Revisited test</anyType>
+        <anyType xsi:type="xsd:string">rendering in vogelperspectief test</anyType>
+        <anyType xsi:type="xsd:string">Dré Wapenaar</anyType>
+        <anyType xsi:type="xsd:string">Dré Wapenaar</anyType>
+        <anyType xsi:type="xsd:string">Concept</anyType>
+        <anyType xsi:type="xsd:string">112</anyType>
+        <anyType xsi:type="xsd:string">Image</anyType>
+        <anyType xsi:type="xsd:string">http://epics.edm.uhasselt.be/z33/images/tentvillage openingsmoment.jpg</anyType>
+        <anyType xsi:type="xsd:string">Tentvillage Revisited</anyType>
+        <anyType xsi:type="xsd:string">Tentvillage Revisited tijden openingsmoment</anyType>
+        <anyType xsi:type="xsd:string">Dré Wapenaar</anyType>
+        <anyType xsi:type="xsd:string">Kristof Vrancken</anyType>
+        <anyType xsi:type="xsd:string">Resultaat</anyType>
+        <anyType xsi:type="xsd:string">113</anyType>
+        <anyType xsi:type="xsd:string">Image</anyType>
+        <anyType xsi:type="xsd:string">http://epics.edm.uhasselt.be/z33/images/tentvillage stroopfabriek.jpg</anyType>
+        <anyType xsi:type="xsd:string">Tentvillage Revisited</anyType>
+        <anyType xsi:type="xsd:string">Tentvillage Revisited aan de stroopfabriek in Borgloon</anyType>
+        <anyType xsi:type="xsd:string">Dré Wapenaar</anyType>
+        <anyType xsi:type="xsd:string">Kristof Vrancken</anyType>
+        <anyType xsi:type="xsd:string">Resultaat</anyType>
+        <anyType xsi:type="xsd:string">114</anyType>
+        <anyType xsi:type="xsd:string">Image</anyType>
+        <anyType xsi:type="xsd:string">http://epics.edm.uhasselt.be/z33/images/GVB tentvillage.jpg</anyType>
+        <anyType xsi:type="xsd:string">Tentvillage Revisited</anyType>
+        <anyType xsi:type="xsd:string">Gedeputeerde Gilbert Van Baelen voor Tentvillage Revisited</anyType>
+        <anyType xsi:type="xsd:string">Dré Wapenaar</anyType>
+        <anyType xsi:type="xsd:string">Kristof Vrancken</anyType>
+        <anyType xsi:type="xsd:string">Resultaat</anyType>
+      </getContentResult>
+    </getContentResponse>
+  </soap:Body>
+</soap:Envelope>

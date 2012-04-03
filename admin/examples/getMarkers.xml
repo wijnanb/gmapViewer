@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body>
+    <getMarkersResponse xmlns="http://tempuri.org/">
+      <getMarkersResult>
+        <anyType xsi:type="xsd:short">2</anyType>
+        <anyType xsi:type="xsd:string">Dré Wapenaar</anyType>
+        <anyType xsi:type="xsd:string">Tentvillage - Revisited</anyType>
+        <anyType xsi:type="xsd:string">Dré Wapenaar (1961) is vooral bekend om zijn tentsculpturen. Wapenaars creaties van tentdoek bevinden zich op het grensgebied van architectuur, design en beeldhouwkunst. Zijn sculpturen zijn méér dan kijkobjecten. Je kan ze ook echt gebruiken als uitkijkpost of als hotelkamer.</anyType>
+        <anyType xsi:type="xsd:string">5.345622982857345</anyType>
+        <anyType xsi:type="xsd:string">50.81488171956847</anyType>
+        <anyType xsi:type="xsd:string">http://epics.edm.uhasselt.be/z33/images/Tentenkamp.swf</anyType>
+        <anyType xsi:type="xsd:short">9</anyType>
+        <anyType xsi:type="xsd:string">Tadashi Kawamata</anyType>
+        <anyType xsi:type="xsd:string">Project Burchtheuvel</anyType>
+        <anyType xsi:type="xsd:string">Tadashi Kawamata (1953) is bekend om zijn interventies in de open ruimte, gebruik makend van eenvoudige materialen. Voor Kawamata zijn het proces van het het bouwen en de participatie van lokale mensen een belangrijk onderdeel van zijn praktijk.</anyType>
+        <anyType xsi:type="xsd:string">5.343820662139196</anyType>
+        <anyType xsi:type="xsd:string">50.802543896976545</anyType>
+        <anyType xsi:type="xsd:string">http://epics.edm.uhasselt.be/z33/images/Kawamata.swf</anyType>
+        <anyType xsi:type="xsd:short">12</anyType>
+        <anyType xsi:type="xsd:string">Fred Eerdekens</anyType>
+        <anyType xsi:type="xsd:string">Twijfelgrens</anyType>
+        <anyType xsi:type="xsd:string">Fred Eerdekens (1951) heeft een omvangrijk oeuvre van tekstsculpturen die leesbaar worden vanuit een bepaald oogpunt of lichtinval. Hij deconstrueert schrift en voegt betekenislagen toe in een poëtisch beeld waarbij schrift en beeld niet steeds samenvallen.</anyType>
+        <anyType xsi:type="xsd:string">5.35495988603476</anyType>
+        <anyType xsi:type="xsd:string">50.789427366602354</anyType>
+        <anyType xsi:type="xsd:string">http://epics.edm.uhasselt.be/z33/images/Eerdekens.swf</anyType>
+        <anyType xsi:type="xsd:short">17</anyType>
+        <anyType xsi:type="xsd:string">Wesley Meuris</anyType>
+        <anyType xsi:type="xsd:string">Memento</anyType>
+        <anyType xsi:type="xsd:string">Wesley Meuris (1977) stelt in zijn werk onze houding tegenover architecturale archetypes in vraag. Hij construeert bekende vormen zoals bijvoorbeeld een dierenverblijf, maar vult die ruimtes niet verder in. Een installatie van Wesley Meuris bezoeken is een vaak ongrijpbare ervaring.</anyType>
+        <anyType xsi:type="xsd:string">5.330022464640574</anyType>
+        <anyType xsi:type="xsd:string">50.79621712599798</anyType>
+        <anyType xsi:type="xsd:string">http://epics.edm.uhasselt.be/z33/images/Meuris.swf</anyType>
+        <anyType xsi:type="xsd:short">19</anyType>
+        <anyType xsi:type="xsd:string">Dré Wapenaar</anyType>
+        <anyType xsi:type="xsd:string">Tranendreef</anyType>
+        <anyType xsi:type="xsd:string">Dré Wapenaar (1961) is vooral bekend om zijn tentsculpturen.  Wapenaars creaties van tentdoek bevinden zich op het grensgebied van architectuur, design en beeldhouwkunst. Zijn sculpturen zijn méér dan kijkobjecten. Je kan ze ook echt gebruiken als uitkijkpost of als hotelkamer.</anyType>
+        <anyType xsi:type="xsd:string">5.38029670715332</anyType>
+        <anyType xsi:type="xsd:string">50.78474896292773</anyType>
+        <anyType xsi:type="xsd:string">http://epics.edm.uhasselt.be/z33/images/Boomtenten.swf</anyType>
+        <anyType xsi:type="xsd:short">20</anyType>
+        <anyType xsi:type="xsd:string">Gijs Van Vaerenbergh</anyType>
+        <anyType xsi:type="xsd:string">Reading Between The Lines</anyType>
+        <anyType xsi:type="xsd:string">Pieterjan Gijs (1983) en Arnout Van Vaerenbergh (1983) studeerden beide architectuur en werken samen onder de naam Gijs Van Vaerenbergh in een multidisciplinaire praktijk met een sterke focus op de openbare ruimte.</anyType>
+        <anyType xsi:type="xsd:string">5.356800856294837</anyType>
+        <anyType xsi:type="xsd:string">50.793815335235216</anyType>
+        <anyType xsi:type="xsd:string">http://epics.edm.uhasselt.be/z33/images/Baerenbergh.swf</anyType>
+        <anyType xsi:type="xsd:short">25</anyType>
+        <anyType xsi:type="xsd:string">Paul Devens</anyType>
+        <anyType xsi:type="xsd:string">Proximity Effect</anyType>
+        <anyType xsi:type="xsd:string">Paul Devens (1965) stelt over het algemeen de schijnbaar genaturaliseerde concepties van de werkelijkheid in vraag. In zijn werken - van soundscapes over installaties tot performances - is het gevoel van onzekerheid en verrassing die bepaalde situatie aangeven steevast een centraal element.</anyType>
+        <anyType xsi:type="xsd:string">5.3647624254226445</anyType>
+        <anyType xsi:type="xsd:string">50.793511295300796</anyType>
+        <anyType xsi:type="xsd:string">http://epics.edm.uhasselt.be/z33/images/Devens.swf</anyType>
+        <anyType xsi:type="xsd:short">27</anyType>
+        <anyType xsi:type="xsd:string">Ardie Van Bommel</anyType>
+        <anyType xsi:type="xsd:string">Field Furniture “Pure Nature”</anyType>
+        <anyType xsi:type="xsd:string">Bij de boomtenten van Dré Wapenaar in de Tranendreef vind je nu ook Field Furniture “Pure Nature” van Ardie Van Bommel (NL). Zij brengt een zit-, was-, toilet-, en barbecue-eenheid gebaseerd op de paloxen of fruitkisten die je zo vaak ziet in het Haspengouwse landschap. Belangrijk voor Ardie Van Bommel is dat de bezoekers van de Tranendreef elkaar rond haar kunstwerken kunnen ontmoeten.</anyType>
+        <anyType xsi:type="xsd:string">5.381416797637963</anyType>
+        <anyType xsi:type="xsd:string">50.77812542457376</anyType>
+        <anyType xsi:type="xsd:string">http://epics.edm.uhasselt.be/z33/images/Van_Bommel.swf</anyType>
+        <anyType xsi:type="xsd:short">28</anyType>
+        <anyType xsi:type="xsd:string">Aeneas Wilder</anyType>
+        <anyType xsi:type="xsd:string">Untitled #158</anyType>
+        <anyType xsi:type="xsd:string">Aeneas Wilder (UK) bouwt een architecturale structuur in het landschap vlakbij het Klooster van Colen in Kerniel. De ronde kamer met een prachtig uitzicht van 360° wordt afgelijnd door uniforme verticale houten latjes. Rondwandelen in het kunstwerk is een speciale ervaring. Volgens Aeneas Wilder functioneert zijn werk als een lens waardoor de bezoeker zijn gedachten en emoties kan focussen met het landschap van Kerniel als achtergrond.</anyType>
+        <anyType xsi:type="xsd:string">5.3594419956207595</anyType>
+        <anyType xsi:type="xsd:string">50.814177217838605</anyType>
+        <anyType xsi:type="xsd:string">http://epics.edm.uhasselt.be/z33/images/Wilder.swf</anyType>
+      </getMarkersResult>
+    </getMarkersResponse>
+  </soap:Body>
+</soap:Envelope>
