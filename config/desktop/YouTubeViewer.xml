@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<YouTubeViewer>
+
+	<GlobalSettings><!-- Sets the initial, min and max scale values for the video objects. !!Important: Either <scale> or <imagesNormalize> should be used. Not both !! -->
+		<amountToShow>4</amountToShow>
+		<scale></scale><!--  <scale> sets the video's full size (the size at which the control buttons appear) as relative to the video's actual size. So, for instance, if an image is 500px x 400px, setting <scale> to 1 would mean its full size equals its actual size. Setting scale to 2 would make it twice as large. -->
+		<globalScale>.7</globalScale><!-- The size videos start at before they are double-tapped or zoomed to their full size, which is the size at which the control buttons appear. This variable modulates either <scale> or <imageNormalize>, depending on whether the user wants to set the full size relative to the actual size or as an absolute value-->
+		<imagesNormalize></imagesNormalize><!-- Sets the full size as an absolute pixel width; the height of the videos are adjusted accordingly -->
+		<maxScale>2.5</maxScale><!-- The maximum size the videos can zoom to, set relative to their full size within the application (set by <scale> or <imagesNormalize>). For instance, setting maxScale to 2.5 will allow the user to zoom the videos to 2.5 times their full size. -->
+		<minScale>.5</minScale><!-- The minimum size the videos can zoom to, set relative to their full size within the application (set by <scale> or <imagesNormalize>). For instance, setting minScale to .5 will allow the user to shrink the videos to half their full size. -->
+		<infoPadding>12</infoPadding><!-- Sets the padding around the description information when the info button is selected, and the spacing between the thumbnail, the main description box, and author info. -->
+	</GlobalSettings>
+	
+	<Gestures><!-- Sets whether or not the named gesture can be used in the application. Value must be either true or false. -->
+		<rotate>true</rotate>
+		<scale>true</scale>
+		<drag>true</drag>
+		<doubleTap>true</doubleTap>
+		<flick>false</flick>
+	</Gestures>
+
+	<ControlBtns>
+		<fillColor1>0xFFFFFF</fillColor1><!-- Sets the color of the bar behind the control buttons. The preceding Ox ensures that the program changes hexadecimal colors to integers -->
+		<outlineColor>0xFFFFFF</outlineColor><!-- Sets the color of the border that surrounds the button control bar. -->
+		<cornerRadius>0</cornerRadius>
+		<outlineStroke>2</outlineStroke><!-- Sets the width of the border that surrounds the button control bar.. -->
+		
+		<buttonRadius>21</buttonRadius><!-- Sets the button radius in pixels. NB: Radius is one-half of total button size (diameter) -->
+		<buttonPadding>5</buttonPadding><!-- Sets the padding in pixels on all four sides of each button -->
+		<buttonOutlineStroke>1</buttonOutlineStroke><!-- Sets the width of the button outline in pixels -->
+		<buttonOutlineColor>0xFFFFFF</buttonOutlineColor><!-- Sets the color of the button outline -->
+		<buttonColorPassive>0x000000</buttonColorPassive><!-- Sets the background color of the buttons when they aren't active (haven't been selected). -->
+		<buttonColorActive>0x666666</buttonColorActive><!-- Sets the background color of the buttons when they are active (have been selected). -->
+		<buttonSymbolColor>0xFFFFFF</buttonSymbolColor><!-- Sets the color of the symbol or text on each button -->
+		<timeFontSize>15</timeFontSize><!--Sets the text size for the timecode that displays on video objects. -->
+	</ControlBtns>
+	
+	<BackgroundGraphic><!-- Sets the application background to be either a solid color (if only <fillColor1> is given a value) or a two-color horizontal gradient (if both color values are filled in).   -->
+		<fillColor1>0xFFFFFF</fillColor1>
+	</BackgroundGraphic>
+	
+	<BackgroundOutline><!-- Sets the style of the outline that surrounds each video object -->
+		<outlineColor>0xFFFFFF</outlineColor><!-- Sets the color of the outline surrounding each media object. -->
+		<outlineStroke>2</outlineStroke><!-- Sets the width of the border around each media object in pixels -->
+	</BackgroundOutline>
+	
+	<InfoText><!-- Sets the font size and color for each metadata field. The data is pulled from YouTube directly, so title, description etc must be set from YouTube. -->
+		<TitleText>
+			<fontColor>0xFFFFFF</fontColor>
+			<fontSize>16</fontSize>
+		</TitleText>
+		<DescriptionText>
+			<fontColor>0x999999</fontColor>
+			<fontSize>9</fontSize>
+		</DescriptionText>
+		<AuthorText>
+			<fontColor>0x666666</fontColor>
+			<fontSize>9</fontSize>
+		</AuthorText>
+		<PublishText>
+			<fontColor>0xCCCCCC</fontColor>
+			<fontSize>9</fontSize>
+		</PublishText>
+	</InfoText>
+	<!---->
+</YouTubeViewer>

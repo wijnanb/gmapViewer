@@ -1,0 +1,781 @@
+<?xml version="1.0"?>
+<Content>
+  <Content>
+    <Source id="1">
+      <name>Gijs Van Vaerenbergh</name>
+      <title>Reading Between The Lines</title>
+      <description>Pieterjan Gijs (1983) en Arnout Van Vaerenbergh (1983) studeerden beide architectuur en werken samen onder de naam Gijs Van Vaerenbergh in een multidisciplinaire praktijk met een sterke focus op de openbare ruimte.</description>
+      <longitude>5.356800856294837</longitude>
+      <latitude>50.793815335235216</latitude>
+      <markerIcon>http://epics.edm.uhasselt.be/z33/images/Baerenbergh.swf</markerIcon>
+      <concept>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/maquette.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>Maquette</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/schets GVV.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>schets</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Gijs Van Vareenbergh</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/schets GVV.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>schets</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Gijs Van Vareenbergh</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/schets GVV 2.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>projectvoorstel</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Gijs Van Vareenbergh</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/GVV projectvoorstel.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>inplanting</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Gijs Van Vareenbergh</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/GVV - simulatieskopie.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>simulatie vanuit verschillende standpunten</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Gijs Van Vaerenbergh</publish>
+        </image>
+      </concept>
+      <constructie>
+        <youtube>
+          <url>http://www.youtube.com/watch?v=gnNxNFtLsyw</url>
+          <title>constructie van Reading between the Lines</title>
+          <description>
+          </description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>audiovisuele studio - provincie Limburg</publish>
+        </youtube>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/sokkel.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>constructie sokkel</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/constructie grondplaat.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>plaatsing grondplaat</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/constructie deel 1.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>constructie deel 1</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/constructie deel 2.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>constructie deel 2</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/laswerk.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>laswerk</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/Arnout en Pieterjan.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>Arnout Van Vaerenbergh en Pieterjan Gijs</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/toren.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>De toren wordt getakeld</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/constructie toren.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>plaatsing toren</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/kruis.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>plaatsing kruis</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/laswerk binnen.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>laswerk binnen</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+      </constructie>
+      <resultaat>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/6120256065_409f094800_b.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>
+          </description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/6120256065_409f094800_b.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>
+          </description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/6120808016_3c218bf7e2_b.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>
+          </description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/6120820492_532eab5a9c_b.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>
+          </description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/6106233892_d68abe5121_b.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>detail</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/6120246805_c725eb535f_b.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>detail</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/6120816944_a3c1473448_b.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>detail</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/6120811942_c3fe0ca0e5_b.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>detail</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/6120246547_0a26261d9b_b.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>binnenzicht</description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <text>
+          <url>http://epics.edm.uhasselt.be/z33/images/tekst Koen Sels.jpg</url>
+          <title>Reading between the Lines</title>
+          <description>
+          </description>
+          <author>Gijs Van Vaerenbergh</author>
+          <publish>Koen Sels</publish>
+        </text>
+      </resultaat>
+    </Source>
+    <Source id="2">
+      <name>Dré Wapenaar</name>
+      <title>Tentvillage - Revisited</title>
+      <description>Dré Wapenaar (1961) is vooral bekend om zijn tentsculpturen. Wapenaars creaties van tentdoek bevinden zich op het grensgebied van architectuur, design en beeldhouwkunst. Zijn sculpturen zijn méér dan kijkobjecten. Je kan ze ook echt gebruiken als uitkijkpost of als hotelkamer.</description>
+      <longitude>5.346708741066566</longitude>
+      <latitude>50.815735837917714</latitude>
+      <markerIcon>http://epics.edm.uhasselt.be/z33/images/Tentenkamp.swf</markerIcon>
+      <concept>
+        <youtube>
+          <url>http://www.youtube.com/watch?v=y2msP67D5gY</url>
+          <title>concept Tentvillage Revisited</title>
+          <description>Dré Wapenaar over het concept achter zijn tentsculpturen</description>
+          <author>Dré Wapenaar</author>
+          <publish>audiovisuele studio - provincie Limburg</publish>
+        </youtube>
+        <youtube>
+          <url>http://www.youtube.com/watch?v=f23W8ICn8z0</url>
+          <title>constructie Tentvillage Revisited</title>
+          <description>Dré Wapenaar over de constructiewijze</description>
+          <author>Dré Wapenaar</author>
+          <publish>audiovisuele studio - provincie Limburg</publish>
+        </youtube>
+        <youtube>
+          <url>http://www.youtube.com/watch?v=zZgj-V_an-w</url>
+          <title>resultaat Tentvillage revisited</title>
+          <description>Dré Wapenaar over wat hij wilt bereiken met zijn tentsculpturen</description>
+          <author>Dré Wapenaar</author>
+          <publish>audiovisuele studio - Provincie Limburg</publish>
+        </youtube>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/birds-perspective rendering5331.jpg</url>
+          <title>Tentvillage Revisited test</title>
+          <description>rendering in vogelperspectief test</description>
+          <author>Dré Wapenaar</author>
+          <publish>Dré Wapenaar</publish>
+        </image>
+      </concept>
+      <constructie />
+      <resultaat>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/tentvillage openingsmoment.jpg</url>
+          <title>Tentvillage Revisited</title>
+          <description>Tentvillage Revisited tijden openingsmoment</description>
+          <author>Dré Wapenaar</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/tentvillage stroopfabriek.jpg</url>
+          <title>Tentvillage Revisited</title>
+          <description>Tentvillage Revisited aan de stroopfabriek in Borgloon</description>
+          <author>Dré Wapenaar</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/GVB tentvillage.jpg</url>
+          <title>Tentvillage Revisited</title>
+          <description>Gedeputeerde Gilbert Van Baelen voor Tentvillage Revisited</description>
+          <author>Dré Wapenaar</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+      </resultaat>
+    </Source>
+    <Source id="9">
+      <name>Tadashi Kawamata</name>
+      <title>Project Burchtheuvel</title>
+      <description>Tadashi Kawamata (1953) is bekend om zijn interventies in de open ruimte, gebruik makend van eenvoudige materialen. Voor Kawamata zijn het proces van het het bouwen en de participatie van lokale mensen een belangrijk onderdeel van zijn praktijk.</description>
+      <longitude>5.343524546263936</longitude>
+      <latitude>50.801166064915705</latitude>
+      <markerIcon>http://epics.edm.uhasselt.be/z33/images/Kawamata.swf</markerIcon>
+      <concept>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/doc8-Kawamata-schwerdtle-1.jpg</url>
+          <title>Destroyed Churhc - Documenta VIII, Kassel - 1987</title>
+          <description>Tadashi Kawamata maakte voor zijn deelname aan Documenta VIII in Kassel een grote houten sculptuur rond de ruïne van een kerk. De kerk werd verwoest tijdens de tweede wereldoorlog maar werd niet zoals de rest van de stad heropgebouwd. De tijd die kan afgelezen worden aan het verval of de bloei van een gebouw is één van de kernelementen uit Kawamata’s werk.</description>
+          <author>Tadashi Kawamata</author>
+          <publish>
+          </publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/kaw_Biennalewenecja1982.jpg</url>
+          <title>project Biennal Venetië</title>
+          <description>1992</description>
+          <author>Tadashi Kawamata</author>
+          <publish>
+          </publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/tadashi-kawamata-013.jpg</url>
+          <title>Gandamaison, Versailles, 2004</title>
+          <description>
+          </description>
+          <author>Tadashi Kawamata</author>
+          <publish>
+          </publish>
+        </image>
+      </concept>
+      <constructie />
+      <resultaat />
+    </Source>
+    <Source id="12">
+      <name>Fred Eerdekens</name>
+      <title>Twijfelgrens</title>
+      <description>Fred Eerdekens (1951) heeft een omvangrijk oeuvre van tekstsculpturen die leesbaar worden vanuit een bepaald oogpunt of lichtinval. Hij deconstrueert schrift en voegt betekenislagen toe in een poëtisch beeld waarbij schrift en beeld niet steeds samenvallen.</description>
+      <longitude>5.35495988603476</longitude>
+      <latitude>50.789427366602354</latitude>
+      <markerIcon>http://epics.edm.uhasselt.be/z33/images/Eerdekens.swf</markerIcon>
+      <concept>
+        <youtube>
+          <url>http://www.youtube.com/watch?v=JXIcyQKiRxc</url>
+          <title>concept Twijfelgrens</title>
+          <description>Fred Eerdekens over het concept achter Twijfelgrens</description>
+          <author>Fred Eerdekens</author>
+          <publish>audiovisuele studio - Provincie Limburg</publish>
+        </youtube>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/FRED EERDEKENS-1- tekening.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>tekening</description>
+          <author>Fred Eerdekens</author>
+          <publish>Fred Eerdekens</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/FRED EERDEKENS-1- tekening.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>tekening</description>
+          <author>Fred Eerdekens</author>
+          <publish>Fred Eerdekens</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/FRED EERDEKENS-1- tekening.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>tekening</description>
+          <author>Fred Eerdekens</author>
+          <publish>Fred Eerdekens</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/Fred Eerdekens - twijfelgrens maquette 5 - foto Johan Jozef Wetzels-1.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>Maquette in kunstencentrum BELGIE</description>
+          <author>Fred Eerdekens</author>
+          <publish>Johan Jozef Wetzels</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/Fred Eerdekens - twijfelgrens maquette 4 - foto Johan Jozef Wetzels-1.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>Maquette in kunstencentrum BELGIE</description>
+          <author>Fred Eerdekens</author>
+          <publish>Johan Jozef Wetzels</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/Fred Eerdekens - twijfelgrens 3 - foto Johan Jozef Wetzels-1.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>Maquette in kunstencentrum BELGIE</description>
+          <author>Fred Eerdekens</author>
+          <publish>Johan Jozef Wetzels</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/Fred Eerdekens - twijfelgrens maquette 5 - foto Johan Jozef Wetzels-1.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>Maquette in kunstencentrum BELGIE</description>
+          <author>Fred Eerdekens</author>
+          <publish>Johan Jozef Wetzels</publish>
+        </image>
+      </concept>
+      <constructie>
+        <youtube>
+          <url>http://www.youtube.com/watch?v=ZbFPLSTiiCg</url>
+          <title>constructie Twijfelgrens</title>
+          <description>Fred Eerdekens over de uitvoering van Twijfelgrens</description>
+          <author>Fred Eerdekens</author>
+          <publish>audiovisuele studio - Provincie Limburg</publish>
+        </youtube>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/Fred Eerdekens - twijfelgrens 3 - foto Johan Jozef Wetzels.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>Maquette in kunstencentrum BELGIE</description>
+          <author>Fred Eerdekens</author>
+          <publish>Johan Jozef Wetzels</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/Fred Eerdekens - twijfelgrens maquette 2 - foto Johan Jozef Wetzels.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>Maquette in kunstencentrum BELGIE</description>
+          <author>Fred Eerdekens</author>
+          <publish>Johan Jozef Wetzels</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/Fred Eerdekens - twijfelgrens maquette 2 - foto Johan Jozef Wetzels.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>Maquette in kunstencentrum BELGIE</description>
+          <author>Fred Eerdekens</author>
+          <publish>Johan Jozef Wetzels</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/Fred Eerdekens - twijfelgrens maquette 2 - foto Johan Jozef Wetzels.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>Maquette in kunstencentrum BELGIE</description>
+          <author>Fred Eerdekens</author>
+          <publish>Johan Jozef Wetzels</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/Fred Eerdekens - twijfelgrens maquette 2 - foto Johan Jozef Wetzels.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>Maquette in kunstencentrum BELGIE</description>
+          <author>Fred Eerdekens</author>
+          <publish>Johan Jozef Wetzels</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/Fred Eerdekens - twijfelgrens maquette 2 - foto Johan Jozef Wetzels-1.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>Maquette in kunstencentrum BELGIE</description>
+          <author>Fred Eerdekens</author>
+          <publish>Johan Jozef Wetzels</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/Fred Eerdekens - twijfelgrens 3 - foto Johan Jozef Wetzels-1.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>Maquette in kunstencentrum BELGIE</description>
+          <author>Fred Eerdekens</author>
+          <publish>Johan Jozef Wetzels</publish>
+        </image>
+      </constructie>
+      <resultaat>
+        <youtube>
+          <url>http://www.youtube.com/watch?v=VCMx2vBvwCo</url>
+          <title>resultaat Twijfelgrens</title>
+          <description>Fred Eerdekens over het beoogde effect van Twijfelgrens</description>
+          <author>Fred Eerdekens</author>
+          <publish>audiovisuele studio - Provincie Limburg</publish>
+        </youtube>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/twijfelgrens.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>
+          </description>
+          <author>Fred Eerdekens</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/twijfelgrens2.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>
+          </description>
+          <author>Fred Eerdekens</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/twijfelgrens3.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>
+          </description>
+          <author>Fred Eerdekens</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/twijfelgrens4.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>
+          </description>
+          <author>Fred Eerdekens</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/twijfelgrens5.jpg</url>
+          <title>Twijfelgrens</title>
+          <description>
+          </description>
+          <author>Fred Eerdekens</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+      </resultaat>
+    </Source>
+    <Source id="13">
+      <name>N55</name>
+      <title>Space Frame Vehicles</title>
+      <description>N55  is een artistiek platform dat mensen verzamelt die  kunst als een onderdeel van het alledaagse leven beschouwen. N55 heeft zijn eigen productie en distributiekanalen. Zo kan je handleidingen voor N55 projecten consulteren op www.N55.de en in een N55 tijdschrift.</description>
+      <longitude>5.312082919112924</longitude>
+      <latitude>50.792305391053546</latitude>
+      <markerIcon>http://epics.edm.uhasselt.be/z33/images/N55.swf</markerIcon>
+      <concept>
+        <youtube>
+          <url>http://www.youtube.com/watch?v=ysx-Z1DDsjw</url>
+          <title>concept Space Frame Vehicles</title>
+          <description>
+          </description>
+          <author>N55</author>
+          <publish>audiovisuele studio - provincie Limburg</publish>
+        </youtube>
+        <text>
+          <url>http://epics.edm.uhasselt.be/z33/images/DIY N55-1.jpg</url>
+          <title>Space Frame Vehicles plan</title>
+          <description>download het bouwplan op www.n55.dk</description>
+          <author>N55</author>
+          <publish>N55</publish>
+        </text>
+        <text>
+          <url>http://epics.edm.uhasselt.be/z33/images/DIY N55-2.jpg</url>
+          <title>Space Frame Vehicles plan</title>
+          <description>download het bouwplan op www.n55.dk</description>
+          <author>N55</author>
+          <publish>N55</publish>
+        </text>
+        <text>
+          <url>http://epics.edm.uhasselt.be/z33/images/DIY N55-3.jpg</url>
+          <title>Space Frame Vehicles plan</title>
+          <description>download het bouwplan op www.n55.dk</description>
+          <author>N55</author>
+          <publish>N55</publish>
+        </text>
+        <text>
+          <url>http://epics.edm.uhasselt.be/z33/images/DIY N55-4.jpg</url>
+          <title>Space Frame Vehicles plan</title>
+          <description>download het bouwplan op www.n55.dk</description>
+          <author>N55</author>
+          <publish>N55</publish>
+        </text>
+        <text>
+          <url>http://epics.edm.uhasselt.be/z33/images/DIY N55-5.jpg</url>
+          <title>Space Frame Vehicles plan</title>
+          <description>download het bouwplan op www.n55.dk</description>
+          <author>N55</author>
+          <publish>N55</publish>
+        </text>
+        <text>
+          <url>http://epics.edm.uhasselt.be/z33/images/DIY N55-6.jpg</url>
+          <title>Space Frame Vehicles plan</title>
+          <description>download het bouwplan op www.n55.dk</description>
+          <author>N55</author>
+          <publish>N55</publish>
+        </text>
+        <text>
+          <url>http://epics.edm.uhasselt.be/z33/images/DIY N55-7.jpg</url>
+          <title>Space Frame Vehicles plan</title>
+          <description>download het bouwplan op www.n55.dk</description>
+          <author>N55</author>
+          <publish>N55</publish>
+        </text>
+        <text>
+          <url>http://epics.edm.uhasselt.be/z33/images/DIY N55-8.jpg</url>
+          <title>Space Frame Vehicles plan</title>
+          <description>download het bouwplan op www.n55.dk</description>
+          <author>N55</author>
+          <publish>N55</publish>
+        </text>
+      </concept>
+      <constructie>
+        <youtube>
+          <url>http://www.youtube.com/watch?v=lhgoXe8brGY</url>
+          <title>constructie Space Frame Vehicles</title>
+          <description>
+          </description>
+          <author>N55</author>
+          <publish>audiovisuele studio - provincie Limburg</publish>
+        </youtube>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/N55 constructie borgloon 6.JPG</url>
+          <title>Space Frame Vehicles plan</title>
+          <description>constructie van een Space Frame Vehicle in Borgloon</description>
+          <author>N55</author>
+          <publish>N55</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/N55 constructie borgloon.JPG</url>
+          <title>Space Frame Vehicles plan</title>
+          <description>constructie van een Space Frame Vehicle in Borgloon</description>
+          <author>N55</author>
+          <publish>N55</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/N55 constructie borlgoon 2.JPG</url>
+          <title>Space Frame Vehicles plan</title>
+          <description>constructie van een Space Frame Vehicle in Borgloon</description>
+          <author>N55</author>
+          <publish>N55</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/N55 constructie borgloon 13.JPG</url>
+          <title>Space Frame Vehicles plan</title>
+          <description>constructie van een Space Frame Vehicle in Borgloon</description>
+          <author>N55</author>
+          <publish>N55</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/N55 constructie borgloon 13.JPG</url>
+          <title>Space Frame Vehicles plan</title>
+          <description>constructie van een Space Frame Vehicle in Borgloon</description>
+          <author>N55</author>
+          <publish>N55</publish>
+        </image>
+      </constructie>
+      <resultaat>
+        <youtube>
+          <url>http://www.youtube.com/watch?v=aukCiIcq8SI</url>
+          <title>resultaat Space Frame Vehicles</title>
+          <description>
+          </description>
+          <author>N55</author>
+          <publish>audiovisuele studio - Provincie Limburg</publish>
+        </youtube>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/space frame vehicle.jpg</url>
+          <title>Space Frame Vehicle</title>
+          <description>detail</description>
+          <author>N55</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/Luuk Nouwen van FLACC in een space frame vehicle.jpg</url>
+          <title>Space Frame Vehicle</title>
+          <description>Luuk Nouwen van FLACC op een Space Frame Vehicle</description>
+          <author>N55</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+      </resultaat>
+    </Source>
+    <Source id="17">
+      <name>Wesley Meuris</name>
+      <title>Memento</title>
+      <description>Wesley Meuris (1977) stelt in zijn werk onze houding tegenover architecturale archetypes in vraag. Hij construeert bekende vormen zoals bijvoorbeeld een dierenverblijf, maar vult die ruimtes niet verder in. Een installatie van Wesley Meuris bezoeken is een vaak ongrijpbare ervaring.</description>
+      <longitude>5.329936633952097</longitude>
+      <latitude>50.79651008534819</latitude>
+      <markerIcon>http://epics.edm.uhasselt.be/z33/images/Meuris.swf</markerIcon>
+      <concept>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/drawing 02 (mail).jpg</url>
+          <title>Memento</title>
+          <description>ontwerptekening</description>
+          <author>Wesley Meuris</author>
+          <publish>Wesley Meuris</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/drawing 03 (mail).jpg</url>
+          <title>Memento</title>
+          <description>ontwerptekening</description>
+          <author>Wesley Meuris</author>
+          <publish>Wesley Meuris</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/drawing 04 (mail).jpg</url>
+          <title>Memento</title>
+          <description>ontwerptekening</description>
+          <author>Wesley Meuris</author>
+          <publish>Wesley Meuris</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/WM locatie foto.jpg</url>
+          <title>Memento</title>
+          <description>locatie foto</description>
+          <author>Wesley Meuris</author>
+          <publish>Wesley Meuris</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/WM locatie fotomontage.jpg</url>
+          <title>Memento</title>
+          <description>locatie foto + ontwerp</description>
+          <author>Wesley Meuris</author>
+          <publish>Wesley Meuris</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/WM plaatsing.jpg</url>
+          <title>Memento</title>
+          <description>locatie op plan</description>
+          <author>Wesley Meuris</author>
+          <publish>Wesley Meuris</publish>
+        </image>
+      </concept>
+      <constructie />
+      <resultaat />
+    </Source>
+    <Source id="19">
+      <name>Dré Wapenaar</name>
+      <title>Tranendreef</title>
+      <description>Dré Wapenaar (1961) is vooral bekend om zijn tentsculpturen.  Wapenaars creaties van tentdoek bevinden zich op het grensgebied van architectuur, design en beeldhouwkunst. Zijn sculpturen zijn méér dan kijkobjecten. Je kan ze ook echt gebruiken als uitkijkpost of als hotelkamer.</description>
+      <longitude>5.38029670715332</longitude>
+      <latitude>50.78474896292773</latitude>
+      <markerIcon>http://epics.edm.uhasselt.be/z33/images/Boomtenten.swf</markerIcon>
+      <concept>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/TREETENTsketch17788.jpg</url>
+          <title>Boomtent schets</title>
+          <description>
+          </description>
+          <author>Dré Wapenaar</author>
+          <publish>Dré Wapenaar</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/TREETENTsketch27362.jpg</url>
+          <title>Boomtent schets</title>
+          <description>
+          </description>
+          <author>Dré Wapenaar</author>
+          <publish>Dré Wapenaar</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/TTsketch18301.jpg</url>
+          <title>Boomtent schets</title>
+          <description>
+          </description>
+          <author>Dré Wapenaar</author>
+          <publish>Dré Wapenaar</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/TTsteelframe4935.jpg</url>
+          <title>Boomtent stalen frame</title>
+          <description>
+          </description>
+          <author>Dré Wapenaar</author>
+          <publish>Dré Wapenaar</publish>
+        </image>
+      </concept>
+      <constructie />
+      <resultaat>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/tranendreef ver.jpg</url>
+          <title>Tranendreef</title>
+          <description>De tranendreef in de dreef naar het kasteel van Hex</description>
+          <author>Dré Wapenaar</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/tranendreef.jpg</url>
+          <title>Tranendreef</title>
+          <description>De tranendreef in de dreef naar het kasteel van Hex</description>
+          <author>Dré Wapenaar</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/tranendreef2.jpg</url>
+          <title>Tranendreef</title>
+          <description>De tranendreef in de dreef naar het kasteel van Hex</description>
+          <author>Dré Wapenaar</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/boomtent.jpg</url>
+          <title>Tranendreef</title>
+          <description>Een boomtent in de Tranendreef</description>
+          <author>Dré Wapenaar</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/boomtent close.jpg</url>
+          <title>Tranendreef</title>
+          <description>Een boomtent in de Tranendreef</description>
+          <author>Dré Wapenaar</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/boomtent binnen.jpg</url>
+          <title>Tranendreef</title>
+          <description>Vanuit een boomtent in de Tranendreef</description>
+          <author>Dré Wapenaar</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+        <image>
+          <url>http://epics.edm.uhasselt.be/z33/images/boomtent binnen2.jpg</url>
+          <title>Tranendreef</title>
+          <description>Binnenkant van een boomtent in de Tranendreef</description>
+          <author>Dré Wapenaar</author>
+          <publish>Kristof Vrancken</publish>
+        </image>
+      </resultaat>
+    </Source>
+  </Content>
+  <GlobalSettings>
+    <amountToShow>7</amountToShow>
+    <FlickrApiKey>69020127f78872fdbd72cf92cda3e7d3</FlickrApiKey>
+  </GlobalSettings>
+</Content>

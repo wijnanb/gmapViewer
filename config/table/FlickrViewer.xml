@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlickrViewer>
+
+	<GlobalSettings><!-- Sets the global settings for the module, including API key and scale values -->	
+		<globalScale>.4</globalScale><!-- The size images start at before they are double-tapped or zoomed to their full size, which is the size at which the info & close buttons appear. This variable modulates either <scale> or <imageNormalize>, depending on whether the user wants to set the full size relative to the actual size or as an absolute value-->
+		<imagesNormalize>500</imagesNormalize><!-- Sets the full size as an absolute pixel width; the height of the image is adjusted accordingly -->
+		<maxScale>2.5</maxScale><!-- The maximum size the images can zoom to, set relative to their full size within the application (set by <scale> or <imagesNormalize>). For instance, setting maxScale to 2.5 will allow the user to zoom an image to 2.5 times its full size. -->
+		<minScale>.5</minScale><!-- The minimum size the images can zoom to, set relative to their full size within the application (set by <scale> or <imagesNormalize>). For instance, setting minScale to .5 will allow the user to shrink an image to half its full size. -->
+		<infoPadding>12</infoPadding><!-- Sets the padding around the description information when the info button is selected, and between the thumbnail, the main description box, and author info. -->
+	</GlobalSettings>
+	
+	<Gestures><!-- Sets whether or not the named gesture can be used in the application. Value must be either true or false. -->
+		<rotate>true</rotate>
+		<scale>true</scale>
+		<drag>true</drag>
+		<doubleTap>true</doubleTap>
+		<flick>true</flick>
+	</Gestures>
+
+	<ControlBtns>
+		<fillColor1>0x333333</fillColor1><!-- Sets the color of the bar behind the control buttons. The preceding Ox ensures that the program changes hexadecimal colors to integers -->
+		<outlineColor>0xFFFFFF</outlineColor><!-- Sets the color of the border that surrounds the button control bar. -->
+		<cornerRadius>0</cornerRadius>
+		<outlineStroke>1</outlineStroke><!-- Sets the width of the border that surrounds the button control bar.. -->
+		
+		<buttonRadius>21</buttonRadius><!-- Sets the button radius in pixels. NB: Radius is one-half of total button size (diameter) -->
+		<buttonPadding>5</buttonPadding><!-- Sets the padding in pixels on all four sides of each button -->
+		<buttonOutlineSize>1</buttonOutlineSize><!-- Sets the width of the button outline in pixels -->
+		<buttonOutlineColor>0xFFFFFF</buttonOutlineColor><!-- Sets the color of the button outline -->
+		<buttonColorPassive>0x000000</buttonColorPassive><!-- Sets the background color of the buttons when they aren't active (haven't been selected). -->
+		<buttonColorActive>0x666666</buttonColorActive><!-- Sets the background color of the buttons when they are active (have been selected). -->
+		<buttonSymbolColor>0xFFFFFF</buttonSymbolColor><!-- Sets the color of the symbol or text on each button -->
+		<timeFontSize>15</timeFontSize><!--Sets the text size for the timecode that displays on video objects. -->
+	</ControlBtns>
+	
+	<BackgroundGraphic><!-- Sets the application background to be either a solid color (if only <fillColor1> is given a value) or a two-color horizontal gradient (if both color values are filled in).   -->
+			<fillColor1>0xFFFFFF</fillColor1>
+			<fillColor2>0xFFFFFF</fillColor2>
+	</BackgroundGraphic>
+	
+	<BackgroundOutline>
+			<outlineColor>0xFFFFFF</outlineColor><!-- Sets the color of the outline surrounding each media object. -->
+			<outlineStroke>1</outlineStroke><!-- Sets the width of the border around each media object in pixels -->
+	</BackgroundOutline>
+	
+	<InfoText><!-- Sets the font size and color for each metadata field. The data is pulled from flickr directly, so title, description etc must be set from flickr. -->
+		<TitleText>
+			<fontColor>0x000000</fontColor>
+			<fontSize>12</fontSize>
+		</TitleText>
+		<DescriptionText>
+			<fontColor>0x000000</fontColor>
+			<fontSize>10</fontSize>
+		</DescriptionText>
+		<AuthorText>
+			<fontColor>0x000000</fontColor>
+			<fontSize>10</fontSize>
+		</AuthorText>
+		<PublishText>
+			<fontColor>0x000000</fontColor>
+			<fontSize>9</fontSize>
+		</PublishText>
+	</InfoText>
+	
+</FlickrViewer>

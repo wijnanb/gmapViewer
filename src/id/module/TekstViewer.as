@@ -1,12 +1,14 @@
 ﻿package id.module
 {
+	import com.greensock.TweenMax;
+	
 	import flash.events.Event;
-	import id.core.TouchComponent;
+	
 	import id.component.TekstDisplay;
+	import id.core.ApplicationGlobals;
+	import id.core.TouchComponent;
 	import id.element.TekstDisplayParser;
 	import id.element.TekstParser;
-	import id.core.ApplicationGlobals;
-	import com.greensock.TweenMax;
 
 	/**
 	 * 
@@ -80,7 +82,7 @@
 			TekstParser.addEventListener(Event.COMPLETE,onParseComplete);
 			TekstDisplayParser.addEventListener(Event.COMPLETE,onParseComplete);
 			TekstParser.settingsPath = "FSCommand/Content.xml";
-			TekstDisplayParser.settingsPath="config/TekstViewer.xml";
+			TekstDisplayParser.settingsPath="config/"+Global.environment+"/TekstViewer.xml";
 			
 			TekstParser.settingsId = idp;
 			TekstParser.settingsNiveau = niveau;

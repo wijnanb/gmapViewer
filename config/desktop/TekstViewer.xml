@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ImageViewer>
+
+
+		
+	<GlobalSettings><!-- Sets the initial, min and max scale values for the video objects. !!Important: Either <scale> or <imagesNormalize> should be used. Not both !! --
+		<!-- <scale></scale> --><!-- Sets the images's full size (the size at which the control buttons appear) as relative to the images's actual size. So, for instance, if an image is 500px x 400px, setting <scale> to 1 would mean its full size equals its actual size. Setting scale to 2 would make it twice as large. -->
+		<imagesNormalize>800</imagesNormalize>
+		<amountToShow>3</amountToShow>
+		
+		<globalScale>.7</globalScale><!-- The size images start at before they are double-tapped or zoomed to their full size, which is the size at which the control buttons appear. This variable modulates either <scale> or <imageNormalize>, depending on whether the user wants to set the full size relative to the actual size or as an absolute value-->
+		<!--<imagesNormalize>500</imagesNormalize> Sets the full size as an absolute pixel width; the height of the images are adjusted accordingly -->
+		<scale>1</scale>
+		<maxScale>2.5</maxScale><!-- The maximum size the images can zoom to, set relative to their full size within the application (set by <scale> or <imagesNormalize>). For instance, setting maxScale to 2.5 will allow the user to zoom the videos to 2.5 times their full size. -->
+		<minScale>.5</minScale><!-- The minimum size the images can zoom to, set relative to their full size within the application (set by <scale> or <imagesNormalize>). For instance, setting minScale to .5 will allow the user to shrink the images to half their full size. -->
+		<infoPadding>18</infoPadding><!-- Sets the padding around the description information when the info button is selected, and the spacing between the thumbnail, the main description box, and author info. -->
+	</GlobalSettings>
+	
+	<Gestures><!-- Sets whether or not the named gesture can be used in the application. Value must be either true or false. -->
+		<rotate>true</rotate>
+		<scale>true</scale>
+		<drag>true</drag>
+		<doubleTap>true</doubleTap>
+		<flick>false</flick>
+	</Gestures>
+
+	<ControlBtns>
+		<fillColor1>0x000000</fillColor1><!-- Sets the color of the bar behind the control buttons. The preceding Ox ensures that the program changes hexadecimal colors to integers -->
+		<outlineColor>0x000000</outlineColor><!-- Sets the color of the border that surrounds the button control bar. -->
+		<cornerRadius>18</cornerRadius>
+		<outlineStroke>0</outlineStroke><!-- Sets the width of the border that surrounds the button control bar.. -->
+
+		<buttonRadius>21</buttonRadius><!-- Sets the button radius in pixels. NB: Radius is one-half of total button size (diameter) -->
+		<buttonPadding>5</buttonPadding><!-- Sets the padding in pixels on all four sides of each button -->
+		<buttonOutlineStroke>0</buttonOutlineStroke><!-- Sets the width of the button outline in pixels -->
+		<buttonOutlineColor>0xFFFFFF</buttonOutlineColor><!-- Sets the color of the button outline -->
+		<buttonColorPassive>0xFFFFFF</buttonColorPassive><!-- Sets the background color of the buttons when they aren't active (haven't been selected). -->
+		<buttonColorActive>0x555555</buttonColorActive><!-- Sets the background color of the buttons when they are active (have been selected). -->
+		<buttonSymbolColor>0x000000</buttonSymbolColor><!-- Sets the color of the symbol or text on each button -->
+	</ControlBtns>
+	
+	<BackgroundGraphic><!-- Sets the application background to be either a solid color (if only <fillColor1> is given a value) or a two-color horizontal gradient (if both color values are filled in).   -->
+		<fillColor1>0x000000</fillColor1>
+		<fillColor2>0x000000</fillColor2>
+	</BackgroundGraphic>
+	
+	<BackgroundOutline><!-- Sets the style of the outline that surrounds each image object -->
+		<outlineColor>0xffffff</outlineColor><!-- Sets the color of the outline surrounding each image object. -->
+		<outlineStroke>0</outlineStroke><!-- Sets the width of the border around each image object in pixels -->
+	</BackgroundOutline>
+		
+	<InfoText><!-- Sets the font size and color for each metadata field. -->
+		<TitleText>
+			<fontColor>0x000000</fontColor>
+			<fontSize>16</fontSize>
+		</TitleText>
+		<DescriptionText>
+			<fontColor>0x000000</fontColor>
+			<fontSize>14</fontSize>
+		</DescriptionText>
+		<AuthorText>
+			<fontColor>0x222222</fontColor>
+			<fontSize>12</fontSize>
+		</AuthorText>
+		<PublishText>
+			<fontColor>0x333333</fontColor>
+			<fontSize>11</fontSize>
+		</PublishText>
+	</InfoText>
+	
+</ImageViewer>

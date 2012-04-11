@@ -221,7 +221,8 @@ package id.template
 				moduleDictionary[module] = modules[i];
 				switch(String(modules[i])) {
 					case "GMapViewer":
-						gMapViewer = new GMapViewer();
+						var settingsPath:String = "config/"+Global.environment+"/GMapViewer.xml";
+						gMapViewer = new GMapViewer(settingsPath);
 						mapViewerLayer.addChild(gMapViewer);
 						break;
 				}

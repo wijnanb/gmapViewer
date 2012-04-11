@@ -3,9 +3,11 @@
 	<Template>
 		<FrameRate>60</FrameRate>
 		<background>assets/interface/splashscreengoed.jpg</background> <!-- needs to be sized to screen resolution -->
+		<fullscreen>true</fullscreen>
 		<module>GMapViewer</module>
 		<!-- <module>FlickrViewer</module> -->
 		<magnifier>
+			<number>3</number>
 			<shape>oval</shape> <!--square or oval-->
 			<color>silver</color> <!-- silver or brass -->
 			<style>nohandles</style> <!-- handles or nohandles -->
@@ -55,8 +57,8 @@
 				<Port>3000</Port>
 				<AutoReconnect>true</AutoReconnect>
 				<EnforceSize>false</EnforceSize>
-				<Width>1280</Width>
-				<Height>800</Height>
+				<Width>1920</Width>
+				<Height>1080</Height>
 			</FloscSettings>
 			<NativeSettings />
 			<SimulatorSettings/>
@@ -77,7 +79,7 @@
 		
 		<LicenseKey></LicenseKey>
 	</TouchCore>
-	
+
 	<Maps>
 		<Map>
 			<Name>Borgloon</Name>

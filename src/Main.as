@@ -34,10 +34,17 @@ package
 		
 		protected var resetTimer:Timer;
 
+		
 		public function Main()
 		{
-			settingsPath = "config/Application.xml";
+			Global.environment = Global.ENV_TABLE;
+			settingsPath = "config/"+Global.environment+"/Application.xml";
+		}
 
+		override protected function initialize():void
+		{
+			Player.runFullscreen = (ApplicationGlobals.dataManager.data.Template.fullscreen == "true");
+			
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			if ( Player.runFullscreen )		stage.displayState = StageDisplayState.FULL_SCREEN;			
 			stage.align = StageAlign.TOP_LEFT;
@@ -53,10 +60,7 @@ package
 			
 			addChild(viewerLayer);
 			addChild(mapSwitchButtonLayer);
-		}
-
-		override protected function initialize():void
-		{
+			
 			stage.frameRate = ApplicationGlobals.dataManager.data.Template.FrameRate;
 			addEventListener(TouchEvent.TOUCH_UP, onTouch);
 			

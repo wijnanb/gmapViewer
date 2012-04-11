@@ -87,7 +87,7 @@
 			ImageParser.addEventListener(Event.COMPLETE,onParseComplete);
 			ImageDisplayParser.addEventListener(Event.COMPLETE,onParseComplete);
 			ImageParser.settingsPath = "FSCommand/Content.xml";
-			ImageDisplayParser.settingsPath = "config/ImageViewer.xml";
+			ImageDisplayParser.settingsPath = "config/"+Global.environment+"/ImageViewer.xml";
 
 			ImageParser.settingsId = idp;
 			ImageParser.settingsNiveau = niveau;

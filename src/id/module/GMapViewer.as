@@ -71,11 +71,9 @@
 		 * 
 		 */
 
-		public function GMapViewer(settingsPath:String="config/GMapViewer.xml")
+		public function GMapViewer(settingsPath:String)
 		{
 			super();
-			
-			trace( "new GMapViewer" );
 			
 			MapParser.settingsPath=settingsPath;
 			MapParser.addEventListener(Event.COMPLETE,onParseComplete);

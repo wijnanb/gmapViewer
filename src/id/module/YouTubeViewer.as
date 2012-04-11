@@ -1,35 +1,37 @@
 ﻿package id.module
 {
-	import flash.events.Event;
-	import id.core.TouchComponent;
-	import id.component.YouTubeDisplay;
-	import id.element.YouTubeParser;
-	import id.element.ContentParser;
-	import id.core.ApplicationGlobals;
-	import id.module.YouTubeViewer;
-	import id.element.YouTubeDisplayParser;
-	import flash.display.Sprite;
-	import flash.geom.*;
-	import id.component.LaderIcoon;
-
+	import com.google.maps.InfoWindowOptions;
 	import com.google.maps.LatLng;
+	import com.google.maps.LatLngBounds;
 	import com.google.maps.Map3D;
 	import com.google.maps.MapEvent;
 	import com.google.maps.MapOptions;
-	import com.google.maps.InfoWindowOptions;
 	import com.google.maps.MapType;
 	import com.google.maps.View;
 	import com.google.maps.geom.Attitude;
-	import com.google.maps.overlays.Marker;
-	import com.greensock.*;
-	import com.greensock.TweenMax;
 	import com.google.maps.overlays.GroundOverlay;
 	import com.google.maps.overlays.GroundOverlayOptions;
-	import com.google.maps.LatLngBounds;
+	import com.google.maps.overlays.Marker;
 	import com.google.maps.overlays.MarkerOptions;
-	import gl.events.TouchEvent;
+	import com.greensock.*;
+	import com.greensock.TweenMax;
+	
+	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.geom.*;
+	
 	import gl.events.GestureEvent;
+	import gl.events.TouchEvent;
+	
 	import id.component.CreateLine;
+	import id.component.LaderIcoon;
+	import id.component.YouTubeDisplay;
+	import id.core.ApplicationGlobals;
+	import id.core.TouchComponent;
+	import id.element.ContentParser;
+	import id.element.YouTubeDisplayParser;
+	import id.element.YouTubeParser;
+	import id.module.YouTubeViewer;
 
 	public class YouTubeViewer extends TouchComponent
 	{
@@ -62,7 +64,7 @@
 			super();
 			YouTubeParser.addEventListener(Event.COMPLETE, onParseComplete);
 			YouTubeParser.settingsPath = "FSCommand/Content.xml";
-			YouTubeDisplayParser.settingsPath = "config/YouTubeViewer.xml";
+			YouTubeDisplayParser.settingsPath = "config/"+Global.environment+"/YouTubeViewer.xml";
 			YouTubeParser.settingsId = id;
 			YouTubeParser.settingsNiveau = niveau;
 			staat = niveau;
