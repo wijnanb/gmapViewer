@@ -1,0 +1,21 @@
+
+
+Heemkring gaat data ingeven via Adlib.
+Koppeling naar erfgoedplus is zeer makkelijk. Velden komen zeer goed overeen.
+
+Er kan een locatie toegevoegd worden: straatnaam + nr en/of coördinaten
+Wij visualiseren de locatie op een klein kaartje
+
+Redactie:
+selectie uit databank maken
+module voor extra info voor krant
+
+CMS-systeem om krantartikels in te voeren.
+
+Kijken of rechtstreeks exporteren van Adlib naar webserver tafel, of via ergoedplus-databank webservice.
+Extra module nodig voor Adlib export te kunnen doen.
+Bespreken met Tinkertouch voor webservice.
+
+5 april begint de invoer van heemkring in Adlib.
+
+Eind mei terugkoppeling over concept.  Beslissing nemen over data-koppeling

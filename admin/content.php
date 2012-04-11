@@ -2,6 +2,7 @@
 require_once("db_connection.php");
 require_once("RestUtils.php");
 require_once("RestRequest.php");
+require_once("Logging.php");
 
 $request = RestUtils::processRequest();
 
@@ -18,9 +19,14 @@ switch($request->getMethod())
 		$result = mysql_query($query);
 
 		$output = new StdClass();
-		$output->content = array();
-		while( $row = mysql_fetch_object($result) ) {
-			array_push( $output->content, $row );
+		if ($error = mysql_error()) {
+			$output->result = "error";
+			$output->error = mysql_error();
+		} else {
+			$output->content = array();
+			while( $row = mysql_fetch_object($result) ) {
+				array_push( $output->content, $row );
+			}
 		}
 
 		RestUtils::sendResponse(200, json_encode($output), 'application/json');
@@ -30,14 +36,14 @@ switch($request->getMethod())
 		// INSERT NEW CONTENT
 		$data = $request->getRequestVars();
 
-		$marker_id = mysql_real_escape_string( isset($data['marker_id'])?$data['marker_id']:""  );
-		$contentType = mysql_real_escape_string( isset($data['contentType'])?$data['contentType']:""  );
-		$url = mysql_real_escape_string( isset($data['url'])?$data['url']:"" );
-		$title = mysql_real_escape_string( isset($data['title'])?$data['title']:"" );
-		$description = mysql_real_escape_string( isset($data['description'])?$data['description']:"" );
-		$author = mysql_real_escape_string( isset($data['author'])?$data['author']:"" );
-		$publish = mysql_real_escape_string( isset($data['publish'])?$data['publish']:"" );
-		$category = mysql_real_escape_string( isset($data['category'])?$data['category']:"" );
+		$marker_id = mysql_real_escape_string( isset($data['marker_id'])? stripslashes($data['marker_id']):""  );
+		$contentType = mysql_real_escape_string( isset($data['contentType'])? stripslashes($data['contentType']):""  );
+		$url = mysql_real_escape_string( isset($data['url'])? stripslashes($data['url']):"" );
+		$title = mysql_real_escape_string( isset($data['title'])? stripslashes($data['title']):"" );
+		$description = mysql_real_escape_string( isset($data['description'])? stripslashes($data['description']):"" );
+		$author = mysql_real_escape_string( isset($data['author'])? stripslashes($data['author']):"" );
+		$publish = mysql_real_escape_string( isset($data['publish'])? stripslashes($data['publish']):"" );
+		$category = mysql_real_escape_string( isset($data['category'])? stripslashes($data['category']):"" );
 
 
 		$query = "INSERT INTO content SET
@@ -53,8 +59,16 @@ switch($request->getMethod())
 		$insert_id = mysql_insert_id();
 
 		$output = new StdClass();
-		$output->result = "inserted content";
-		$output->id = $insert_id;
+		if ($error = mysql_error()) {
+			$output->result = "error";
+			$output->error = mysql_error();
+		} else {
+			$output->result = "inserted content";
+			$output->id = $insert_id;
+		}
+
+		$logging = new Logging();
+		$logging->log($query);
 
 		RestUtils::sendResponse(201, json_encode($output), 'application/json');
 		break;
@@ -63,15 +77,15 @@ switch($request->getMethod())
 		// UPDATE CONTENT
 		$data = $request->getRequestVars();
 
-		$content_id = mysql_real_escape_string( isset($data['content_id'])?$data['content_id']:""  );
-		$marker_id = mysql_real_escape_string( isset($data['marker_id'])?$data['marker_id']:""  );
-		$contentType = mysql_real_escape_string( isset($data['contentType'])?$data['contentType']:""  );
-		$url = mysql_real_escape_string( isset($data['url'])?$data['url']:"" );
-		$title = mysql_real_escape_string( isset($data['title'])?$data['title']:"" );
-		$description = mysql_real_escape_string( isset($data['description'])?$data['description']:"" );
-		$author = mysql_real_escape_string( isset($data['author'])?$data['author']:"" );
-		$publish = mysql_real_escape_string( isset($data['publish'])?$data['publish']:"" );
-		$category = mysql_real_escape_string( isset($data['category'])?$data['category']:"" );
+		$content_id = mysql_real_escape_string( isset($data['content_id'])? stripslashes($data['content_id']):""  );
+		$marker_id = mysql_real_escape_string( isset($data['marker_id'])? stripslashes($data['marker_id']):""  );
+		$contentType = mysql_real_escape_string( isset($data['contentType'])? stripslashes($data['contentType']):""  );
+		$url = mysql_real_escape_string( isset($data['url'])? stripslashes($data['url']):"" );
+		$title = mysql_real_escape_string( isset($data['title'])? stripslashes($data['title']):"" );
+		$description = mysql_real_escape_string( isset($data['description'])? stripslashes($data['description']):"" );
+		$author = mysql_real_escape_string( isset($data['author'])? stripslashes($data['author']):"" );
+		$publish = mysql_real_escape_string( isset($data['publish'])? stripslashes($data['publish']):"" );
+		$category = mysql_real_escape_string( isset($data['category'])? stripslashes($data['category']):"" );
 
 		$query = "UPDATE content SET
 				  marker_id=$marker_id,
@@ -84,9 +98,18 @@ switch($request->getMethod())
 				  category='$category'
 				  WHERE id=$content_id";
 		$result = mysql_query($query);
+
 		$output = new StdClass();
-		$output->result = "updated content";
-		$output->id = $content_id;
+		if ($error = mysql_error()) {
+			$output->result = "error";
+			$output->error = mysql_error();
+		} else {
+			$output->result = "updated content";
+			$output->id = $content_id;
+		}
+		
+		$logging = new Logging();
+		$logging->log($query);
 
 		RestUtils::sendResponse(200, json_encode($output), 'application/json');
 		break;
@@ -100,8 +123,17 @@ switch($request->getMethod())
 			$query = "DELETE FROM content WHERE id=$content_id";
 			$result = mysql_query($query);
 
-			$output->result = "deleted content";
-			$output->id = $id;
+			if ($error = mysql_error()) {
+				$output->result = "error";
+				$output->error = mysql_error();
+			} else {
+				$output->result = "deleted content";
+				$output->id = $id;
+			}
+			
+			$logging = new Logging();
+			$logging->log($query);
+
 			RestUtils::sendResponse(200, json_encode($output), 'application/json');
 		} else {
 			$output->result = "error";

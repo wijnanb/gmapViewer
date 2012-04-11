@@ -27,12 +27,12 @@ switch($request->getMethod())
 		// INSERT NEW MARKER
 		$data = $request->getRequestVars();
 
-		$name = mysql_real_escape_string( isset($data['name'])?$data['name']:""  );
-		$title = mysql_real_escape_string( isset($data['title'])?$data['title']:"" );
-		$description = mysql_real_escape_string( isset($data['description'])?$data['description']:"" );
-		$longitude = mysql_real_escape_string( isset($data['longitude'])?$data['longitude']:"" );
-		$latitude = mysql_real_escape_string( isset($data['latitude'])?$data['latitude']:"" );
-		$markerIcon = mysql_real_escape_string( isset($data['markerIcon'])?$data['markerIcon']:"" );
+		$name = mysql_real_escape_string( isset($data['name'])? stripslashes($data['name']):""  );
+		$title = mysql_real_escape_string( isset($data['title'])? stripslashes($data['title']):"" );
+		$description = mysql_real_escape_string( isset($data['description'])? stripslashes($data['description']):"" );
+		$longitude = mysql_real_escape_string( isset($data['longitude'])? stripslashes($data['longitude']):"" );
+		$latitude = mysql_real_escape_string( isset($data['latitude'])? stripslashes($data['latitude']):"" );
+		$markerIcon = mysql_real_escape_string( isset($data['markerIcon'])? stripslashes($data['markerIcon']):"" );
 
 		$query = "INSERT INTO markers SET
 				  name='$name',
@@ -45,8 +45,16 @@ switch($request->getMethod())
 		$insert_id = mysql_insert_id();
 
 		$output = new StdClass();
-		$output->result = "inserted";
-		$output->id = $insert_id;
+		if ($error = mysql_error()) {
+			$output->result = "error";
+			$output->error = mysql_error();
+		} else {
+			$output->result = "inserted marker";
+			$output->id = $insert_id;
+		}
+
+		$logging = new Logging();
+		$logging->log($query);
 
 		RestUtils::sendResponse(201, json_encode($output), 'application/json');
 		break;
@@ -55,13 +63,13 @@ switch($request->getMethod())
 		// UPDATE MARKER
 		$data = $request->getRequestVars();
 
-		$marker_id = mysql_real_escape_string( isset($data['marker_id'])?$data['marker_id']:"" );
-		$name = mysql_real_escape_string( isset($data['name'])?$data['name']:""  );
-		$title = mysql_real_escape_string( isset($data['title'])?$data['title']:"" );
-		$description = mysql_real_escape_string( isset($data['description'])?$data['description']:"" );
-		$longitude = mysql_real_escape_string( isset($data['longitude'])?$data['longitude']:"" );
-		$latitude = mysql_real_escape_string( isset($data['latitude'])?$data['latitude']:"" );
-		$markerIcon = mysql_real_escape_string( isset($data['markerIcon'])?$data['markerIcon']:"" );
+		$marker_id = mysql_real_escape_string( isset($data['marker_id'])? stripslashes($data['marker_id']):"" );
+		$name = mysql_real_escape_string( isset($data['name'])? stripslashes($data['name']):""  );
+		$title = mysql_real_escape_string( isset($data['title'])? stripslashes($data['title']):"" );
+		$description = mysql_real_escape_string( isset($data['description'])? stripslashes($data['description']):"" );
+		$longitude = mysql_real_escape_string( isset($data['longitude'])? stripslashes($data['longitude']):"" );
+		$latitude = mysql_real_escape_string( isset($data['latitude'])? stripslashes($data['latitude']):"" );
+		$markerIcon = mysql_real_escape_string( isset($data['markerIcon'])? stripslashes($data['markerIcon']):"" );
 
 		$query = "UPDATE markers SET
 				  name='$name',
@@ -72,9 +80,18 @@ switch($request->getMethod())
 				  markerIcon='$markerIcon'
 				  WHERE id=$marker_id";
 		$result = mysql_query($query);
+	
 		$output = new StdClass();
-		$output->result = "updated";
+		if ($error = mysql_error()) {
+			$output->result = "error";
+			$output->error = mysql_error();
+		} else {
+			$output->result = "updated marker";
 		$output->id = $marker_id;
+		}
+
+		$logging = new Logging();
+		$logging->log($query);
 
 		RestUtils::sendResponse(200, json_encode($output), 'application/json');
 		break;
@@ -88,8 +105,17 @@ switch($request->getMethod())
 			$query = "DELETE FROM markers WHERE id=$marker_id";
 			$result = mysql_query($query);
 
-			$output->result = "deleted";
-			$output->id = $id;
+			if ($error = mysql_error()) {
+				$output->result = "error";
+				$output->error = mysql_error();
+			} else {
+				$output->result = "deleted marker";
+				$output->id = $id;
+			}
+
+			$logging = new Logging();
+			$logging->log($query);
+
 			RestUtils::sendResponse(200, json_encode($output), 'application/json');
 		} else {
 			$output->result = "error";
