@@ -88,6 +88,7 @@ package id.component
 		private var mapRotation:Number = 0;
 		private var numberOfMarkers:Number = 0;
 		private var logoCollapsed:Boolean = false;
+		private var mapScalingFactor:Number = 1.0;
 		
 		private var iconLogoHitarea:TouchSprite = new TouchSprite();
 		
@@ -188,9 +189,24 @@ package id.component
 			mapHeight = MapParser.settings.Content.Source[id].mapHeight;
 			mapRotation = MapParser.settings.Content.Source[id].mapRotation;
 			
-			mapHeight = Math.min(1280, mapHeight - 0);  // remove Google advertising
+			calculateScalingFactor();
 		}
 
+		protected function calculateScalingFactor():void {
+			if ( mapWidth <= 1280 && mapHeight <= 1280 ) {
+				mapScalingFactor = 1.0;
+				return;
+			}
+			
+			if ( mapWidth > 1280 ) {
+				mapScalingFactor = mapWidth/1280;
+			}
+			
+			if ( mapHeight > 1280 ) {
+				mapScalingFactor = Math.max( mapScalingFactor, mapHeight/1280 );
+			}
+		}
+		
 		protected function loadMap():void {
 			var url:String = "http://maps.google.com/maps/api/staticmap?sensor=false";
 			url += "&center=" + currLat + "," + currLng;
@@ -209,6 +225,9 @@ package id.component
 			var loader:Loader = new Loader();
 			loader.load( new URLRequest(url) );
 			if ( !DEBUG_COLLISION_DETECTION )	mapLayer.addChild(loader);
+			
+			mapLayer.scaleX = mapLayer.scaleY = mapScalingFactor;
+			markerLayer.scaleX = markerLayer.scaleY = mapScalingFactor;
 		}
 
 		protected function onMapLoaded(e:Event):void {
@@ -316,7 +335,7 @@ package id.component
 			var list:Array = new Array();
 			
 			if ( DEBUG_COLLISION_DETECTION ) {
-				graphics.lineStyle(1, 0xFFFFFF, 0.5);
+				graphics.lineStyle(1, 0x999999, 0.5);
 			}
 				
 			for ( var i:int=0; i<markers_length; i++ ) {
@@ -324,24 +343,24 @@ package id.component
 				
 				if ( ! m.center ) break;
 				
-				dx = m.center.x - posX;
-				dy = m.center.y - posY;
+				dx = m.center.x * mapScalingFactor - posX;
+				dy = m.center.y * mapScalingFactor - posY;
 				d = Math.sqrt( dx*dx + dy*dy );
 				
-				if ( d <= m.radius ) {
+				if ( d <= m.radius * mapScalingFactor ) {
 					list.push(m);
 				}
 				
 				if ( DEBUG_COLLISION_DETECTION ) {
 					m.reset();
 					graphics.moveTo(posX, posY);
-					graphics.lineTo(m.center.x, m.center.y);
+					graphics.lineTo(m.center.x*mapScalingFactor, m.center.y*mapScalingFactor);
 					
-					if ( d <= m.radius ) {
-						trace(d + " " + m.radius + " *");
+					if ( d <= m.radius * mapScalingFactor ) {
+						trace(d + " " + m.radius*mapScalingFactor + " *");
 					}
 					else {
-						trace(d + " " + m.radius);
+						trace(d + " " + m.radius*mapScalingFactor);
 					}
 				}
 			}
