@@ -24,7 +24,6 @@ package
 	import id.module.YouTubeViewer;
 	import id.template.MagnifierViewer;
 	
-	[SWF(width='1920', height='1080', backgroundColor='#000000')]
 	public class Main extends Application
 	{
 		protected var maps:Array = [];
@@ -38,7 +37,6 @@ package
 		
 		public function Main()
 		{
-			Global.environment = Global.ENV_TABLE;
 			settingsPath = "config/"+Global.environment+"/Application.xml";
 		}
 

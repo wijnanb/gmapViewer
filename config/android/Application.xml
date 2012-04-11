@@ -58,7 +58,7 @@
 				<AutoReconnect>true</AutoReconnect>
 				<EnforceSize>false</EnforceSize>
 				<Width>1280</Width>
-				<Height>800</Height>
+				<Height>752</Height>
 			</FloscSettings>
 			<NativeSettings />
 			<SimulatorSettings/>

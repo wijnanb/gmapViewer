@@ -190,6 +190,8 @@ package id.component
 			mapRotation = MapParser.settings.Content.Source[id].mapRotation;
 			
 			calculateScalingFactor();
+			
+			mapHeight = Math.min( mapHeight+50, 1280); // Remove Google advertising at the bottom
 		}
 
 		protected function calculateScalingFactor():void {
