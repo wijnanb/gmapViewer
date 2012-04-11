@@ -2,6 +2,7 @@
 require_once("db_connection.php");
 require_once("RestUtils.php");
 require_once("RestRequest.php");
+require_once("Logging.php");
 
 $request = RestUtils::processRequest();
 
