@@ -5,6 +5,8 @@ package environments
 	{
 		public function Android()
 		{
+			Global.environment = Global.ENV_ANDROID;
+			
 			super();
 		}
 	}

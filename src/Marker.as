@@ -9,6 +9,7 @@ package
 	import flash.geom.Point;
 	import flash.net.URLRequest;
 	
+	import id.component.StaticGMapDisplay;
 	import id.core.TouchSprite;
 	
 	public class Marker extends TouchSprite
@@ -26,7 +27,7 @@ package
 		protected var icon:DisplayObject;
 		
 		public static const ICON_OFFSET_X:Number = 10;
-		public static const ICON_OFFSET_Y:Number = -85;
+		public static const ICON_OFFSET_Y:Number = -85 - StaticGMapDisplay.ADVERTISEMENT_OFFSET/2;
 		
 		public function Marker(contentId:int, lng:String, lat:String, iconURL:String )
 		{

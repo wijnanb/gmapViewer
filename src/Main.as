@@ -44,9 +44,15 @@ package
 		{
 			Player.runFullscreen = (ApplicationGlobals.dataManager.data.Template.fullscreen == "true");
 			
-			stage.scaleMode = StageScaleMode.NO_SCALE;
-			if ( Player.runFullscreen )		stage.displayState = StageDisplayState.FULL_SCREEN;			
-			stage.align = StageAlign.TOP_LEFT;
+			
+			if ( Player.runFullscreen )	{
+				stage.scaleMode = StageScaleMode.SHOW_ALL;
+				stage.displayState = StageDisplayState.FULL_SCREEN;			
+			} else {
+				stage.scaleMode = StageScaleMode.NO_SCALE;
+				stage.align = StageAlign.TOP_LEFT;
+			}
+			
 			
 			resetTimer = new Timer(50000,0);// reset application every 50 seconds when no touches are detected, touches are detected in main.as
 			resetTimer.addEventListener(TimerEvent.TIMER, onResetTimerComplete);
@@ -100,10 +106,9 @@ package
 
 		protected function onResetTimerComplete(e:TimerEvent):void
 		{
-			if ( Player.runFullscreen )		stage.displayState = StageDisplayState.FULL_SCREEN;
-				
-			stage.scaleMode = StageScaleMode.NO_SCALE;
-			stage.align = StageAlign.TOP_LEFT;
+			if ( Player.runFullscreen ) {
+				stage.displayState = StageDisplayState.FULL_SCREEN;
+			}
 			
 			if ( viewer ) 	viewer.reset();
 		}

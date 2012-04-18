@@ -105,6 +105,8 @@ package id.component
 		public static const GREENKEY_WIDTH:uint = 6;
 		public static const GREENKEY_HEIGHT:uint = 10;
 		
+		public static const ADVERTISEMENT_OFFSET:Number = 50;
+		
 		[Embed(source = "../../../assets/interface/pit_logo.svg")]
 		public var iconLogoClass:Class;
 		private var iconLogo = new iconLogoClass();
@@ -191,7 +193,7 @@ package id.component
 			
 			calculateScalingFactor();
 			
-			mapHeight = Math.min( mapHeight+50, 1280); // Remove Google advertising at the bottom
+			mapHeight = Math.min( mapHeight+ADVERTISEMENT_OFFSET, 1280); // Remove Google advertising at the bottom
 		}
 
 		protected function calculateScalingFactor():void {

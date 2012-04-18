@@ -57,6 +57,7 @@ package id.template
 	import id.module.GMapViewer;
 	import id.component.StaticGMapDisplay;
 	import flash.display.LoaderInfo;
+	import flash.utils.setTimeout;
 
 	//import flash.events.GestureEvent;
 
@@ -93,7 +94,8 @@ package id.template
 		private var contentHolders:Array = new Array();
 		private var _moduleName:String = "";
 
-		private var splashScreen:Sprite;
+		protected var splashScreenTimeout:Number;
+		public static const SPLASHSCREEN_TIMEOUT:Number = 5000; // 5sec
 		
 		private var _displayMask:Sprite;
 		private var _magnifier:Magnifier;
@@ -112,7 +114,7 @@ package id.template
 		private var naam:Number = new Number();
 		private var eigenKlasse;
 
-		private var numMagnifiers = Player.isAir ? 1 : 1; //number of magnifier glasses
+		private var numMagnifiers:int = 1; //number of magnifier glasses
 		private var addMa:TouchSprite = new TouchSprite();
 		private var addMag:TouchSprite = new TouchSprite();
 		private var ring1:TouchSprite  = new TouchSprite();
@@ -149,9 +151,7 @@ package id.template
 			
 			width = stageWidth = ApplicationGlobals.application.stage.stageWidth;
 			height = stageHeight = ApplicationGlobals.application.stage.stageHeight;
-			
-			splashScreenLayer = new Sprite();
-			addChild(splashScreenLayer);
+			numMagnifiers = parseInt(ApplicationGlobals.dataManager.data.Template.magnifier.number);
 			
 			mapAndContentLayer = new TouchSprite();
 			addChild(mapAndContentLayer);
@@ -177,15 +177,16 @@ package id.template
 			templates = ApplicationGlobals.dataManager.data.Template;
 			initModules(templates[0]);
 			
-			splashScreen = new Sprite();
+			splashScreenTimeout = setTimeout( function(){ splashScreenLayer.visible = false; }, SPLASHSCREEN_TIMEOUT );
+			splashScreenLayer = new Sprite();
+			addChild(splashScreenLayer);
 			var splashScreenLoader:Loader = new Loader();
 			splashScreenLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, function(e:Event):void {
 				(e.target as LoaderInfo).content.width = stageWidth;
 				(e.target as LoaderInfo).content.height = stageHeight;
 			}, false, 0, true);
 			splashScreenLoader.load(new URLRequest(templates.background));
-			splashScreen.addChild(splashScreenLoader);
-			if ( !StaticGMapDisplay.DEBUG_COLLISION_DETECTION ) splashScreenLayer.addChild(splashScreen);
+			splashScreenLayer.addChild(splashScreenLoader);
 			
 			for ( var i:int=0; i<numMagnifiers; i++ ) {
 				var m:Magnifier = new Magnifier();

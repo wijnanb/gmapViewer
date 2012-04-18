@@ -1,9 +1,11 @@
 ﻿package id.element
 {
-	import flash.net.URLLoader;
-	import flash.net.URLRequest;
+	import flash.events.ErrorEvent;
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
+	import flash.events.IOErrorEvent;
+	import flash.net.URLLoader;
+	import flash.net.URLRequest;
 
 	/**
 	 * This is the ImageParser class.

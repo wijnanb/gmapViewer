@@ -118,8 +118,6 @@
 		{
 			super();
 			
-			trace( "ImageDisplay constructor" );
-			
 			blobContainerEnabled=true;
 			visible=false;
 			cacheAsBitmap = true;
@@ -128,7 +126,7 @@
 			magnifier = magnifi;
 			//Security.allowDomain("*");
 			//Security.allowInsecureDomain("*");
-			Security.loadPolicyFile("http://193.190.10.77/crossdomain.xml");	
+			//Security.loadPolicyFile("http://193.190.10.77/crossdomain.xml");	
 		}
 		
 
@@ -453,7 +451,6 @@
 			addEventListener(ControlBtns.INFO_CALL, informationHandler);
 		}
 
-var proxy:String = "http://maddoc.khlim.be/~dleen/Z33/gmapViewer/proxy.php?url=";
 		override protected function commitUI():void
 		{
 			if (scale)
