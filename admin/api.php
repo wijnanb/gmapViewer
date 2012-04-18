@@ -11,9 +11,9 @@ switch($request->getMethod())
 {
 	case 'get':
 		// GET ALL THE CONTENT AS ONE XML
-		
 		$query = "SELECT * FROM markers ORDER BY id";
 		$result = mysql_query($query);
+		if (mysql_error()) echo mysql_error() . "\r\n";
 
 		$markers = array();
 		while( $row = mysql_fetch_object($result) ) {
@@ -24,14 +24,14 @@ switch($request->getMethod())
 			$query_content = "SELECT * FROM content WHERE marker_id=$marker_id ORDER BY id";
 			$result_content = mysql_query($query_content);
 
+			if (mysql_error()) echo mysql_error() . "\r\n";
+
 			while( $row_content = mysql_fetch_object($result_content) ) {
 				array_push( $row->content, $row_content );
 			}
 
 			array_push( $markers, $row );
 		}
-
-		//var_dump($markers);
 
 		$base_api = "base_api.xml";
 		$xml = simplexml_load_file($base_api);

@@ -1,4 +1,6 @@
 <?php
+//error_reporting(0);
+
 require_once("db_connection.php");
 require_once("RestUtils.php");
 require_once("RestRequest.php");
@@ -16,9 +18,14 @@ switch($request->getMethod())
 		$result = mysql_query($query);
 
 		$output = new StdClass();
-		$output->markers = array();
-		while( $row = mysql_fetch_object($result) ) {
-			array_push( $output->markers, $row );
+		if ($error = mysql_error()) {
+			$output->result = "error";
+			$output->error = mysql_error();
+		} else {
+			$output->markers = array();
+			while( $row = mysql_fetch_object($result) ) {
+				array_push( $output->markers, $row );
+			}
 		}
 
 		RestUtils::sendResponse(200, json_encode($output), 'application/json');

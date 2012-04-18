@@ -1,6 +1,16 @@
 <?php
 /* see: http://www.gen-x-design.com/archives/create-a-rest-api-with-php/ */
 
+// TURN ON ERROR REPORTING
+$display_errors = true;
+
+if ($display_errors) {
+	ini_set('display_errors', 1); 
+	ini_set('log_errors', 1); 
+	ini_set('error_log', dirname(__FILE__) . '/error_log.txt'); 
+	error_reporting(E_ALL);
+}
+
 require_once("RestRequest.php");
 
 class RestUtils

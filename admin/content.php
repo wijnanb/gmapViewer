@@ -1,4 +1,6 @@
 <?php
+//error_reporting(0);
+
 require_once("db_connection.php");
 require_once("RestUtils.php");
 require_once("RestRequest.php");
