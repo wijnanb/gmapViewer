@@ -2,7 +2,7 @@
 <Application>
 	<Template>
 		<FrameRate>60</FrameRate>
-		<background>assets/interface/splashscreengoed.jpg</background> <!-- needs to be sized to screen resolution -->
+		<background>assets/interface/splash_1280x800.jpg</background> <!-- needs to be sized to screen resolution -->
 		<fullscreen>true</fullscreen>
 		<module>GMapViewer</module>
 		<!-- <module>FlickrViewer</module> -->
@@ -57,8 +57,8 @@
 				<Port>3000</Port>
 				<AutoReconnect>true</AutoReconnect>
 				<EnforceSize>false</EnforceSize>
-				<Width>1920</Width>
-				<Height>1080</Height>
+				<Width>1280</Width>
+				<Height>800</Height>
 			</FloscSettings>
 			<NativeSettings />
 			<SimulatorSettings/>
@@ -71,7 +71,7 @@
 		
 		<Aggregator></Aggregator>
 		<Filter></Filter>
-		<InputProvider>Simulator</InputProvider>
+		<InputProvider>Flosc</InputProvider>
 		
 		<Clustering>0</Clustering> <!-- 0 | 1 | 2 -->
 		<Degradation>never</Degradation> <!-- always | auto | never -->

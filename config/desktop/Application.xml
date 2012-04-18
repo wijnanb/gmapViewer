@@ -2,12 +2,12 @@
 <Application>
 	<Template>
 		<FrameRate>60</FrameRate>
-		<background>assets/interface/splashscreengoed.jpg</background> <!-- needs to be sized to screen resolution -->
+		<background>assets/interface/splash_1280x752.jpg</background> <!-- needs to be sized to screen resolution -->
 		<fullscreen>false</fullscreen>
 		<module>GMapViewer</module>
 		<!-- <module>FlickrViewer</module> -->
 		<magnifier>
-			<number>2</number>
+			<number>1</number>
 			<shape>oval</shape> <!--square or oval-->
 			<color>silver</color> <!-- silver or brass -->
 			<style>nohandles</style> <!-- handles or nohandles -->
@@ -58,7 +58,7 @@
 				<AutoReconnect>true</AutoReconnect>
 				<EnforceSize>false</EnforceSize>
 				<Width>1280</Width>
-				<Height>800</Height>
+				<Height>752</Height>
 			</FloscSettings>
 			<NativeSettings />
 			<SimulatorSettings/>

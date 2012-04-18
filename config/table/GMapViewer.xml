@@ -2,15 +2,15 @@
 <GMapViewer>
 	<Content><!-- Sets the bounds and size for each map object populated to the application -->	
 		<Source id="1"><!-- Each source must have a unique ID -->
-			<longitude>5.348904</longitude><!-- Sets the longitude of the map -->
-			<latitude>50.798426</latitude><!-- Sets the latitude of the map -->
+			<longitude>5.358904</longitude><!-- Sets the longitude of the map -->
+			<latitude>50.793000</latitude><!-- Sets the latitude of the map -->
 			<initialZoom>13</initialZoom><!-- Sets the initial zoom level of the map-->
 			<zoomStep>2</zoomStep><!-- Sets by what degrees the zoom augments when the zoom gesture is used -->
 			<initialAttitude>0</initialAttitude><!-- Sets how the map is rotated at launch relative to the frame -->
 			<initialTilt>0</initialTilt><!-- Sets the map tilt at launch relative to the frame -->
 			<initialType>2</initialType><!-- Sets the style of the map view. 0 is satellite, 1 is hybrid, 2 is street view map, 3 is terrain -->
-			<mapWidth>1920</mapWidth><!-- Sets the display width of the map in pixels -->
-			<mapHeight>1080</mapHeight><!-- Sets the display height of the map in pixels -->
+			<mapWidth>1280</mapWidth><!-- Sets the display width of the map in pixels -->
+			<mapHeight>800</mapHeight><!-- Sets the display height of the map in pixels -->
 			<mapRotation>0</mapRotation><!-- Sets how the map object is rotated when put on the stage at launch -->
 		</Source>		
 </Content>
