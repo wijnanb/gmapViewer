@@ -43,7 +43,8 @@ package
 		override protected function initialize():void
 		{
 			Player.runFullscreen = (ApplicationGlobals.dataManager.data.Template.fullscreen == "true");
-			
+			Player.runOffline = (ApplicationGlobals.dataManager.data.Template.offline == "true");
+			Player.offlineHost = ApplicationGlobals.dataManager.data.Template.offlineHost;
 			
 			if ( Player.runFullscreen )	{
 				stage.scaleMode = StageScaleMode.SHOW_ALL;

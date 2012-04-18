@@ -151,11 +151,8 @@
 		[Embed(source = "../../../assets/interface/videovlak_ds.png")]
 		public var shadowVideo:Class;
 		private var Svideo = new shadowVideo();
-		//new Lines*****
 		
 		public var weg:Boolean = true;
-//		public var line:CreateLine;
-		//*****
 
 		public var myMap;
 		public var myMarkerLatLng:LatLng;
@@ -183,19 +180,10 @@
 			super();
 			blobContainerEnabled = true;
 			visible = false;
-			/*line = new CreateLine;
-			addChild(line);*/
 			niveau = nv;
 			nr = tr; //id?
 			magnifier =magnifi;
-			//addEventListener(Event.ENTER_FRAME, onLoop, false, 0, true);
-
 		}
-/*public function updateIt(){
-
-	line.updateLine(x, y, myMap, myMarkerLatLng, firstX, firstY);
-	
-	}*/
 
 		/**
 		 *
@@ -234,36 +222,23 @@
 				removeEventListener(GestureEvent.GESTURE_ROTATE,rotateGestureHandler);
 			}
 			removeEventListener(YouTubePlayer.TIME,timeHandler);
-/*			removeEventListener(ControlBtns.PLAY,play);
-			removeEventListener(ControlBtns.PAUSE,pause);
-			removeEventListener(ControlBtns.BACK,back);
-			removeEventListener(ControlBtns.FORWARD,forward);
-
-			removeEventListener(ControlBtns.INFO_CALL,informationHandler);*/
 			removeEventListener(TouchEvent.TOUCH_UP, doeWeg);
 			removeEventListener(TouchEvent.TOUCH_UP, playVideo);
 			
-			//parent.removeChild(this);
 			if (parent)
 			{
 				media.destroy();
 				parent.removeChild(this);
 				weg = false;
-			// dispatchEvent(new Event("deleteVideo"));
-				//dispatchEvent(new Event(Event.COMPLETE));
-				
 			}
 
 			clearInterval(updateIntervalId);
 			
 			super.updateUI();
-
-
 		}
 
 		override public function get id():int
 		{
-
 			return _id;
 		}
 

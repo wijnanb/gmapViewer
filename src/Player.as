@@ -11,5 +11,7 @@ package
 		
 		public static var useSecureDomain:Boolean = false;
 		public static var runFullscreen:Boolean = false;
+		public static var runOffline:Boolean = false;
+		public static var offlineHost:String = "";
 	}
 }

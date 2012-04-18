@@ -12,6 +12,8 @@
 			<color>silver</color> <!-- silver or brass -->
 			<style>nohandles</style> <!-- handles or nohandles -->
 		</magnifier>
+		<offline>true</offline>
+		<offlineHost>http://localhost:8888/z33admin/</offlineHost>
 	</Template>
 	
 	<TouchCore>	
@@ -58,7 +60,7 @@
 				<AutoReconnect>true</AutoReconnect>
 				<EnforceSize>false</EnforceSize>
 				<Width>1280</Width>
-				<Height>752</Height>
+				<Height>800</Height>
 			</FloscSettings>
 			<NativeSettings />
 			<SimulatorSettings/>

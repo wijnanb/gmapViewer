@@ -1,15 +1,22 @@
 ﻿package id.element
 {
+	import flash.display.Bitmap;
+	import flash.display.Loader;
+	import flash.events.Event;
+	import flash.events.NetStatusEvent;
+	import flash.events.SecurityErrorEvent;
+	import flash.events.TimerEvent;
 	import flash.media.Video;
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
-	import flash.events.Event;
-	import flash.utils.Timer;
-	import flash.events.TimerEvent;
-	import flash.events.NetStatusEvent;
-	import flash.display.Loader;
+	import flash.net.NetStreamInfo;
+	import flash.net.NetStreamPlayOptions;
 	import flash.net.URLRequest;
 	import flash.system.Security;
+	import flash.utils.Timer;
+	import flash.utils.clearTimeout;
+	import flash.utils.setTimeout;
+	
 	import id.core.TouchComponent;
 	
 	/**
@@ -45,7 +52,20 @@
 
 		private var YOUTUBE_API_VERSION:String="2";
 		private var YOUTUBE_API_FORMAT:String="5";
-
+		
+		public var offlineMode:Boolean = true;
+		protected var offlineVideo:Video;
+		protected var offlineNetstream:NetStream;
+		protected var offlineNetConnection:NetConnection;
+		protected var offlineVideoURL:String;
+		protected var offlineVideoPlayTimeout:int;
+		protected var offlineProgressTimer:Timer;
+		protected var offlineVideoDuration:Number;
+		
+		[Embed(source="../../../assets/interface/youtube_play.png")]
+		protected var playButtonGraphic:Class;
+		protected var playButton:Bitmap;
+		
 		public function YouTubePlayer()
 		{
 			super();
@@ -68,7 +88,6 @@
 		{
 			_url=value;
 			createUI();
-			//commitUI();
 		}
 
 		public function get scale():Number
@@ -95,16 +114,106 @@
 		}
 		override protected function createUI():void
 		{
-			//Security.allowInsecureDomain("*");
-			//Security.allowDomain("*");
-
-			uTubeLoader=new Loader();
-			uTubeLoader.contentLoaderInfo.addEventListener(Event.INIT,uTubeLoaderInit);
-			uTubeLoader.load(new URLRequest("http://www.youtube.com/apiplayer?version=3"));
-
-			youTubeTimer=new Timer(100);
-			youTubeTimer.addEventListener(TimerEvent.TIMER, updateUTubeTime, false, 0, true);
+			offlineMode = Player.runOffline;
+			
+			if ( offlineMode ) {
+				offlineVideoURL = Player.offlineHost + "videos/"+_url+".mp4";
+				setupOfflineVideoConnection();
+			} else {
+				uTubeLoader = new Loader();
+				uTubeLoader.contentLoaderInfo.addEventListener(Event.INIT,uTubeLoaderInit);
+				uTubeLoader.load(new URLRequest("http://www.youtube.com/apiplayer?version=3"));
+				
+				youTubeTimer=new Timer(100);
+				youTubeTimer.addEventListener(TimerEvent.TIMER, updateUTubeTime, false, 0, true);
+			}
 		}
+		
+		protected function setupOfflineVideoConnection():void {
+			offlineNetConnection = new NetConnection();
+			offlineNetConnection.addEventListener(NetStatusEvent.NET_STATUS, offlineNetStatusHandler);
+			offlineNetConnection.addEventListener(SecurityErrorEvent.SECURITY_ERROR, function securityErrorHandler(event:SecurityErrorEvent):void {trace("securityErrorHandler: " + event);});
+			offlineNetConnection.connect(null);
+		}
+		
+		private function offlineNetStatusHandler(event:NetStatusEvent):void {
+			switch (event.info.code) {
+				case "NetConnection.Connect.Success":
+					offlineVideoStart();
+					break;
+				case "NetStream.Play.StreamNotFound":
+					trace("Offline video stream not found: ");
+					break;
+			}
+		}
+		
+		private function securityErrorHandler(event:SecurityErrorEvent):void {
+			trace("securityErrorHandler: " + event);
+		}
+		
+		private function offlineVideoStart():void {
+			offlineNetstream = new NetStream(offlineNetConnection);
+			offlineNetstream.addEventListener(NetStatusEvent.NET_STATUS, offlineNetStatusHandler);
+			var streamClient:Object = new Object();
+			streamClient.onMetaData = onMetaData;
+			streamClient.onCuePoint = onCuePoint;
+			streamClient.onPlayStatus = onPlayStatus;
+			offlineNetstream.client = streamClient;
+			
+			width = 640;
+			height = 360;
+			
+			graphics.beginFill(0x000000);
+			graphics.drawRect(0,0,width,height);
+
+			clearTimeout(offlineVideoPlayTimeout);
+			offlineVideoPlayTimeout = setTimeout(function():void{
+				offlineVideo = new Video(width, height);
+				offlineVideo.attachNetStream(offlineNetstream);
+				
+				offlineNetstream.play(offlineVideoURL);
+				offlineNetstream.pause();
+				
+				offlineProgressTimer = new Timer(500);
+				offlineProgressTimer.addEventListener(TimerEvent.TIMER, onOfflineVideoPlayheadUpdate);
+				offlineProgressTimer.start();
+				
+				addChild(offlineVideo);
+				
+				playButton = new playButtonGraphic();
+				playButton.smoothing = true;
+				playButton.x = (width - playButton.width)/2;
+				playButton.y = (height - playButton.height)/2;
+				addChild(playButton);
+			}, 2000 );
+			
+			super.layoutUI();
+		}
+		
+		protected function onMetaData(info:Object):void {
+			//trace("metadata: duration=" + info.duration + " width=" + info.width + " height=" + info.height + " framerate=" + info.framerate);
+			offlineVideoDuration = info.duration;
+		}
+		protected function onCuePoint(info:Object):void {
+			//trace("cuepoint: time=" + info.time + " name=" + info.name + " type=" + info.type);
+		}
+		protected function onPlayStatus(info:Object):void {
+			//trace("play status: " + info.status);
+		}
+		
+		protected function onOfflineVideoPlayheadUpdate(e:TimerEvent):void {
+			if (offlineVideoDuration) {
+				var time:Number = offlineNetstream.time;
+				var progress:Number = time / offlineVideoDuration;
+				
+				var left:String=Math.floor(time/60).toString();
+				var right:String = (Math.floor(time) - Number(left) * 60).toString();
+				_timeFormated = String(left.length > 1 ? left : "0" + left ) + ":" + (right.length > 1 ? right : "0" + right);
+				dispatchEvent(new Event(YouTubePlayer.TIME, true, true));
+			}
+		}
+		
+		
 
 		override protected function commitUI():void
 		{
@@ -130,10 +239,7 @@
 		private function onPlayerReady(event:Event):void
 		{
 			player=uTubeLoader.content;
-			//player.cueVideoByUrl('http://www.youtube.com/watch?v=' + _url + '&cc_load_policy=1');
 			player.cueVideoById(_url);
-			//player.cc_load_policy = true;
-			trace('url: '+ _url);
 		}
 
 		private function onPlayerError(event:Event):void
@@ -162,49 +268,75 @@
 
 		public function play():void
 		{
-			player.playVideo();
-			//trace(player.getCurrentTime());
-			youTubeTimer.start();
+			if (offlineMode) {
+				offlineNetstream.resume();
+				playButton.visible = false;
+			} else {
+				player.playVideo();
+				youTubeTimer.start();
+			}
 		}
 
 		public function pause():void
 		{
-			if(player.getPlayerState()!=-1)
-			{
-				player.pauseVideo();
-				youTubeTimer.stop();
+			if (offlineMode) {
+				offlineNetstream.pause();
+			} else {
+				if(player.getPlayerState()!=-1)
+				{
+					player.pauseVideo();
+					youTubeTimer.stop();
+				}
 			}
 		}
 		public function destroy():void
 		{
-			
+			if (offlineMode) {
+				offlineNetstream.removeEventListener(NetStatusEvent.NET_STATUS, offlineNetStatusHandler);
+				offlineNetstream.close();
+				
+				offlineNetConnection.removeEventListener(NetStatusEvent.NET_STATUS, offlineNetStatusHandler);
+				offlineNetConnection.removeEventListener(SecurityErrorEvent.SECURITY_ERROR, function securityErrorHandler(event:SecurityErrorEvent):void {trace("securityErrorHandler: " + event);});
+				offlineNetConnection.close();
+				
+				offlineProgressTimer.stop();
+				offlineProgressTimer.removeEventListener(TimerEvent.TIMER, onOfflineVideoPlayheadUpdate);
+				clearTimeout(offlineVideoPlayTimeout);
+			} else {
 				player.stopVideo();
-				player.destroy();
-
-			
+				player.destroy();	
+			}
 		}
 
 		public function back():void
 		{
-			player.seekTo(0, false);
-			
-			if(player.getPlayerState()==2)
-			{
-				 updateUTubeTime(null);
+			if (offlineMode) {
+				
+			} else {
+				player.seekTo(0, false);
+				
+				if(player.getPlayerState()==2)
+				{
+					 updateUTubeTime(null);
+				}
 			}
 		}
 
 		public function forward():void
 		{
-			player.seekTo(player.getCurrentTime()+1, true);
-			if(player.getPlayerState()==2)
-			{
-				 updateUTubeTime(null);
-			}
-			
-			if(player.getDuration()==player.getCurrentTime())
-			{
-				player.seekTo(0, false);
+			if (offlineMode) {
+				
+			} else {
+				player.seekTo(player.getCurrentTime()+1, true);
+				if(player.getPlayerState()==2)
+				{
+					 updateUTubeTime(null);
+				}
+				
+				if(player.getDuration()==player.getCurrentTime())
+				{
+					player.seekTo(0, false);
+				}
 			}
 		}
 
