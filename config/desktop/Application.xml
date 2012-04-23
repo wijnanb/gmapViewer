@@ -2,7 +2,7 @@
 <Application>
 	<Template>
 		<FrameRate>60</FrameRate>
-		<background>assets/interface/splash_1280x752.jpg</background> <!-- needs to be sized to screen resolution -->
+		<background>assets/interface/splash_1280x800.jpg</background> <!-- needs to be sized to screen resolution -->
 		<fullscreen>false</fullscreen>
 		<module>GMapViewer</module>
 		<!-- <module>FlickrViewer</module> -->

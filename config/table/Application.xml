@@ -12,6 +12,8 @@
 			<color>silver</color> <!-- silver or brass -->
 			<style>nohandles</style> <!-- handles or nohandles -->
 		</magnifier>
+		<offline>true</offline>
+		<offlineHost>http://localhost/z33admin/</offlineHost>
 	</Template>
 	
 	<TouchCore>	
