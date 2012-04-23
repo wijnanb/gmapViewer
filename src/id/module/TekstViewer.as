@@ -122,27 +122,41 @@
 
 		private function onParseComplete(event:Event):void
 		{				
-		counter++;
-		if (counter == 2){
-		TekstParser.removeEventListener(Event.COMPLETE, onParseComplete);
-			//trace('amount:',ImageParser.amountToShow);
-			for (var ti = 0; ti < TekstParser.amountToShow; ti++)
-			{
-			//trace('zoveel keer?', ti, 'depth: ' , depth, 'marker' , markerNr);
-			tekstDisplay=new TekstDisplay(markerNr, depth, magnifier);
-			tekstDisplay.id=ti;
-				tekstDisplayList[ti] = tekstDisplay;
-/*			tekstDisplayList[ti].scaleX = 0;
-			tekstDisplayList[ti].scaleY = 0;
-			*/
-			tekstDisplayList[ti].rotation= Math.floor(Math.random() * (1+25-(-25))) + (-25);
-		
-			//TweenMax.to(tekstDisplayList[ti], 0.5, {shortRotation:{rotation:Math.floor(Math.random() * (1+25-0)) + 0}});
-			//trace('id:',id);
-			addChild(tekstDisplayList[ti]);
-			
+			counter++;
+			if (counter == 2){
+				TekstParser.removeEventListener(Event.COMPLETE, onParseComplete);
+				//trace('amount:',ImageParser.amountToShow);
+				for (var ti = 0; ti < TekstParser.amountToShow; ti++) {
+					//trace('zoveel keer?', ti, 'depth: ' , depth, 'marker' , markerNr);
+					tekstDisplay=new TekstDisplay(markerNr, depth, magnifier);
+					tekstDisplay.id=ti;
+						tekstDisplayList[ti] = tekstDisplay;
+		/*			tekstDisplayList[ti].scaleX = 0;
+					tekstDisplayList[ti].scaleY = 0;
+					*/
+					tekstDisplayList[ti].rotation= Math.floor(Math.random() * (1+25-(-25))) + (-25);
+				
+					//TweenMax.to(tekstDisplayList[ti], 0.5, {shortRotation:{rotation:Math.floor(Math.random() * (1+25-0)) + 0}});
+					//trace('id:',id);
+					addChild(tekstDisplayList[ti]);
+					
+				}
 			}
 		}
+		
+		override public function Dispose():void {
+			for (var i:int=0; i<tekstDisplayList.length; i++) {
+				var tekstDisplay:TekstDisplay = tekstDisplayList[i] as TekstDisplay;
+				tekstDisplay.Dispose();
+			}
+			
+			if (parent)
+			{
+				parent.removeChild(this);
+			}
+			
+			super.Dispose();
 		}
+		
 	}
 }

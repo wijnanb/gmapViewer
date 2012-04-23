@@ -232,6 +232,13 @@ package id.template
 		
 		public function reset():void {
 			trace('MagnifierViewer.reset()');
+			
+			// clear all content of screen
+			
+			for (var i:int=0; i<magnifiers.length; i++) {
+				var m:Magnifier = magnifiers[i] as Magnifier;
+				m.content.clearAllContent();
+			}
 		}
 
 		override public function get id():int

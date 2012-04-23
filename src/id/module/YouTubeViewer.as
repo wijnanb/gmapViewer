@@ -100,6 +100,21 @@
 			}
 			YouTubeParser.dataSet = [];
 		}
+		
+		override public function Dispose():void {
+			for (var i:int=0; i<youtubeDisplayList.length; i++) {
+				var youtubeDisplay:YouTubeDisplay = youtubeDisplayList[i] as YouTubeDisplay;
+				youtubeDisplay.Dispose();
+			}
+			
+			if (parent)
+			{
+				parent.removeChild(this);
+			}
+			
+			super.Dispose();
+		}
+		
 	}
 
 }

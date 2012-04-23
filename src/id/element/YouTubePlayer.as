@@ -299,8 +299,10 @@
 				offlineNetConnection.removeEventListener(SecurityErrorEvent.SECURITY_ERROR, function securityErrorHandler(event:SecurityErrorEvent):void {trace("securityErrorHandler: " + event);});
 				offlineNetConnection.close();
 				
-				offlineProgressTimer.stop();
-				offlineProgressTimer.removeEventListener(TimerEvent.TIMER, onOfflineVideoPlayheadUpdate);
+				if (offlineProgressTimer) {
+					offlineProgressTimer.stop();
+					offlineProgressTimer.removeEventListener(TimerEvent.TIMER, onOfflineVideoPlayheadUpdate);
+				}
 				clearTimeout(offlineVideoPlayTimeout);
 			} else {
 				player.stopVideo();

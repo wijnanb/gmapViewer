@@ -139,6 +139,8 @@
 		private var pressedTekst:Boolean = false;
 		private var pressedVideo:Boolean = false;
 
+		protected var activeContentList:Array = new Array();
+		
 		protected const Y_OFFSET:Number = 200;
 		
 		public function Content(contentContainer:TouchSprite, magnifier:Magnifier)
@@ -556,7 +558,7 @@
 				imageList[ip].x = parent.x + offset3 * Math.random() - Math.random()*4;
 				imageList[ip].y = parent.y * Math.random() + Y_OFFSET;
 					
-				contentContainer.addChild(imageList[ip]);
+				addContentToLayer(imageList[ip]);
 				
 				var timer:Timer = new Timer(40,25); // 25FPS during 1 sec
 				timer.addEventListener(TimerEvent.TIMER, updateLens);
@@ -587,12 +589,37 @@
 			}
 			tekstList[ip].x = parent.x + offset2;
 			tekstList[ip].y = parent.y + Y_OFFSET;
-			contentContainer.addChild(tekstList[ip]);
+			
+			addContentToLayer(tekstList[ip]);
+			
 			var timer:Timer = new Timer(40,25);
 			timer.addEventListener(TimerEvent.TIMER, updateLens);
 			timer.start();
 			}
 		}
+		
+		
+		protected function addContentToLayer(content:DisplayObject):void {
+			trace("add: " + content );
+			contentContainer.addChild(content);
+			
+			activeContentList.push(content);
+		}
+		
+		public function clearAllContent():void {
+			
+			trace(this + " clearAllContent()");
+			
+			for ( var i:int=0; i<activeContentList.length; i++ ) {
+				var content:TouchComponent = activeContentList[i] as TouchComponent;
+				trace(this + " Dispose()" );
+				content.Dispose();
+			}
+			
+			activeContentList = new Array();
+		}
+		
+		
 		private function timerPressFunction(e:TimerEvent):void{
 			trace('timer');
 			pressedFoto = false;
@@ -622,7 +649,9 @@
 			var i = contentId;
 			youTubeViewer = new YouTubeViewer(i,guiTouch,magnifier);
 			youtubeList[i] = youTubeViewer;
-			contentContainer.addChild(youtubeList[i]);
+			
+			addContentToLayer(youtubeList[i]);
+			
 			if (parent.x < 640)
 			{
 				offset = 550;

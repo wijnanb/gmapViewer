@@ -100,11 +100,12 @@
 		{
 			return _id;
 		}
+		
 		override public function set id(value:int):void
 		{
 			_id = value;
 		}
-
+		
 		protected function onParseComplete(event:Event):void
 		{
 			counter++;
@@ -115,14 +116,28 @@
 				{
 					imageDisplay = new ImageDisplay(markerNr,depth,magnifier);
 					imageDisplay.id = ti;
-					imageDisplayList[ti] = imageDisplay;
-					imageDisplayList[ti].scaleX = 0;
-					imageDisplayList[ti].scaleY = 0;
-					TweenMax.to(imageDisplayList[ti], 1.5, {scaleX:1, scaleY:1, shortRotation:{rotation:Math.floor(Math.random() * (1+25-(-25))) + (-25)}});
-					addChild(imageDisplayList[ti]);
+					imageDisplay.scaleX = 0;
+					imageDisplay.scaleY = 0;
+					TweenMax.to(imageDisplay, 1.5, {scaleX:1, scaleY:1, shortRotation:{rotation:Math.floor(Math.random() * (1+25-(-25))) + (-25)}});
+					addChild(imageDisplay);
 					
+					imageDisplayList.push(imageDisplay);
 				}
 			}
+		}
+	
+		override public function Dispose():void {
+			for (var i:int=0; i<imageDisplayList.length; i++) {
+				var imageDisplay:ImageDisplay = imageDisplayList[i] as ImageDisplay;
+				imageDisplay.Dispose();
+			}
+			
+			if (parent)
+			{
+				parent.removeChild(this);
+			}
+			
+			super.Dispose();
 		}
 	}
 }

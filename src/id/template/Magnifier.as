@@ -145,6 +145,9 @@ public class Magnifier extends TouchSprite
 	override public function Dispose():void
 	{
 		parent.removeChild(this);
+		
+		content.Dispose();
+		super.Dispose();
 		//magnifiers.splice(magnifiers.indexOf(this), 1);
 	}
 	
