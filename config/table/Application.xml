@@ -13,7 +13,10 @@
 			<style>nohandles</style> <!-- handles or nohandles -->
 		</magnifier>
 		<offline>true</offline>
-		<offlineHost>http://localhost/z33admin/</offlineHost>
+		<offlineHost>offline_content/</offlineHost>
+		<offlineMapMarkers>maps/map_markers.png</offlineMapMarkers>
+		<offlineMap>maps/map.png</offlineMap>
+		<videoHD>true</videoHD>
 	</Template>
 	
 	<TouchCore>	
@@ -73,7 +76,7 @@
 		
 		<Aggregator></Aggregator>
 		<Filter></Filter>
-		<InputProvider>Flosc</InputProvider>
+		<InputProvider>Simulator</InputProvider>
 		
 		<Clustering>0</Clustering> <!-- 0 | 1 | 2 -->
 		<Degradation>never</Degradation> <!-- always | auto | never -->

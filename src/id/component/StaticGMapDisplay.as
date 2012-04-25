@@ -222,6 +222,11 @@ package id.component
 			var markersUrl:String = url + MapData.getMarkers(markers);	
 			trace( markersUrl );
 			
+			if (Player.runOffline) {
+				url = Player.offlineHost + ApplicationGlobals.dataManager.data.Template.offlineMap;
+				markersUrl = Player.offlineHost + ApplicationGlobals.dataManager.data.Template.offlineMapMarkers;
+			}
+			
 			var markersLoader:Loader = new Loader();
 			markersLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, onMapLoaded, false, 0, true);
 			markersLoader.load( new URLRequest(markersUrl) );

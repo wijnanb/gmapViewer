@@ -45,6 +45,7 @@ package
 			Player.runFullscreen = (ApplicationGlobals.dataManager.data.Template.fullscreen == "true");
 			Player.runOffline = (ApplicationGlobals.dataManager.data.Template.offline == "true");
 			Player.offlineHost = ApplicationGlobals.dataManager.data.Template.offlineHost;
+			Player.videoHD = (ApplicationGlobals.dataManager.data.Template.videoHD == "true");
 			
 			if ( Player.runFullscreen )	{
 				stage.scaleMode = StageScaleMode.SHOW_ALL;

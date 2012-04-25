@@ -421,7 +421,9 @@
 			publish.styleList = publishStyle;
 
 			media.url = mediaUrl;
-			thumbnail.url = thumbUrl;
+			if (thumbUrl != "" ) {
+				thumbnail.url = thumbUrl;
+			}
 
 			title.text = titleText;
 			description.text = descriptionText;
@@ -538,7 +540,6 @@ var tijdMS;
 			lineDrawing.graphics.lineTo(videoTextDesc.width+320, -170);
 			
 			addChild(lineDrawing);
-			trace('id', _id);
 		
 			videoTextName.embedFonts = true;
 			videoTextName.antiAliasType = AntiAliasType.ADVANCED;
@@ -548,7 +549,7 @@ var tijdMS;
 			videoTextName.autoSize = TextFieldAutoSize.LEFT;
 			videoTextName.background = true;
 			videoTextName.backgroundColor = 0x222223;
-			//trace(niveau);
+			
 			stringTemp = niveau;
 			videoTextName.text = stringTemp.toUpperCase();
 			addChild(videoTextName);
@@ -604,10 +605,11 @@ var tijdMS;
 			square5.graphics.endFill();
 			iconQR.x = 286;
 			iconQR.y = -86;
-			addChild(iconQR);
 			
-			if (qrCodeTag)
+			
+			if (qrCodeTag != "")
 			{
+				addChild(iconQR);
 				iconQR.addChild(qrCode);
 			}
 			
@@ -644,12 +646,11 @@ var tijdMS;
 			var minutes = Math.floor(int(duration)/60);
 					
 			var seconds:int = int(duration) -(minutes *60);
-			//trace ('min: ', minutes, 'sec :', seconds);
+			
 			var mS:String = String(minutes);
 			var sS:String = String(seconds);
 			
 			if (minutes < 10){
-				//trace('hier');
 				mS = "0" + mS;
 				}
 			if (seconds < 10){
@@ -787,7 +788,6 @@ private function playVideo(e:Event){
 			{
 				dx =  -  dx;
 				x = stageWidth - stageWidth;
-				//trace(media.width / 2);
 			}
 			if (Math.abs(dx) <= 1)
 			{
@@ -823,7 +823,6 @@ private function playVideo(e:Event){
 		{
 			scaleX +=  event.value;
 			scaleY +=  event.value;
-			//trace('schaal: ', line.scaleX	, ' ' ,scaleX );
 			scaleY = scaleY > Number(maxScale) ? Number(maxScale):scaleY < Number(minScale) ? Number(minScale):scaleY;
 			scaleX = scaleX > Number(maxScale) ? Number(maxScale):scaleX < Number(minScale) ? Number(minScale):scaleX;
 			
@@ -872,8 +871,15 @@ var tempTime = 20;
 				square4.graphics.beginFill(0x222223);
 			square4.graphics.drawRect(-640/2 ,360 -160, tempTime,20);
 			square4.graphics.endFill();
-			tempTime +=speed
-			speed = 640/int(duration);
+			tempTime +=speed;
+			
+			if ( Player.runOffline ) {
+				speed = 640/int(media.offlineVideoDuration);
+			} else {
+				speed = 640/int(duration);
+			}
+			
+			
 				
 
 			if (tempTime > media.width ||  media.time == tijdMS){

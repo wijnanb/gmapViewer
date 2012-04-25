@@ -13,5 +13,6 @@ package
 		public static const ENV_DESKTOP:String = "desktop";
 		public static const ENV_ANDROID:String = "android";
 		public static const ENV_TABLE:String = "table";
+		public static const ENV_HDTABLE:String = "hdtable";
 	}
 }

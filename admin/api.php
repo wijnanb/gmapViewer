@@ -10,6 +10,15 @@ $db_connection = connect_db();
 switch($request->getMethod())
 {
 	case 'get':
+		$request_vars = $request->getRequestVars();
+		$localMode = false;
+
+		if( isset($request_vars["local"]) ) {
+			if ( $request_vars["local"] != "0" && $request_vars["local"] != "false" ) {
+				$localMode = true;
+			}
+		}
+	
 		// GET ALL THE CONTENT AS ONE XML
 		$query = "SELECT * FROM markers ORDER BY id";
 		$result = mysql_query($query);
@@ -44,6 +53,10 @@ switch($request->getMethod())
 			$item->addChild("description", $marker->description);
 			$item->addChild("longitude", $marker->longitude);
 			$item->addChild("latitude", $marker->latitude);
+
+			if ($localMode) {
+				$marker->markerIcon = preg_replace("/http:\/\/.*z33admin\//", "", $marker->markerIcon );
+			}
 			$item->addChild("markerIcon", $marker->markerIcon);
 
 			$concept = $item->addChild("concept");
@@ -61,6 +74,11 @@ switch($request->getMethod())
 					case "resultaat":
 						$media = $resultaat->addChild(strtolower($content->contentType));
 						break;
+				}
+
+				if ($localMode) {
+					$content->url = preg_replace("/http:\/\/.*z33admin\//", "", $content->url );
+					$content->url = preg_replace("/http:\/\/.*youtube.com\/(v\/|watch\?v=)([A-Za-z0-9\-_]+)/", "videos/$2.mp4", $content->url );
 				}
 
 				@$media->addChild("url",$content->url);

@@ -62,18 +62,25 @@
 		public function YouTubeViewer(id , niveau, magnifi)
 		{
 			super();
-			YouTubeParser.addEventListener(Event.COMPLETE, onParseComplete);
-			YouTubeParser.settingsPath = "FSCommand/Content.xml";
-			YouTubeDisplayParser.settingsPath = "config/"+Global.environment+"/YouTubeViewer.xml";
+			
 			YouTubeParser.settingsId = id;
 			YouTubeParser.settingsNiveau = niveau;
 			staat = niveau;
 			nummer = id;
 			magnifier = magnifi;
+			
+			YouTubeDisplayParser.addEventListener(Event.COMPLETE, onYoutubeDisplayParseComplete);
+			YouTubeDisplayParser.settingsPath = "config/"+Global.environment+"/YouTubeViewer.xml";
 		}
 		
-		public function verwijder() {
-			for (var i = 0; i< youtubeDisplayList.length;i++){
+		protected function onYoutubeDisplayParseComplete(event:Event):void {
+			YouTubeDisplayParser.removeEventListener(Event.COMPLETE, onYoutubeDisplayParseComplete);
+			YouTubeParser.addEventListener(Event.COMPLETE, onParseComplete);
+			YouTubeParser.settingsPath = "FSCommand/Content.xml";
+		}
+		
+		public function verwijder():void {
+			for (var i:int = 0; i< youtubeDisplayList.length;i++){
 				youtubeDisplayList[i].Dispose();			
 			}
 		}

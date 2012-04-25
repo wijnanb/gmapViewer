@@ -36,12 +36,18 @@ package
 			this.contentId = contentId;
 			this.lng = lng;
 			this.lat = lat;
+			
+			if (Player.runOffline) {
+				iconURL = Player.offlineHost + iconURL;
+			}
+			
 			this.iconURL = iconURL;
 			
 			var loader:Loader = new Loader();
 			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onIconLoaded, false, 0, true);
 			loader.contentLoaderInfo.addEventListener(HTTPStatusEvent.HTTP_STATUS, onHTTPStatus);
 			loader.load( new URLRequest(iconURL) );
+			trace("iconURL: " + iconURL);
 			addChild(loader);
 		}
 		

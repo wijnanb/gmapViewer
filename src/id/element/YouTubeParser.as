@@ -53,8 +53,6 @@
 		}
 		public static function set settingsPath(value:String):void
 		{
-
-
 			settingsLoader = new URLLoader();
 			settingsLoader.addEventListener(Event.COMPLETE, settingsLoader_completeHandler);
 			_settingsPath = value;
@@ -83,20 +81,47 @@
 			var movies_length:int = movies.length();
 			amountToShow = movies_length;
 			
-			for (var i:int = 0; i < movies_length; i++)
-			{
-				var request:URLRequest = new URLRequest();
-				if (movies[i].url.slice(0,15) ==  "http://youtu.be"){
-					request.url = "http://gdata.youtube.com/feeds/api/videos/" + movies[i].url.slice(16,27);
-				}
-				else{
-					request.url = "http://gdata.youtube.com/feeds/api/videos/" + movies[i].url.slice(31,42);
-				}
-				onYouTubeParseComplete(request);
-			}
+			var i:int;
 			
-			settingsLoader.removeEventListener(Event.COMPLETE, settingsLoader_completeHandler);
-			settingsLoader = null;
+			if ( Player.runOffline ) {
+				dataSet = new Array();
+				
+				for (i = 0; i < movies_length; i++)
+				{
+					var object:Object = new Object();
+					object.videoSource = movies[i].url;
+					object.title = movies[i].title;
+					object.description = movies[i].description;
+					object.author = movies[i].author;
+					object.publish = movies[i].publish;
+					object.qrCodeTag = "";
+					object.thumbUrl = "";
+					object.duration = 0;
+					
+					dataSet.push(object);
+				}
+				
+				settingsLoader.removeEventListener(Event.COMPLETE, settingsLoader_completeHandler);
+				settingsLoader = null;
+				
+				dispatchEvent(new Event(Event.COMPLETE));
+				
+			} else {
+				for (i = 0; i < movies_length; i++)
+				{
+					var request:URLRequest = new URLRequest();
+					if (movies[i].url.slice(0,15) ==  "http://youtu.be"){
+						request.url = "http://gdata.youtube.com/feeds/api/videos/" + movies[i].url.slice(16,27);
+					}
+					else{
+						request.url = "http://gdata.youtube.com/feeds/api/videos/" + movies[i].url.slice(31,42);
+					}
+					onYouTubeParseComplete(request);
+				}
+				
+				settingsLoader.removeEventListener(Event.COMPLETE, settingsLoader_completeHandler);
+				settingsLoader = null;
+			}
 		}
 
 		private static function onYouTubeParseComplete(request:URLRequest):void

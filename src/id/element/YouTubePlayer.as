@@ -60,7 +60,7 @@
 		protected var offlineVideoURL:String;
 		protected var offlineVideoPlayTimeout:int;
 		protected var offlineProgressTimer:Timer;
-		protected var offlineVideoDuration:Number;
+		public var offlineVideoDuration:Number;
 		
 		[Embed(source="../../../assets/interface/youtube_play.png")]
 		protected var playButtonGraphic:Class;
@@ -114,10 +114,16 @@
 		}
 		override protected function createUI():void
 		{
+			trace("YoutTubePlayer.create");
+			
 			offlineMode = Player.runOffline;
 			
 			if ( offlineMode ) {
-				offlineVideoURL = Player.offlineHost + "videos/"+_url+".mp4";
+				offlineVideoURL = Player.offlineHost + _url;
+				if(Player.videoHD) {
+					offlineVideoURL = offlineVideoURL.replace("videos/","videos_720p/");
+					trace(offlineVideoURL);
+				}
 				setupOfflineVideoConnection();
 			} else {
 				uTubeLoader = new Loader();
@@ -192,6 +198,7 @@
 		
 		protected function onMetaData(info:Object):void {
 			//trace("metadata: duration=" + info.duration + " width=" + info.width + " height=" + info.height + " framerate=" + info.framerate);
+			trace("duration: " + info.duration);
 			offlineVideoDuration = info.duration;
 		}
 		protected function onCuePoint(info:Object):void {
@@ -202,6 +209,7 @@
 		}
 		
 		protected function onOfflineVideoPlayheadUpdate(e:TimerEvent):void {
+			
 			if (offlineVideoDuration) {
 				var time:Number = offlineNetstream.time;
 				var progress:Number = time / offlineVideoDuration;
@@ -209,6 +217,7 @@
 				var left:String=Math.floor(time/60).toString();
 				var right:String = (Math.floor(time) - Number(left) * 60).toString();
 				_timeFormated = String(left.length > 1 ? left : "0" + left ) + ":" + (right.length > 1 ? right : "0" + right);
+				
 				dispatchEvent(new Event(YouTubePlayer.TIME, true, true));
 			}
 		}

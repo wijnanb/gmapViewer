@@ -13,5 +13,6 @@ package
 		public static var runFullscreen:Boolean = false;
 		public static var runOffline:Boolean = false;
 		public static var offlineHost:String = "";
+		public static var videoHD:Boolean = false;
 	}
 }

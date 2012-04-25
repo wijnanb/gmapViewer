@@ -52,6 +52,8 @@
 			//trace(amountToShow);}
 			settingsLoader.removeEventListener(Event.COMPLETE, settingsLoader_completeHandler);
 			settingsLoader = null;
+			
+			dispatchEvent(new Event(Event.COMPLETE));
 		}
 
 
