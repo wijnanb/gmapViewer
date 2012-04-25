@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LiveVideoViewer>
+	
+	<Content><!-- Sets the bounds and size for each video object populated to the application -->	
+		
+		<Source id="1"><!-- Each source must have a unique ID -->
+			<livevideoCam>0</livevideoCam>
+			<livevideoWidth>320</livevideoWidth>
+			<livevideoHeight>240</livevideoHeight>
+			<livevideoQuality>100</livevideoQuality>
+			<livevideoBandwidth>16384</livevideoBandwidth>
+			<livevideoFavorArea>false</livevideoFavorArea>
+			<livevideoFPS>30</livevideoFPS>
+		</Source>
+		
+		<Source id="2">
+			<livevideoCam>0</livevideoCam>
+			<livevideoWidth>320</livevideoWidth>
+			<livevideoHeight>240</livevideoHeight>
+			<livevideoQuality>100</livevideoQuality>
+			<livevideoBandwidth>16384</livevideoBandwidth>
+			<livevideoFavorArea>false</livevideoFavorArea>
+			<livevideoFPS>30</livevideoFPS>
+		</Source>
+		
+		<Source id="3">
+			<livevideoCam>0</livevideoCam>
+			<livevideoWidth>320</livevideoWidth>
+			<livevideoHeight>240</livevideoHeight>
+			<livevideoQuality>100</livevideoQuality>
+			<livevideoBandwidth>16384</livevideoBandwidth>
+			<livevideoFavorArea>false</livevideoFavorArea>
+			<livevideoFPS>30</livevideoFPS>
+		</Source>
+		
+		<Source id="4">
+			<livevideoCam>0</livevideoCam>
+			<livevideoWidth>320</livevideoWidth>
+			<livevideoHeight>240</livevideoHeight>
+			<livevideoQuality>100</livevideoQuality>
+			<livevideoBandwidth>16384</livevideoBandwidth>
+			<livevideoFavorArea>false</livevideoFavorArea>
+			<livevideoFPS>30</livevideoFPS>
+		</Source>
+
+	</Content>
+	
+	<GlobalSettings> <!-- Sets vars that effect all objects on stage-->
+		<amountToShow>4</amountToShow>
+	</GlobalSettings>
+
+	<FrameStyle><!-- Sets the style of the frame that surrounds each object window -->
+		<frameDraw>true</frameDraw><!-- Sets whether or not an external frame is drawn -->
+		<padding>60</padding><!-- Sets the padding (thickness) of the frame around the window -->
+		<cornerRadius>20</cornerRadius><!-- Sets the radius of the frame's corners. Set to "0" for angular corners. -->
+		<fillColor1>0x888888</fillColor1><!-- Sets the fill color of the frame. Input a hex color value after 0x -->
+		<fillAlpha>0.55</fillAlpha><!-- Sets the opacity of the frame. 0 is completely transparent, 1 is fully opaque, .5 is half opaque, etc. -->
+		<outlineColor>0xFFFFFF</outlineColor><!-- Sets the outline color of the frame border -->
+		<outlineStroke>2</outlineStroke><!-- Sets the thickness of the border line in pixels-->
+		<outlineAlpha>0.8</outlineAlpha><!-- Sets the opacity of the border -->
+	</FrameStyle>
+	
+	<LiveVideoGestures><!-- Sets which gestures can be used on the image itself. -->
+		<drag>true</drag>
+		<scale>true</scale>
+	</LiveVideoGestures>
+
+	<FrameGestures><!-- Sets which gestures can be used to manipulate the window frame object on the stage -->
+		<drag>true</drag>
+		<rotate>true</rotate>
+		<scale>true</scale>
+	</FrameGestures>
+
+</LiveVideoViewer>

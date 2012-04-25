@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Application>
+	<Template>
+		<FrameRate>60</FrameRate>
+		<background>assets/interface/splash_1920x1080.jpg</background> <!-- needs to be sized to screen resolution -->
+		<fullscreen>true</fullscreen>
+		<module>GMapViewer</module>
+		<!-- <module>FlickrViewer</module> -->
+		<magnifier>
+			<number>3</number>
+			<shape>oval</shape> <!--square or oval-->
+			<color>silver</color> <!-- silver or brass -->
+			<style>nohandles</style> <!-- handles or nohandles -->
+		</magnifier>
+		<offline>true</offline>
+		<offlineHost>offline_content/</offlineHost>
+		<offlineMapMarkers>maps/map_markers.png</offlineMapMarkers>
+		<offlineMap>maps/map.png</offlineMap>
+		<videoHD>true</videoHD>
+	</Template>
+	
+	<TouchCore>	
+		<AggregatorTypes></AggregatorTypes>
+		<FilterTypes></FilterTypes>
+		<InputTypes>
+			<Type name="Flosc">
+				<Package>id.data.flosc</Package>
+				<Class>Flosc</Class>
+				<Settings>FloscSettings</Settings>
+			</Type>
+			<Type name="Native">
+				<Package>id.data.native</Package>
+				<Class>Native</Class>
+				<Settings>NativeSettings</Settings>
+			</Type>
+			<Type name="Simulator">
+				<Package>id.data.simulator</Package>
+				<Class>Simulator</Class>
+				<Settings>SimulatorSettings</Settings>
+			</Type>
+		</InputTypes>
+		
+		<AggregatorSettings>
+		</AggregatorSettings>
+		
+		<FilterSettings>
+			<NoiseFilter>
+				<Histogram>
+					<width></width>
+					<height></height>
+					<backFrameCount></backFrameCount>
+					<forwardFrameCount></forwardFrameCount>
+				</Histogram>
+				<Spacial>true</Spacial>
+				<Temporal>true</Temporal>
+			</NoiseFilter>
+		</FilterSettings>
+		
+		<InputSettings>
+			<FloscSettings>
+				<Host>127.0.0.1</Host>
+				<Port>3000</Port>
+				<AutoReconnect>true</AutoReconnect>
+				<EnforceSize>false</EnforceSize>
+				<Width>1920</Width>
+				<Height>1080</Height>
+			</FloscSettings>
+			<NativeSettings />
+			<SimulatorSettings/>
+		</InputSettings>
+		
+		<TrackerSettings>
+			<Frequency>61</Frequency>
+			<GhostTolerance>0</GhostTolerance>
+		</TrackerSettings>
+		
+		<Aggregator></Aggregator>
+		<Filter></Filter>
+		<InputProvider>Simulator</InputProvider>
+		
+		<Clustering>0</Clustering> <!-- 0 | 1 | 2 -->
+		<Degradation>never</Degradation> <!-- always | auto | never -->
+		<Debug>false</Debug>
+		
+		<LicenseKey></LicenseKey>
+	</TouchCore>
+
+	<Maps>
+		<Map>
+			<Name>Borgloon</Name>
+			<Content>FSCommand/Content.xml</Content>
+		</Map>
+		<Map>
+			<Name>Genk</Name>
+			<Content>FSCommand/Content-Genk.xml</Content>
+		</Map>
+		<Map>
+			<Name>Zutendaal</Name>
+			<Content>FSCommand/Content-Zutendaal.xml</Content>
+		</Map>
+	</Maps>
+</Application>
