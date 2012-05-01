@@ -89,6 +89,7 @@ package id.component
 		private var numberOfMarkers:Number = 0;
 		private var logoCollapsed:Boolean = false;
 		private var mapScalingFactor:Number = 1.0;
+		private var mapOffset:Point = new Point(0,0);
 		
 		private var iconLogoHitarea:TouchSprite = new TouchSprite();
 		
@@ -193,6 +194,8 @@ package id.component
 			
 			calculateScalingFactor();
 			
+			mapOffset = new Point(0,-50);
+			
 			mapHeight = Math.min( mapHeight+ADVERTISEMENT_OFFSET, 1280); // Remove Google advertising at the bottom
 		}
 
@@ -235,8 +238,11 @@ package id.component
 			loader.load( new URLRequest(url) );
 			if ( !DEBUG_COLLISION_DETECTION )	mapLayer.addChild(loader);
 			
-			mapLayer.scaleX = mapLayer.scaleY = mapScalingFactor;
+			if (!Player.runOffline) mapLayer.scaleX = mapLayer.scaleY = mapScalingFactor;
 			markerLayer.scaleX = markerLayer.scaleY = mapScalingFactor;
+			
+			markerLayer.x = mapLayer.x = mapOffset.x;
+			markerLayer.y = mapLayer.y = mapOffset.y;
 		}
 
 		protected function onMapLoaded(e:Event):void {
@@ -352,8 +358,8 @@ package id.component
 				
 				if ( ! m.center ) break;
 				
-				dx = m.center.x * mapScalingFactor - posX;
-				dy = m.center.y * mapScalingFactor - posY;
+				dx = m.center.x * mapScalingFactor - (posX - mapOffset.x);
+				dy = m.center.y * mapScalingFactor - (posY - mapOffset.y);
 				d = Math.sqrt( dx*dx + dy*dy );
 				
 				if ( d <= m.radius * mapScalingFactor ) {
@@ -362,7 +368,7 @@ package id.component
 				
 				if ( DEBUG_COLLISION_DETECTION ) {
 					m.reset();
-					graphics.moveTo(posX, posY);
+					graphics.moveTo(posX-mapOffset.x, posY-mapOffset.y);
 					graphics.lineTo(m.center.x*mapScalingFactor, m.center.y*mapScalingFactor);
 					
 					if ( d <= m.radius * mapScalingFactor ) {

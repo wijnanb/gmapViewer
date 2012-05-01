@@ -14,8 +14,8 @@
 		</magnifier>
 		<offline>true</offline>
 		<offlineHost>offline_content/</offlineHost>
-		<offlineMapMarkers>maps/map_markers.png</offlineMapMarkers>
-		<offlineMap>maps/map.png</offlineMap>
+		<offlineMapMarkers>maps/map_markers_1920x1080.png</offlineMapMarkers>
+		<offlineMap>maps/map_1920x1080.png</offlineMap>
 		<videoHD>true</videoHD>
 	</Template>
 	
