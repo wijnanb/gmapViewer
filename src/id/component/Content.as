@@ -538,10 +538,14 @@
 
 		private function fotoHandler(event:Event) // make a image instance
 		{
-			var timerPress:Timer = new Timer(3000,1);
+			var timerPress:Timer = new Timer(1000,1);
 			timerPress.addEventListener(TimerEvent.TIMER, timerPressFunction);
 			timerPress.start();
 			if(pressedFoto == false){
+				
+				var colorize:ColorTransform = new ColorTransform(1.0,1.0,1.0,0.4);
+				iconFoto.transform.colorTransform = colorize;
+				
 				pressedFoto = true;
 				var ip = contentId;
 				var imageViewer:ImageViewer = new ImageViewer(ip,guiTouch,magnifier);
@@ -569,32 +573,35 @@
 		private function tekstHandler(event:Event) // make a text instance
 		{
 			
-			var timerPressTekst:Timer = new Timer(3000,1);
+			var timerPressTekst:Timer = new Timer(1000,1);
 			timerPressTekst.addEventListener(TimerEvent.TIMER, timerPressTekstFunction);
 			timerPressTekst.start();
 			if(pressedTekst == false){
+				
+				var colorize:ColorTransform = new ColorTransform(1.0,1.0,1.0,0.4);
+				iconTekst.transform.colorTransform = colorize;
 				pressedTekst = true;
 
-			var ip = contentId;
-			var tekstViewer:TekstViewer = new TekstViewer(ip,guiTouch,magnifier);
-			tekstList[ip] = tekstViewer;
-			tekstViewer.id = ip;
-			if (parent.x < 640)
-			{
-				offset2 = 350;
-			}
-			else
-			{
-				offset2 = -350;
-			}
-			tekstList[ip].x = parent.x + offset2;
-			tekstList[ip].y = parent.y + Y_OFFSET;
-			
-			addContentToLayer(tekstList[ip]);
-			
-			var timer:Timer = new Timer(40,25);
-			timer.addEventListener(TimerEvent.TIMER, updateLens);
-			timer.start();
+				var ip = contentId;
+				var tekstViewer:TekstViewer = new TekstViewer(ip,guiTouch,magnifier);
+				tekstList[ip] = tekstViewer;
+				tekstViewer.id = ip;
+				if (parent.x < 640)
+				{
+					offset2 = 350;
+				}
+				else
+				{
+					offset2 = -350;
+				}
+				tekstList[ip].x = parent.x + offset2;
+				tekstList[ip].y = parent.y + Y_OFFSET;
+				
+				addContentToLayer(tekstList[ip]);
+				
+				var timer:Timer = new Timer(40,25);
+				timer.addEventListener(TimerEvent.TIMER, updateLens);
+				timer.start();
 			}
 		}
 		
@@ -620,22 +627,25 @@
 		}
 		
 		
-		private function timerPressFunction(e:TimerEvent):void{
-			trace('timer');
+		private function timerPressFunction(e:TimerEvent):void {
+			iconFoto.transform.colorTransform = new ColorTransform();
 			pressedFoto = false;
-			}
-		private function timerPressTekstFunction(e:TimerEvent):void{
-			trace('timer');
+		}
+		
+		private function timerPressTekstFunction(e:TimerEvent):void {
+			iconTekst.transform.colorTransform = new ColorTransform();
 			pressedTekst = false;
-			}
-		private function timerPressVideoFunction(e:TimerEvent):void{
-			trace('timer');
+		}
+		
+		private function timerPressVideoFunction(e:TimerEvent):void {
+			iconVideo.transform.colorTransform = new ColorTransform();
 			pressedVideo = false;
-			}
+		}
 
-		function updateLens(e:TimerEvent):void // update the lense when something moves
+		protected function updateLens(e:TimerEvent):void // update the lense when something moves
 		{
-			magnifier.captureBitmap();
+			// no longer needed: content is over lens
+			//magnifier.captureBitmap();
 		}
 
 		private function videoHandler(event:Event):void // make a video instance
@@ -644,27 +654,31 @@
 			timerPressVideo.addEventListener(TimerEvent.TIMER, timerPressVideoFunction);
 			timerPressVideo.start();
 			if(pressedVideo == false){
+				
+				var colorize:ColorTransform = new ColorTransform(1.0,1.0,1.0,0.4);
+				iconVideo.transform.colorTransform = colorize;
+				
 				pressedVideo = true;
 
-			var i = contentId;
-			youTubeViewer = new YouTubeViewer(i,guiTouch,magnifier);
-			youtubeList[i] = youTubeViewer;
-			
-			addContentToLayer(youtubeList[i]);
-			
-			if (parent.x < 640)
-			{
-				offset = 550;
-			}
-			else
-			{
-				offset = -550;
-			}
-			youtubeList[i].x = parent.x + offset;
-			youtubeList[i].y = parent.y + Y_OFFSET;
-			var timer2:Timer = new Timer(40,25);
-			timer2.addEventListener(TimerEvent.TIMER, updateLens);
-			timer2.start();
+				var i = contentId;
+				youTubeViewer = new YouTubeViewer(i,guiTouch,magnifier);
+				youtubeList[i] = youTubeViewer;
+				
+				addContentToLayer(youtubeList[i]);
+				
+				if (parent.x < 640)
+				{
+					offset = 550;
+				}
+				else
+				{
+					offset = -550;
+				}
+				youtubeList[i].x = parent.x + offset;
+				youtubeList[i].y = parent.y + Y_OFFSET;
+				var timer2:Timer = new Timer(40,25);
+				timer2.addEventListener(TimerEvent.TIMER, updateLens);
+				timer2.start();
 			}
 		}
 
