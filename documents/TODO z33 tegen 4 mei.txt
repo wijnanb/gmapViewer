@@ -1,5 +1,6 @@
 TODO z33 tegen 4 mei
 
+* roll-over + blocking voor content icons
 * map 1920x1080 photoshoppen voor offline gebruik
 * pit logo terug laten werken
 * testing + bugfixes

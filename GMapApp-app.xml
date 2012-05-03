@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <application xmlns="http://ns.adobe.com/air/application/3.1">
-    <id>z-out</id>
-    <versionNumber>1.0.0</versionNumber>
+    <id>ZOUT</id>
+    <versionNumber>1.3.4</versionNumber>
     <filename>GMapApp</filename>
     <description></description>
     <!-- To localize the description, use the following format for the description element.
@@ -29,12 +29,19 @@
         <autoOrients>false</autoOrients>
         <aspectRatio>landscape</aspectRatio>
         <renderMode>auto</renderMode>
+        <maximizable>true</maximizable>
+        <minimizable>true</minimizable>
+        <resizable>true</resizable>
     </initialWindow>
     <customUpdateUI>false</customUpdateUI>
     <allowBrowserInvocation>false</allowBrowserInvocation>
-    <icon></icon>
+    <icon>
+        <image72x72>assets/icons/app_icon_72x72.png</image72x72>
+        <image48x48>assets/icons/app_icon_48x48.png</image48x48>
+        <image36x36>assets/icons/app_icon_36x36.png</image36x36>
+    </icon>
     <android>
         <manifestAdditions><![CDATA[<manifest><uses-permission android:name="android.permission.INTERNET"/></manifest>]]></manifestAdditions>
     </android>
-    <versionLabel></versionLabel>
+    <versionLabel>20120503_20.39</versionLabel>
 </application>
