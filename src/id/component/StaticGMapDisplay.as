@@ -194,7 +194,9 @@ package id.component
 			
 			calculateScalingFactor();
 			
-			mapOffset = new Point(0,-50);
+			var mapOffsetX:Number = ApplicationGlobals.dataManager.data.Template.mapOffset.x || 0;
+			var mapOffsetY:Number = ApplicationGlobals.dataManager.data.Template.mapOffset.y || 0;
+			mapOffset = new Point(mapOffsetX,mapOffsetY);
 			
 			mapHeight = Math.min( mapHeight+ADVERTISEMENT_OFFSET, 1280); // Remove Google advertising at the bottom
 		}

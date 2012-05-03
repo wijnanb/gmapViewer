@@ -16,6 +16,7 @@
 		<offlineHost>offline_content/</offlineHost>
 		<offlineMapMarkers>maps/map_markers_1920x1080.png</offlineMapMarkers>
 		<offlineMap>maps/map_1920x1080.png</offlineMap>
+		<mapOffset><x>0</x><y>-50</y></mapOffset>
 		<videoHD>true</videoHD>
 	</Template>
 	
