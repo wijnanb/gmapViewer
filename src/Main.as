@@ -57,7 +57,7 @@ package
 			}
 			
 			
-			resetTimer = new Timer(50000,0);// reset application every 50 seconds when no touches are detected, touches are detected in main.as
+			resetTimer = new Timer(6*60*1000,0);// reset application every 6 minutes when no touches are detected, touches are detected in main.as
 			resetTimer.addEventListener(TimerEvent.TIMER, onResetTimerComplete);
 			resetTimer.start();		
 			
