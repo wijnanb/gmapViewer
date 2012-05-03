@@ -446,7 +446,7 @@
 				TweenLite.to(iconVideo, speedCircle, {alpha:1 ,scaleX:iconSize, rotation: 10, scaleY :iconSize,delay: 0.3, ease:Back.easeOut});
 
 				iconGuiKlik1.graphics.beginFill(0x000000, 0.00001);
-				iconGuiKlik1.graphics.drawRect(140,18,50,50);
+				iconGuiKlik1.graphics.drawRect(140,18,70,70);
 				iconGuiKlik1.graphics.endFill();
 				iconGuiKlik1.addEventListener(TouchEvent.TOUCH_UP,videoHandler);
 				holder.addChild(iconGuiKlik1);
@@ -475,8 +475,8 @@
 				iconFoto.scaleY = iconscale;
 				TweenLite.to(iconFoto,speedCircle, {alpha:1,scaleX:iconSize, scaleY :iconSize, rotation: 10, delay: 0.4, ease:Back.easeOut});
 
-				iconGuiKlik2.graphics.beginFill(0x000000, 0.0001);
-				iconGuiKlik2.graphics.drawRect(128,75,50,50);
+				iconGuiKlik2.graphics.beginFill(0x000000, 0.00001);
+				iconGuiKlik2.graphics.drawRect(128,75,70,70);
 				iconGuiKlik2.graphics.endFill();
 				//iconGuiKlik2.addEventListener(flash.events.TouchEvent.TOUCH_END, fotoHandler);
 				iconGuiKlik2.addEventListener(gl.events.TouchEvent.TOUCH_UP,fotoHandler);
@@ -507,7 +507,7 @@
 				TweenLite.to(iconTekst, speedCircle, {alpha:1,scaleX:iconSize, rotation: 50, scaleY :iconSize,delay:0.5, ease:Back.easeOut});
 
 				iconGuiKlik3.graphics.beginFill(0x000000, 0.0001);
-				iconGuiKlik3.graphics.drawRect(90,135,50,50);
+				iconGuiKlik3.graphics.drawRect(90,135,70,70);
 				iconGuiKlik3.graphics.endFill();
 				holder.addChild(iconGuiKlik3);
 				iconGuiKlik3.addEventListener(TouchEvent.TOUCH_UP,tekstHandler);

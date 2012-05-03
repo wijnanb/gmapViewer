@@ -117,8 +117,7 @@ package id.component
 		private var mapHeight:Number = 0;
 		private var mapRotation:Number = 0;
 		private var numberOfMarkers:Number = 0;
-		private var logoOn = "false";
-
+		
 		//---------frame settings--//
 		private var frameDraw:Boolean = true;
 		private var frameMargin:Number = 50;
@@ -128,8 +127,7 @@ package id.component
 		private var frameOutlineColor:Number = 0xFFFFFF;
 		private var frameOutlineStroke:Number = 2;
 		private var frameOutlineAlpha:Number = 1;
-		private var iconLogoSub:TouchSprite =new TouchSprite();
-		private var iconLogoSubExt:TouchSprite =new TouchSprite();
+		
 		// ---map gestures---//
 		private var mapDoubleTapGesture:Boolean = true;
 		private var mapDragGesture:Boolean = true;
@@ -145,14 +143,6 @@ package id.component
 		private var vergroot:Array = new Array();
 		private var eigen;
 		
-		
-		[Embed(source = "../../../assets/interface/pit_logo.svg")]
-		public var iconLogoClass:Class;
-		private var iconLogo = new iconLogoClass();
-		
-		[Embed(source = "../../../assets/interface/pit_info.svg")]
-		public var iconLogoInfoClass:Class;
-		private var iconLogoInfo = new iconLogoInfoClass();
 
 		//--------------------------------------------------------------------------
 		//
@@ -174,11 +164,8 @@ package id.component
 			super();
 			blobContainerEnabled = true;
 			visible = false;
-			//Mouse.hide();
 			vergroot = magnifier;
 			eigen = zichzelf;
-			//trace('blaat', eigen);
-			
 		}
 					
 		
@@ -187,7 +174,6 @@ package id.component
 
 		override public function get id():int
 		{
-			//trace('id: ',_id);
 			return _id;
 		}
 
@@ -236,23 +222,11 @@ package id.component
 			
 			screen = new TouchSprite();
 			addChild(screen);
-			//trace('screen');
 			screen2 = new TouchSprite();
 			addChild(screen2);
-			//trace('screen2');
 			screen.addChild(map);
 			
-			iconLogo.x = stageWidth -150;
-			iconLogo.y = 50;
-			addChild(iconLogo);
 			
-			iconLogoSub.graphics.beginFill(0x000000, 0.000001);
-			iconLogoSub.graphics.drawRect(stageWidth -150,50,200,100);
-			iconLogoSub.graphics.endFill();
-			addChild(iconLogoSub);
-			iconLogoSub.addEventListener(TouchEvent.TOUCH_DOWN, changeLogo);
-			//trace('add map');
-
 
 			//-- Add Event Listeners----------------------------------//
 			map.addEventListener(MapEvent.MAP_PREINITIALIZE, onMapPreInt);
@@ -477,68 +451,13 @@ MapTypeStyleRule.visibility("off"),
 
 			map.setInitOptions(mOptions);
 		}
-		private function changeLogo(event:TouchEvent){
-			//trace('klik');
-			if(logoOn == "false"){
-				
-				
-			iconLogoInfo.x = stageWidth -380; 
-			iconLogoInfo.y = 55;
-			addChild(iconLogoInfo);
-			
-			iconLogoSubExt.graphics.beginFill(0x000000, 0.00001);
-			iconLogoSubExt.graphics.drawRect(stageWidth -350,50,400,400);
-			iconLogoSubExt.graphics.endFill();
-			addChild(iconLogoSubExt);
-			iconLogoSubExt.addEventListener(TouchEvent.TOUCH_DOWN, changeLogoBack);
-			logoOn = "true";
-			}
-			
-			}
-		private function changeLogoBack(event:TouchEvent){
-			removeChild(iconLogoSubExt);
-			removeChild(iconLogoInfo);
-			logoOn = "false";
-			
-			}
+		
 		private function onMapReady(event:MapEvent):void
 		{
-
 			newMarker = new CreateMarker(map);
 			newMarker.addEventListener(Event.COMPLETE, dataReadyHandler);
-			//loadImage();
-			//loadLogo();
-			/*map.addControl(new ZoomControl());
-			map.addControl(new MapTypeControl());*/
-
 		}
 
-
-		/*public function loadImage():void
-		{
-		var loader:Loader = new Loader  ;
-		loader.contentLoaderInfo.addEventListener(Event.COMPLETE, backLoaded);
-		loader.load(new URLRequest("assets/overlay.png"));
-		}
-		private function backLoaded(event:Event):void
-		{
-		var image = new Bitmap(event.target.content.bitmapData);
-		map.addChild(image);
-		}*/
-
-		public function loadLogo():void
-		{
-			var loader:Loader = new Loader  ;
-			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, logoLoaded, false, 0, false);
-			loader.load(new URLRequest("assets/interface/pit_info.svg"));
-		}
-		private function logoLoaded(event:Event):void
-		{
-			var logo = new Bitmap(event.target.content.bitmapData);
-			logo.x = 40;
-			logo.y = 40;
-			//screen.addChild(logo);
-		}
 		function dataReadyHandler(event:Event):void
 		{
 			screen2.addChild(newMarker);
@@ -639,20 +558,14 @@ MapTypeStyleRule.visibility("off"),
 		override public function Dispose():void
 		{
 			trace( this + ".Dispose()" );
-			
-			iconLogoSub.removeEventListener(TouchEvent.TOUCH_DOWN, changeLogo);
 			map.removeEventListener(MapEvent.MAP_PREINITIALIZE, onMapPreInt);
 			map.removeEventListener(MapEvent.MAP_READY, onMapReady);
-			iconLogoSubExt.removeEventListener(TouchEvent.TOUCH_DOWN, changeLogoBack);
 			newMarker.removeEventListener(Event.COMPLETE, dataReadyHandler);		
 			
 			if ( map_holder )			map_holder.Dispose();
 			if ( frame )				frame.Dispose();
 			if ( screen )				screen.Dispose();
 			if ( screen2 )				screen2.Dispose();
-			
-			if ( iconLogoSub )			iconLogoSub.Dispose();
-			if ( iconLogoSubExt )		iconLogoSubExt.Dispose();
 			
 			if (mapDragGesture)
 			{

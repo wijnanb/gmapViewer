@@ -1,5 +1,6 @@
 package 
 {
+	import flash.display.Bitmap;
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageDisplayState;
@@ -31,9 +32,10 @@ package
 		
 		protected var viewerLayer:TouchSprite = new TouchSprite();
 		protected var mapSwitchButtonLayer:TouchSprite = new TouchSprite();
+		protected var logoLayer:TouchSprite = new TouchSprite();
 		
 		protected var resetTimer:Timer;
-
+		protected var pitLogo:PITLogo = new PITLogo();	
 		
 		public function Main()
 		{
@@ -88,6 +90,10 @@ package
 			}
 
 			loadMapWithName( (maps[0] as MapData).name );
+			
+			pitLogo.x = stage.width - 150;
+			pitLogo.y = 50;
+			addChild(pitLogo);
 		}
 		
 		protected function loadMapWithName(name:String):void {

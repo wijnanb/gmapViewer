@@ -87,19 +87,16 @@ package id.component
 		private var mapHeight:Number = 0;
 		private var mapRotation:Number = 0;
 		private var numberOfMarkers:Number = 0;
-		private var logoCollapsed:Boolean = false;
 		private var mapScalingFactor:Number = 1.0;
 		private var mapOffset:Point = new Point(0,0);
-		
-		private var iconLogoHitarea:TouchSprite = new TouchSprite();
 		
 		protected var markers:Array;
 		protected var pinpointLocations:Array;
 		
-		protected var logoLayer:TouchSprite;
 		protected var markerLayer:TouchSprite;
 		protected var mapLayer:Sprite;
 		
+	
 		public static const DEBUG_COLLISION_DETECTION:Boolean = false;
 		
 		public static const GREENKEY_COLOR:uint = 0x65ba4a;
@@ -108,14 +105,6 @@ package id.component
 		
 		public static const ADVERTISEMENT_OFFSET:Number = 50;
 		
-		[Embed(source = "../../../assets/interface/pit_logo.svg")]
-		public var iconLogoClass:Class;
-		private var iconLogo = new iconLogoClass();
-		
-		[Embed(source = "../../../assets/interface/pit_info.svg")]
-		public var iconLogoInfoClass:Class;
-		private var iconLogoInfo = new iconLogoInfoClass();
-
 		//--------------------------------------------------------------------------
 		//
 		//  Constructor
@@ -137,26 +126,16 @@ package id.component
 			
 			mapLayer = new Sprite();
 			markerLayer = new TouchSprite();
-			logoLayer = new TouchSprite();
 			
 			addChild(mapLayer);
 			addChild(markerLayer);
-			addChild(logoLayer);
 			
 			if (stage)		onStageReady();
 			else			addEventListener(Event.ADDED_TO_STAGE, onStageReady, false, 0, true);
 		}
 		
 		protected function onStageReady(e:Event=null):void {
-			iconLogo.x = stageWidth -150;
-			iconLogo.y = 50;
-			logoLayer.addChild(iconLogo);
 			
-			iconLogoHitarea.graphics.beginFill(0x000000, 0.000001);
-			iconLogoHitarea.graphics.drawRect(stageWidth -150,50,200,100);
-			iconLogoHitarea.graphics.endFill();
-			iconLogoHitarea.addEventListener(TouchEvent.TOUCH_DOWN, onLogoTouched, false, 0, true);
-			logoLayer.addChild(iconLogoHitarea);
 		}
 					
 		override public function get id():int
@@ -328,21 +307,6 @@ package id.component
 		}
 
 		
-		protected function onLogoTouched(event:TouchEvent){
-			if(!logoCollapsed){
-				iconLogoInfo.x = stageWidth -380; 
-				iconLogoInfo.y = 55;
-				logoLayer.addChild(iconLogoInfo);
-				logoLayer.setChildIndex(iconLogoHitarea, logoLayer.numChildren-1);
-				logoCollapsed = true;
-			}
-			else
-			{
-				logoLayer.removeChild(iconLogoInfo);
-				logoCollapsed = false;	
-			}
-		}
-		
 		public function collisionDetect(posX:Number, posY:Number):Marker {
 			var m:Marker;
 			var markers_length:int = markers.length;
@@ -408,12 +372,7 @@ package id.component
 		override public function Dispose():void
 		{
 			trace( this + ".Dispose()" );
-			
-			iconLogoHitarea.removeEventListener(TouchEvent.TOUCH_DOWN, onLogoTouched);
-			//newMarker.removeEventListener(Event.COMPLETE, dataReadyHandler);		
-				
-			if ( iconLogoHitarea )			iconLogoHitarea.Dispose();
-			
+					
 			if (parent)
 			{
 				parent.removeChild(this);
