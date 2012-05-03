@@ -114,7 +114,7 @@ package id.template
 		private var naam:Number = new Number();
 		private var eigenKlasse;
 
-		private var numMagnifiers:int = 1; //number of magnifier glasses
+		public var numMagnifiers:int = 1; //number of magnifier glasses
 		private var addMa:TouchSprite = new TouchSprite();
 		private var addMag:TouchSprite = new TouchSprite();
 		private var ring1:TouchSprite  = new TouchSprite();

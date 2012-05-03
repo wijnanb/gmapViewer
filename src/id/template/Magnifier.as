@@ -1095,12 +1095,15 @@ public class Magnifier extends TouchSprite
 	
 	private function draggingHandler(event:TouchEvent):void
 	{
+		// place on top
 		
+		if ( Global.viewer.numMagnifiers > 1 && parent ) {
+			parent.setChildIndex(this, parent.numChildren-1);
+		}
 		
 		if(!_continuousRenderer)
 		{
-			captureBitmap();
-			
+			captureBitmap();	
 		}
 	}
 
