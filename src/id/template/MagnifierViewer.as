@@ -166,6 +166,11 @@ package id.template
 				mapAndContentLayer.addChild(contentLayer);
 			}
 			
+			var pitLogo:PITLogo = new PITLogo();	
+			pitLogo.x = width - 150;
+			pitLogo.y = 50;
+			addChild(pitLogo);
+			
 			magnifierLayer = new TouchSprite();
 			addChild(magnifierLayer);
 			

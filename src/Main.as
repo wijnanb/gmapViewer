@@ -35,7 +35,6 @@ package
 		protected var logoLayer:TouchSprite = new TouchSprite();
 		
 		protected var resetTimer:Timer;
-		protected var pitLogo:PITLogo = new PITLogo();	
 		
 		public function Main()
 		{
@@ -90,10 +89,6 @@ package
 			}
 
 			loadMapWithName( (maps[0] as MapData).name );
-			
-			pitLogo.x = stage.width - 150;
-			pitLogo.y = 50;
-			addChild(pitLogo);
 		}
 		
 		protected function loadMapWithName(name:String):void {

@@ -40,7 +40,7 @@ package
 			addChild(logoInfo);
 			
 			logoHitArea.graphics.beginFill(0x000000, 0.00001);
-			logoHitArea.graphics.drawRect(0,0,100,80);
+			logoHitArea.graphics.drawRect(-25,-20,150,120);
 			logoHitArea.graphics.endFill();
 			
 			logoInfoHitArea.graphics.beginFill(0x000000, 0.00001);
@@ -50,7 +50,7 @@ package
 			addChild(logoHitArea);
 			addChild(logoInfoHitArea);
 			
-			this.addEventListener(TouchEvent.TOUCH_DOWN, onTouched);
+			logoHitArea.addEventListener(TouchEvent.TOUCH_DOWN, onTouched);
 		}
 		
 		protected function onTouched(e:TouchEvent):void {
@@ -61,12 +61,18 @@ package
 			collapsed = ! collapsed;
 			
 			if (collapsed) {
+				logoHitArea.removeEventListener(TouchEvent.TOUCH_DOWN, onTouched);
+				logoInfoHitArea.addEventListener(TouchEvent.TOUCH_DOWN, onTouched);
+				
 				iconLogo.visible = false;
 				logoInfo.visible = true;
 				
 				logoHitArea.visible = false;
 				logoInfoHitArea.visible = true;
 			} else {
+				logoHitArea.addEventListener(TouchEvent.TOUCH_DOWN, onTouched);
+				logoInfoHitArea.removeEventListener(TouchEvent.TOUCH_DOWN, onTouched);
+				
 				iconLogo.visible = true;
 				logoInfo.visible = false;
 				

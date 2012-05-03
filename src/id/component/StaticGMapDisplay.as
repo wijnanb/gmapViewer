@@ -105,6 +105,7 @@ package id.component
 		
 		public static const ADVERTISEMENT_OFFSET:Number = 50;
 		
+		
 		//--------------------------------------------------------------------------
 		//
 		//  Constructor
