@@ -434,7 +434,7 @@
 				holder.addChild(iconVideo);
 				TweenLite.to(iconVideo, speedCircle, {alpha:0.2,scaleX:iconSize, rotation: 10,scaleY :iconSize,delay: 0.3, ease:Back.easeOut});
 				geenVideo = false;
-
+				iconGuiKlik1.removeEventListener(TouchEvent.TOUCH_UP,videoHandler);
 			}
 			else
 			{
@@ -465,6 +465,7 @@
 				iconFoto.alpha = 0;
 				TweenLite.to(iconFoto, speedCircle, {alpha:0.2 ,scaleX:iconSize, scaleY :iconSize, rotation: 10, delay: 0.4, ease:Back.easeOut});
 				geenFoto = false;
+				iconGuiKlik2.removeEventListener(gl.events.TouchEvent.TOUCH_UP,fotoHandler);
 			}
 			else
 			{
@@ -478,10 +479,8 @@
 				iconGuiKlik2.graphics.beginFill(0x000000, 0.00001);
 				iconGuiKlik2.graphics.drawRect(128,75,70,70);
 				iconGuiKlik2.graphics.endFill();
-				//iconGuiKlik2.addEventListener(flash.events.TouchEvent.TOUCH_END, fotoHandler);
 				iconGuiKlik2.addEventListener(gl.events.TouchEvent.TOUCH_UP,fotoHandler);
 				holder.addChild(iconGuiKlik2);
-
 			}
 		}
 
@@ -496,6 +495,7 @@
 				iconTekst.scaleY = iconscale;
 				iconTekst.alpha = 0;
 				TweenLite.to(iconTekst, speedCircle, {alpha:0.2,scaleX:iconSize, scaleY :iconSize , rotation: 50,delay:0.5, ease:Back.easeOut});
+				iconGuiKlik3.removeEventListener(TouchEvent.TOUCH_UP,tekstHandler);
 			}
 			else
 			{
@@ -511,7 +511,6 @@
 				iconGuiKlik3.graphics.endFill();
 				holder.addChild(iconGuiKlik3);
 				iconGuiKlik3.addEventListener(TouchEvent.TOUCH_UP,tekstHandler);
-
 			}
 		}
 
