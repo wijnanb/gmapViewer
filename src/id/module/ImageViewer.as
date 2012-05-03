@@ -112,7 +112,7 @@
 			if (counter == 2)
 			{
 				ImageParser.removeEventListener(Event.COMPLETE, onParseComplete);
-				for (var ti = 0; ti < ImageParser.amountToShow; ti++)
+				for (var ti = ImageParser.amountToShow-1; ti >=0 ; ti--)
 				{
 					imageDisplay = new ImageDisplay(markerNr,depth,magnifier);
 					imageDisplay.id = ti;
