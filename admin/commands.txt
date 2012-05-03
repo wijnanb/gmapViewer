@@ -1,0 +1,17 @@
+
+curl -o "FSCommand/Content.xml" http://maddoc.khlim.be/~dleen/z33admin/api.php?local=1
+
+http://maddoc.khlim.be/~dleen/z33admin/curl.php
+-> copy-paste in terminal in directory offline_content/uploads
+
+download youtube video's and rename to <youtube_tag>.mp4, place in offline_content/videos
+
+
+
+
+download maps:
+
+
+curl -o "map_markers.png" "http://maps.google.com/maps/api/staticmap?sensor=false&center=50.795,5.358904&size=640x401&scale=2&zoom=13&style=feature:all|element:geometry|hue:0xffe293|saturation:80|lightness:25|gamma:0|visibility:simplified&style=feature:all|element:labels|visibility:off&style=feature:road.local|element:geometry|visibility:simplified|lightness:-50|gamma:3|saturation:-30&style=feature:road.highway|element:geometry|hue:0xffe293|visibility:simplified&style=feature:road.arterial|element:geometry|hue:0xffe293|visibility:simplified&style=feature:landscape|element:geometry|hue:0xffe293|visibility:simplified&style=feature:landscape.man.made|element:geometry|hue:0xffe293|visibility:off&style=feature:landscape.natural|element:geometry|hue:0xffe293|visibility:simplified&style=feature:water|element:geometry|hue:0xffe293|visibility:simplified&style=feature:transit|element:geometry|hue:0x000000|lightness:1|saturation:-1|gamma:0.1|visibility:on&style=feature:poi|element:geometry|visibility:off&style=feature:administrative|element:geometry|visibility:off&markers=size:tiny|color:green|50.79621712599798,5.330022464640574&markers=size:tiny|color:green|50.802543896976545,5.343820662139196&markers=size:tiny|color:green|50.81488171956847,5.345622982857345&markers=size:tiny|color:green|50.789427366602354,5.35495988603476&markers=size:tiny|color:green|50.793815335235216,5.356800856294837&markers=size:tiny|color:green|50.814177217838605,5.3594419956207595&markers=size:tiny|color:green|50.79643826319205,5.366740822792013&markers=size:tiny|color:green|50.78278994769813,5.378588676452645&markers=size:tiny|color:green|50.786862545199845,5.383996009826668"
+
+curl -o "map.png" "http://maps.google.com/maps/api/staticmap?sensor=false&center=50.795,5.358904&size=640x500&scale=2&zoom=13&style=feature:all|element:geometry|hue:0xffe293|saturation:80|lightness:25|gamma:0|visibility:simplified&style=feature:all|element:labels|visibility:off&style=feature:road.local|element:geometry|visibility:simplified|lightness:-50|gamma:3|saturation:-30&style=feature:road.highway|element:geometry|hue:0xffe293|visibility:simplified&style=feature:road.arterial|element:geometry|hue:0xffe293|visibility:simplified&style=feature:landscape|element:geometry|hue:0xffe293|visibility:simplified&style=feature:landscape.man.made|element:geometry|hue:0xffe293|visibility:off&style=feature:landscape.natural|element:geometry|hue:0xffe293|visibility:simplified&style=feature:water|element:geometry|hue:0xffe293|visibility:simplified&style=feature:transit|element:geometry|hue:0x000000|lightness:1|saturation:-1|gamma:0.1|visibility:on&style=feature:poi|element:geometry|visibility:off&style=feature:administrative|element:geometry|visibility:off"

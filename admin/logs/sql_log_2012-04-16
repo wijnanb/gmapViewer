@@ -1,0 +1,1 @@
+17:11:06 (content.php) INSERT INTO content SET  marker_id=9,  contentType='Image',  url='http://localhost:8888/z33admin/uploads/IMG_20120416_171050.jpg',  title='ty',  description='ty',  author='ty',  publish='tyty',  category='Concept'
