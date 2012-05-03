@@ -71,7 +71,7 @@
 		</InputSettings>
 		
 		<TrackerSettings>
-			<Frequency>61</Frequency>
+			<Frequency>60</Frequency>
 			<GhostTolerance>0</GhostTolerance>
 		</TrackerSettings>
 		

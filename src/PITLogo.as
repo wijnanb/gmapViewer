@@ -11,7 +11,7 @@ package
 	
 	public class PITLogo extends TouchSprite
 	{
-		[Embed(source = "../assets/interface/pit_logo.svg")]
+		[Embed(source = "../assets/interface/pit_logo.png")]
 		protected var IconLogo:Class;
 		protected var iconLogo:DisplayObject = new IconLogo();
 		
@@ -34,13 +34,13 @@ package
 			iconLogo.x = 0;
 			addChild(iconLogo);
 			
-			logoInfo.x = -230;
-			logoInfo.y = 7;
+			logoInfo.x = -248;
+			logoInfo.y = -4;
 			
 			addChild(logoInfo);
 			
 			logoHitArea.graphics.beginFill(0x000000, 0.00001);
-			logoHitArea.graphics.drawRect(-25,-20,150,120);
+			logoHitArea.graphics.drawRect(-25,-80,150,180);
 			logoHitArea.graphics.endFill();
 			
 			logoInfoHitArea.graphics.beginFill(0x000000, 0.00001);
@@ -50,6 +50,7 @@ package
 			addChild(logoHitArea);
 			addChild(logoInfoHitArea);
 			
+			iconLogo.addEventListener(TouchEvent.TOUCH_DOWN, onTouched);
 			logoHitArea.addEventListener(TouchEvent.TOUCH_DOWN, onTouched);
 		}
 		
