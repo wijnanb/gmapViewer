@@ -14,5 +14,6 @@ package
 		public static var runOffline:Boolean = false;
 		public static var offlineHost:String = "";
 		public static var videoHD:Boolean = false;
+		public static var isTUIO:Boolean = false;
 	}
 }

@@ -47,6 +47,7 @@ package
 			Player.runOffline = (ApplicationGlobals.dataManager.data.Template.offline == "true");
 			Player.offlineHost = ApplicationGlobals.dataManager.data.Template.offlineHost;
 			Player.videoHD = (ApplicationGlobals.dataManager.data.Template.videoHD == "true");
+			Player.isTUIO = (ApplicationGlobals.dataManager.data.TouchCore.InputProvider == "Flosc");
 			
 			if ( Player.runFullscreen )	{
 				stage.scaleMode = StageScaleMode.SHOW_ALL;
@@ -56,6 +57,11 @@ package
 				stage.align = StageAlign.TOP_LEFT;
 			}
 			
+			if ( Player.isTUIO ) {
+				Mouse.hide();
+			}
+			
+			stage.showDefaultContextMenu = false;
 			
 			resetTimer = new Timer(6*60*1000,0);// reset application every 6 minutes when no touches are detected, touches are detected in main.as
 			resetTimer.addEventListener(TimerEvent.TIMER, onResetTimerComplete);
