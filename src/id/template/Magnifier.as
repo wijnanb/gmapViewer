@@ -624,9 +624,7 @@ public class Magnifier extends TouchSprite
      * @playerversion Flash Lite 4
      * @productversion GestureWorks 1.5
 	 */
-	 	var ring1:Sprite = new Sprite();
-		var ring2:Sprite = new Sprite();
-		var vount = 0;
+	 	var vount = 0;
 		
 	public function captureBitmap():void
 	{
@@ -943,67 +941,19 @@ public class Magnifier extends TouchSprite
 		
 		
 		//addChild(_foreground);
-		ring1.graphics.lineStyle(15,0x36A9E1, 1, true);
-			ring1.graphics.drawCircle(0,0,94);
-			
-			ring2.graphics.lineStyle(15,0xFFFFFF, 1 );
-			ring2.graphics.drawCircle(0,0,100);
-			//addChild(ring2);
-			addChild(ring1);
-			
-			var mark:Sprite = new Sprite( );
-			mark.graphics.lineStyle( 1.2 , 0x000000 );
-			mark.graphics.moveTo( -5 , -5 );
-			mark.graphics.lineTo( 5 , 5 );
-			mark.graphics.moveTo( -5 , 5 );
-			mark.graphics.lineTo( 5 , -5 );
-			mark.rotation = 45;
-			addChild( mark );
+		var mark:Sprite = new Sprite( );
+		mark.graphics.lineStyle( 1.2 , 0x000000 );
+		mark.graphics.moveTo( -5 , -5 );
+		mark.graphics.lineTo( 5 , 5 );
+		mark.graphics.moveTo( -5 , 5 );
+		mark.graphics.lineTo( 5 , -5 );
+		mark.rotation = 45;
+		addChild( mark );
 
 		_mask = new Magnifier_Handles_Mask();
 		addChild(_mask);
 		var timer:Timer = new Timer(1000, 0);
-   
-
- 
-	//addEventListener(Event.ENTER_FRAME, animateShadow);
-	
-
-/*	shade.color = 0x000000;
-	shade.blurX = 4;
-	shade.blurY = 4;
-	shade.angle = 45;
-	shade.distance = 2;
-	shade.alpha = .5;*/
-		//filters = [new DropShadowFilter(4.0, 45, 0x000000, 1.0, 4, 4, 0.5, 2)];
-
 	}
-	/*var blurX =0;
-	var blurY = 0;
-	var speed = 0.3;
-	var goUp =false;
-	function animateShadow(event:Event):void{
-		
-		if (blurX <30 && goUp ==false)
-		{
-			blurX += speed;
-	 		blurY += speed;
-			//trace('1x:', blurX,'y:', blurY);
-	 	}
-		if (blurX > 29){
-			goUp = true;
-			//trace
-			}
-		if (goUp == true){
-			blurX -= speed;
-	 		blurY -= speed;
-			//trace('2 x:', blurX,'y:', blurY);
-			if (blurX <5){
-				goUp = false;
-				}
-			}
-		filters = [new DropShadowFilter(4.0, 45, 0x000000, 1.0, blurX,blurY, 0.5, 2)];
-	}*/
 
 	private function updateUI():void
 	{

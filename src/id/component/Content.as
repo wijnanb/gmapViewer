@@ -155,6 +155,12 @@
 				sound2 = new Sound(new URLRequest("assets/interface/sound/slide-1.mp3"));
 				sound3 = new Sound(new URLRequest("assets/interface/sound/typewriter-line-break-1.mp3"));
 			}
+			
+			var ring1:Sprite = new Sprite();
+			ring1.graphics.lineStyle(15,0x36A9E1, 1, true);
+			ring1.graphics.drawCircle(0,0,94);
+			
+			addChild(ring1);
 		}
 
 		public function deleteIt():void{
@@ -275,7 +281,9 @@
 
 			var gradenTitle = tekstCircleTitle.length * 5 - 30;
 			var gradenDesc = tekstCircleDesc.length * 5;
+			
 			addChild(rotateTekstCircle);
+			
 			_textTitle = new CurvedText(tekstCircleAfterTitle,112,-30,gradenTitle,CurvedText.DIRECTION_UP,format4);
 			_textTitle.showCurve = false;
 			_textTitle.showLetterBorder = false;
@@ -283,14 +291,15 @@
 			_textTitle.x = -57;
 			_textTitle.y = -121;
 			rotateTekstCircle.addChild(_textTitle);
-
+						
 			_textDesc = new CurvedText(tekstCircleAfterDesc,95,0,gradenDesc,CurvedText.DIRECTION_UP,format4);
 			_textDesc.showCurve = false;
 			_textDesc.showLetterBorder = false;
 			_textDesc.draw();
 			_textDesc.x = 0;
-			_textDesc.y = -107;
+			_textDesc.y = -103;
 			rotateTekstCircle.addChild(_textDesc);
+			
 			rotateTekstCircle.rotation = 0;
 			TweenLite.to(rotateTekstCircle, 2, {rotation:360, delay: 0.1, ease:Back.easeOut});
 		}
