@@ -3,7 +3,7 @@
 	<Content><!-- Sets the bounds and size for each map object populated to the application -->	
 		<Source id="1"><!-- Each source must have a unique ID -->
 			<longitude>5.358904</longitude><!-- Sets the longitude of the map -->
-			<latitude>50.794</latitude><!-- Sets the latitude of the map -->
+			<latitude>50.795000</latitude><!-- Sets the latitude of the map -->
 			<initialZoom>13</initialZoom><!-- Sets the initial zoom level of the map-->
 			<zoomStep>2</zoomStep><!-- Sets by what degrees the zoom augments when the zoom gesture is used -->
 			<initialAttitude>0</initialAttitude><!-- Sets how the map is rotated at launch relative to the frame -->
