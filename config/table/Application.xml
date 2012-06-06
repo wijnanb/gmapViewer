@@ -77,7 +77,7 @@
 		
 		<Aggregator></Aggregator>
 		<Filter></Filter>
-		<InputProvider>Flosc</InputProvider>
+		<InputProvider>Simulator</InputProvider>
 		
 		<Clustering>0</Clustering> <!-- 0 | 1 | 2 -->
 		<Degradation>never</Degradation> <!-- always | auto | never -->
