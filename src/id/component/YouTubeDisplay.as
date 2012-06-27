@@ -507,12 +507,11 @@ var tijdMS;
 			square6.graphics.drawRect(320 ,-110,150, 50);
 			square6.graphics.endFill();*/
 			
-			[Embed(source="../../../assets/fonts/Neutra2Text-Demi.otf", fontFamily="Neutra", fontWeight="bold", embedAsCFF="true")]
-			var fontNeutra:String;
+			var myFont:Font = new Neutra();
 			
 			format.align = "center";
 			format.size = 36;
-			format.font = "Neutra";
+			format.font = myFont.fontName;
 			format.bold = true;
 			format.color = 0xFFFFFF;
 			format.leftMargin = 20;
@@ -627,7 +626,7 @@ var tijdMS;
 			
 			format.align = "center";
 			format.size = 14;
-			format.font = "Neutra";
+			format.font = myFont.fontName;
 			format.bold = true;
 			format.color = 0x000000;
 			format.leftMargin = 5;

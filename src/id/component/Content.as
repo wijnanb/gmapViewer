@@ -220,12 +220,11 @@
 			schuifHolder2.addEventListener(TouchEvent.TOUCH_UP,guiHandler);
 			schuifHolder3.addEventListener(TouchEvent.TOUCH_UP,guiHandler);
 
-			[Embed(source="../../../assets/fonts/Neutra2Text-Demi.otf", fontFamily="Neutra", fontWeight="bold", embedAsCFF="true")]
-			var fontNeutra:String;
-
+			var myFont:Font = new Neutra();
+			
 			format.align = "center";
 			format.size = 18;
-			format.font = "Neutra";
+			format.font = myFont.fontName;
 			format.bold = true;
 			format.color = 0xFFFFFF;
 			format.leftMargin = 5;
@@ -233,7 +232,7 @@
 
 			format4.align = "left";
 			format4.size = 14;
-			format4.font = "Neutra";
+			format4.font = myFont.fontName;
 			format4.bold = true;
 			format4.color = 0xFFFFFF;
 
