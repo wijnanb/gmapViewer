@@ -171,6 +171,11 @@ package id.template
 			pitLogo.y = 50;
 			addChild(pitLogo);
 			
+			var efroLogo:EFROLogo = new EFROLogo();
+			efroLogo.x = 10;
+			efroLogo.y = height - efroLogo.height - 10;
+			addChild(efroLogo);
+			
 			magnifierLayer = new TouchSprite();
 			addChild(magnifierLayer);
 			
